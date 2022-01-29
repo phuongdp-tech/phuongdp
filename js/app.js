@@ -90,47 +90,21 @@
 }(jQuery);
 
 $(document).ready(function () {
-    // Draw menu
-    drawMenu(menuItem);
+    loadMenuHtml();
+    loadPostHtml();
+    loadFooterHtml();
 
     $('#sologan-text').text(`Sharing knowledge - Together we win.`);
-    // Add text sologan to footer
-    $('#sologan-footer').html(`Winzone.vn nơi lưu giữ và chia sẻ những kiến thức và trải nghiệm trong quá trình làm việc của tác giả.
-                                    <br> Hi vọng rằng có thể giúp ích cho bạn đọc và chính tác giả.`);
-
 });
-const drawMenu = function (menuItem) {
-    $(`#navigation .navigation-menu`).html(``);
-    $.each(menuItem, function (index, item) {
-        if (item.child) {
-            $(`#navigation .navigation-menu`).append(`
-                <li class="has-submenu">
-                            <a href="javascript:void(0)">${item.name}</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                ${drawChildItem(item.child)}
-                            </ul>
-                </li>
-            `);
-        } else {
-            $(`#navigation .navigation-menu`).append(`<li><a href="${item.href}">${item.name}</a></li>`);
-        }
-    });
-};
-const drawChildItem = function (childItems) {
-    let itemHtml = '';
-    for (const item of childItems) {
-        itemHtml += `<li><a href="${item.href}">${item.name}</a></li>`
-    }
-    return itemHtml;
+
+const loadMenuHtml = function () {
+    $('#topnav').load('fragment/menu.html');
 };
 
+const loadPostHtml = function () {
+    $('#post-list-container').load('fragment/post-area.html');
+};
 
-const menuItem = [
-    {name: 'Home', href: 'index.html'},
-    {name: 'Java', href: 'java.html'},
-    {name: 'Spring', href: '', child: [
-            {name: 'Spring Security', href: 'spring-security.html'},
-            {name: 'Spring Data JPA', href: 'spring-data-jpa.html'},
-            {name: 'Spring Restful', href: 'spring-restful.html'},
-    ]},
-];
+const loadFooterHtml = function () {
+    $('#footer-page').load('fragment/footer.html');
+};

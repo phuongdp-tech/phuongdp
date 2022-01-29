@@ -14,7 +14,8 @@
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
-        <link href="css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
         <!-- Main Css -->
         <link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="css/colors/green.css" rel="stylesheet" id="color-opt">
@@ -34,51 +35,12 @@
 
         <!-- Navbar STart -->
         <header id="topnav" class="defaultscroll sticky">
-            <div class="container">
-                <!-- Logo container-->
-                <div>
-                    <a class="logo text-primary" href="index.html">Winzone<span class="text-primary">.</span>vn</a>
-                </div>
-                <div class="buy-button">
-                    <a href="about-me.html" target="_blank" class="btn btn-primary">About me</a>
-                </div><!--end login button-->
-                <!-- End Logo container-->
-                <div class="menu-extras">
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
-                </div>
 
-                <div id="navigation">
-                    <!-- Navigation Menu-->
-                    <ul class="navigation-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html">Java</a></li>
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)">Spring</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="documentation.html">Spring security </a></li>
-                                <li><a href="changelog.html">Spring data JPA </a></li>
-                                <li><a href="components.html">Spring Restful</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="index.html">SQL</a></li>
-                    </ul><!--end navigation menu-->
-                </div><!--end navigation-->
-            </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
 
         <!-- Hero Start -->
-        <section class="bg-half bg-light d-table w-100">
+        <section class="bg-half bg-sologan d-table w-100">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
@@ -88,8 +50,8 @@
                         <div class="subcribe-form mt-4 pt-2 aos-init aos-animate" data-aos="fade-up" data-aos-duration="2200">
                             <form>
                                 <div class="form-group mb-0">
-                                    <input type="text" id="help" name="name" class="border bg-white rounded-pill shadow" required="" placeholder="Search the help center">
-                                    <button type="submit" class="btn btn-pills btn-primary">Search</button>
+                                    <input type="text" id="search-keyword" name="q" class="border bg-white rounded-pill shadow" placeholder="">
+                                    <button type="submit" class="btn btn-pills btn-primary">Tìm kiếm</button>
                                 </div>
                             </form>
                         </div>
@@ -100,262 +62,19 @@
         <!-- Hero End -->
 
         <!-- Blog STart -->
-        <section class="section">
+        <section class="section-two">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/01.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
+                <div id="search-result" class="alert alert-outline-primary hide" role="alert">
+                    Kết quả tìm kiếm » <span class="keyword"></span>
+                </div>
+                <div id="post-list-container">
 
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/02.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/03.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/04.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/05.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/06.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/07.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow overflow-hidden">
-                            <div class="position-relative">
-                                <img src="images/blog/08.jpg" class="card-img-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="mdi mdi-heart-outline mr-1"></i>33</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">Read More <i class="mdi mdi-chevron-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calvin Carlo</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> 13th August, 2019</small>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <!-- PAGINATION START -->
-                    <div class="col-12">
-                        <ul class="pagination justify-content-center mb-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    <!-- PAGINATION END -->
-                </div><!--end row-->
+                </div>
             </div><!--end container-->
         </section><!--end section-->
         <!-- Blog End -->
 
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-12 mb-0 pb-0">
-                        <a class="logo-footer" href="#">Winzone<span class="text-primary">.</span>vn</a>
-                        <p class="mt-4" id="sologan-footer"></p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/phuongdang.tech" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCpLG85D5-2Xc3I-LiOM0iKQ" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/phuongdp-tech/" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-
-<!--                    <div class="col-lg-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">-->
-<!--                        <h4 class="text-light footer-head">Newsletter</h4>-->
-<!--                        <p class="mt-4">Sign up and receive the latest tips via email.</p>-->
-<!--                        <form>-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-lg-12">-->
-<!--                                    <div class="foot-subscribe form-group position-relative">-->
-<!--                                        <label>Write your email <span class="text-danger">*</span></label>-->
-<!--                                        <i data-feather="mail" class="fea icon-sm icons"></i>-->
-<!--                                        <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="col-lg-12">-->
-<!--                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </form>-->
-<!--                    </div>&lt;!&ndash;end col&ndash;&gt;-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <footer class="footer footer-bar">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-sm-12">
-                        <div class="text-sm-left">
-                            <p class="mb-0">© 2022 Winzone.vn</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
-        <!-- Footer End -->
-
-        <!-- Back to top -->
-        <a href="#" class="back-to-top rounded text-center" id="back-to-top">
-            <i data-feather="chevron-up" class="icons d-inline-block"></i>
-        </a>
-        <!-- Back to top -->
+        <footer id="footer-page"></footer>
 
         <!-- javascript -->
         <script src="js/jquery-3.4.1.min.js"></script>
