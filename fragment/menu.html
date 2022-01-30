@@ -1,10 +1,10 @@
 <div class="container">
     <!-- Logo container-->
     <div>
-        <a class="logo text-primary" href="index.html">Winzone<span class="text-primary">.</span>vn</a>
+        <a class="logo text-primary" href="../index.html">Winzone<span class="text-primary">.</span>vn</a>
     </div>
     <div class="buy-button">
-        <a href="about-me.html" target="_blank" class="btn btn-primary">Tác giả</a>
+        <a href="../about-me.html" target="_blank" class="btn btn-primary">Tác giả</a>
     </div><!--end login button-->
     <!-- End Logo container-->
     <div class="menu-extras">
@@ -37,3 +37,51 @@
         </ul><!--end navigation menu-->
     </div><!--end navigation-->
 </div><!--end container-->
+
+<script>
+
+    // Menu
+    $('.navbar-toggle').on('click', function (event) {
+        $(this).toggleClass('open');
+        $('#navigation').slideToggle(400);
+    });
+
+    $('.navigation-menu>li').slice(-1).addClass('last-elements');
+
+    $('.menu-arrow,.submenu-arrow').on('click', function (e) {
+        if ($(window).width() < 992) {
+            e.preventDefault();
+            $(this).parent('li').toggleClass('open').find('.submenu:first').toggleClass('open');
+        }
+    });
+
+    $(".navigation-menu a").each(function () {
+        $(this).attr('href', `${HOST_URL}/${$(this).attr('href')}`);
+        if (this.href === window.location.href) {
+            $(this).parent().addClass("active");
+            $(this).parent().parent().parent().addClass("active");
+            $(this).parent().parent().parent().parent().parent().addClass("active");
+        }
+    });
+
+    // Clickable Menu
+    $(".has-submenu a").click(function() {
+        if(window.innerWidth < 992){
+            if($(this).parent().hasClass('open')){
+                $(this).siblings('.submenu').removeClass('open');
+                $(this).parent().removeClass('open');
+            } else {
+                $(this).siblings('.submenu').addClass('open');
+                $(this).parent().addClass('open');
+            }
+        }
+    });
+
+    $('.mouse-down').on('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top - 72
+        }, 1500, 'easeInOutExpo');
+        event.preventDefault();
+    });
+</script>

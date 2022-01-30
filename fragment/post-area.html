@@ -1,43 +1,49 @@
 <div class="row">
 </div>
 
-<script src="js/post-data.js"></script>
+
 <script>
+$(document).ready(function () {
     let searchParams = new URLSearchParams(window.location.search);
     const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1;
     const searchKeyword = searchParams.get('q');
-    const totalPage = Math.ceil(POST_DATA.length / PAGE_SIZE);
-
     const startIndex = (page - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
 
+    // Get category
+    const category = window.location.pathname.split('/').at(-1).replace('.html', '');
     let postList = POST_DATA;
+    if (category && category !== 'index') {
+        postList = postList.filter(p => p.category?.includes(category));
+    }
     if (searchKeyword) {
         $('#search-keyword').val(searchKeyword);
         $('#search-result').show();
         $('#search-result .keyword').text(searchKeyword);
-        postList = POST_DATA.filter(p => p.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1
+        postList = postList.filter(p => p.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1
             || p.brief.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1);
     } else {
         $('#search-result').hide();
     }
 
+    const totalPage = Math.ceil(postList.length / PAGE_SIZE);
+
     $('#post-list-container .row').html('');
 
     postList.filter((e, idx) => idx >= startIndex && idx < endIndex)
-            .forEach(function (item, index) {
-        $('#post-list-container .row').append(`
+        .forEach(function (item, index) {
+            $('#post-list-container .row').append(`
             <div class="col-lg-6 col-md-6 mb-4 pb-2">
-                <div class="card blog rounded border-0 shadow overflow-hidden">
+                <div class="card blog rounded shadow overflow-hidden">
                     <div class="position-relative">
-                        <img src="${item.image}" class="card-img-top" alt="...">
+                        <img src="${HOST_URL}/${item.image}" class="card-img-top" alt="...">
                         <div class="overlay rounded-top bg-dark"></div>
                     </div>
                     <div class="card-body content">
-                        <h5><a href="javascript:void(0)" class="card-title title text-dark">${item.title}</a></h5>
+                        <h5><a href="${HOST_URL}/${item.url}" class="card-title title text-dark">${item.title}</a></h5>
                         <p>${item.brief}</p>
                         <div class="post-meta d-flex justify-content-end mt-3">
-                            <button class="btn btn-outline-primary">Đọc tiếp</button>
+                            <a href="${HOST_URL}/${item.url}" class="btn btn-outline-primary">Đọc tiếp</a>
                         </div>
                     </div>
                     <div class="author">
@@ -47,7 +53,7 @@
                 </div>
             </div>
         `);
-    });
+        });
 
     if (totalPage > 1) {
         let paginationHtml = `<div class="col-12"><ul class="pagination justify-content-center mb-0">`;
@@ -66,4 +72,64 @@
 
         $('#post-list-container .row').append(paginationHtml);
     }
+});
+</script>
+
+<script>
+    const PAGE_SIZE = 10;
+    const POST_DATA = [
+        {
+            "id": 1,
+            "title": "Những lưu ý khi phỏng vấn online 1",
+            "image": "images/blog/cred-mgt_480.png",
+            "brief": "Review công ty là cụm từ không mới và dần trở thành từ khóa được tìm kiếm nhiều nhất với công thức phổ biến “Review công ty + [Tên công…",
+            "content": "content",
+            "url": "post/nhung-luu-y-khi-phong-van-online.html",
+            "author": "Phuong Dang",
+            "createDate": "15/07/2021",
+            "category": ['java']
+        },
+        {
+            "id": 1,
+            "title": "Java basic",
+            "image": "images/blog/cred-mgt_480.png",
+            "brief": "Review công ty là cụm từ không mới và dần trở thành từ khóa được tìm kiếm nhiều nhất với công thức phổ biến “Review công ty + [Tên công…",
+            "content": "content",
+            "url": "post/nhung-luu-y-khi-phong-van-online.html",
+            "author": "Phuong Dang",
+            "createDate": "",
+            "category": ['java']
+        },
+        {
+            "id": 1,
+            "title": "SQL basic",
+            "image": "images/blog/cred-mgt_480.png",
+            "brief": "Review công ty là cụm từ không mới và dần trở thành từ khóa được tìm kiếm nhiều nhất với công thức phổ biến “Review công ty + [Tên công…",
+            "content": "content",
+            "url": "/post/nhung-luu-y-khi-phong-van-online.html",
+            "author": "Phuong Dang",
+            "createDate": ""
+        },
+        {
+            "id": 1,
+            "title": "Những lưu ý khi phỏng vấn online 4",
+            "image": "images/blog/cred-mgt_480.png",
+            "brief": "Review công ty là cụm từ không mới và dần trở thành từ khóa được tìm kiếm nhiều nhất với công thức phổ biến “Review công ty + [Tên công…",
+            "content": "content",
+            "url": "post/nhung-luu-y-khi-phong-van-online.html",
+            "author": "Phuong Dang",
+            "createDate": ""
+        },
+        {
+            "id": 1,
+            "title": "Những lưu ý khi phỏng vấn online 5",
+            "image": "images/blog/cred-mgt_480.png",
+            "brief": "Review công ty là cụm từ không mới và dần trở thành từ khóa được tìm kiếm nhiều nhất với công thức phổ biến “Review công ty + [Tên công…",
+            "content": "content",
+            "url": "post/nhung-luu-y-khi-phong-van-online.html",
+            "author": "Phuong Dang",
+            "createDate": ""
+        }
+    ];
+
 </script>

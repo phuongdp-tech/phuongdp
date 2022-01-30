@@ -9,50 +9,6 @@
         });
     });
 
-    // Menu
-    $('.navbar-toggle').on('click', function (event) {
-        $(this).toggleClass('open');
-        $('#navigation').slideToggle(400);
-    });
-
-    $('.navigation-menu>li').slice(-1).addClass('last-elements');
-
-    $('.menu-arrow,.submenu-arrow').on('click', function (e) {
-        if ($(window).width() < 992) {
-            e.preventDefault();
-            $(this).parent('li').toggleClass('open').find('.submenu:first').toggleClass('open');
-        }
-    });
-
-    $(".navigation-menu a").each(function () {
-        if (this.href == window.location.href) {
-            $(this).parent().addClass("active");
-            $(this).parent().parent().parent().addClass("active");
-            $(this).parent().parent().parent().parent().parent().addClass("active");
-        }
-    });
-
-    // Clickable Menu
-    $(".has-submenu a").click(function() {
-        if(window.innerWidth < 992){
-            if($(this).parent().hasClass('open')){
-                $(this).siblings('.submenu').removeClass('open');
-                $(this).parent().removeClass('open');
-            } else {
-                $(this).siblings('.submenu').addClass('open');
-                $(this).parent().addClass('open');
-            }
-        }
-    });
-
-    $('.mouse-down').on('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 72
-        }, 1500, 'easeInOutExpo');
-        event.preventDefault();
-    });
-
     //Sticky
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
@@ -86,25 +42,22 @@
         $('[data-toggle="popover"]').popover()
     });
     //Feather icon
-    feather.replace()
+    feather.replace();
 }(jQuery);
 
 $(document).ready(function () {
     loadMenuHtml();
-    loadPostHtml();
     loadFooterHtml();
 
     $('#sologan-text').text(`Sharing knowledge - Together we win.`);
 });
 
 const loadMenuHtml = function () {
-    $('#topnav').load('fragment/menu.html');
-};
-
-const loadPostHtml = function () {
-    $('#post-list-container').load('fragment/post-area.html');
+    $('#topnav').load(`${HOST_URL}/fragment/menu.html`);
 };
 
 const loadFooterHtml = function () {
-    $('#footer-page').load('fragment/footer.html');
+    $('#footer-page').load(`${HOST_URL}/fragment/footer.html`);
 };
+
+const HOST_URL = `${window.location.origin}/winzone-blog-github/phuongdp`;
