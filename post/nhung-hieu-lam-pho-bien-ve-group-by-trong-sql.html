@@ -84,7 +84,7 @@
                         </section>
                         <div class="mt-3">
                             <strong><i>GROUP BY là một trong những statement được sử dụng thường xuyên khi chúng ta muốn nhóm data và sử dụng với các aggregate functions.
-                                    Nó không khó nhưng với một số bạn Beginer, Fresher lại không thực sự hiểu đúng bản chất dẫn đến không thể đưa ra sự lựa chọn đúng đắn khi cần dùng.
+                                    Nó không khó nhưng với một số bạn Beginer, Fresher do không thực sự hiểu đúng bản chất dẫn đến không thể đưa ra sự lựa chọn đúng đắn khi cần dùng.
                             </i></strong>
                         </div>
                         <h2 id="how-group-by-working" class="mt-5">GROUP BY hoạt động như nào?</h2>
@@ -104,7 +104,7 @@
                         </blockquote>
 
                         <p>Với những bài toán cần data tổng hợp, chức năng báo cáo như: "tính doanh thu theo thời gian, tính trung bình điểm của học viên..." thì GROUP BY là một solution được nghĩ đến đầu tiên.
-                            Để giải thích cách hoạt động của GROUP BY, chúng ta cùng làm 1 ví dụ.<br> <b>Hãy sử dụng table Employees với cấu trúc/data cho trước và trả lời câu hỏi bên dưới:</b></p>
+                            Để giải thích cách hoạt động của GROUP BY, chúng ta cùng làm 1 ví dụ.<br> <b>Hãy sử dụng table Employees với structure/data cho trước và trả lời câu hỏi bên dưới:</b></p>
                         <p class="caution rounded p-3">
                             <i class="fas fa-exclamation-circle"></i> SQL Query trong bài viết này sẽ sử dụng SQL SERVER 2019 để demo source
                         </p>
@@ -112,7 +112,7 @@
                             <table class="table mb-0 table-center table-data">
                                 <thead>
                                 <tr>
-                                    <th scope="col">EmployeeID</th>
+                                    <th scope="col">EmployeeID (PK)</th>
                                     <th scope="col">FullName</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Level</th>
@@ -232,18 +232,18 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div>Mọi thứ đơn giản phải không?<br> Tuy nhiên sẽ có nhiều sự bối rối khi yêu cầu là 1 câu SQL Query phức tạp hơn. Cùng nhau xem bạn có những hiểu lầm nào dưới đây không nhé.</div>
+                        <div>Câu query đơn giản phải không?<br> Tuy nhiên cùng nhau xem bạn có những hiểu lầm/thiếu sót nào dưới đây không nhé.</div>
                         <h2 id="common-mistake" class="mt-5">Những hiểu lầm phổ biến.</h2>
                         <h4 class="mt-3">#1. Lựa chọn sai column để group by</h4>
                         <p>Với yêu cầu của [Q.1] rất nhiều bạn đưa ra sự lựa chọn là sẽ GROUP BY theo EmployeeID. Điều này hoàn toàn sai.
                             <br>Chúng ta phải dựa vào yêu cầu để xác định rõ ràng 2 yếu tố:</p>
-                        <p>1. ĐỐI TƯỢNG nhóm: Employee <br>
-                            2. TIÊU CHÍ nhóm: Level</p>
+                        <p>1. ĐỐI TƯỢNG cần nhóm: Employee <br>
+                           2. TIÊU CHÍ muốn nhóm: Level</p>
                         <strong class="text-danger">=> Column(s) cho GROUP BY clause luôn luôn là TIÊU CHÍ vì thế cần lựa chọn đúng TIÊU CHÍ thay vì ĐỐI TƯỢNG.</strong>
 
                         <h4 class="mt-4">#2. Sử dụng Primary Key/Unique column(s) để GROUP BY</h4>
                         <p>Mục đích chúng ta sử dụng GROUP BY là sẽ nhóm đối tượng theo một tiêu chí chung nào đó. Đồng nghĩa rằng nếu ta có X số lượng row(s) thì sau khi GROUP BY số lượng row(s) sẽ phải <= X.
-                            <br>Tuy nhiên với việc sử dụng GROUP BY với >= 1 column PK/Unique thì sau khi GROUP BY tổng số row sẽ ko thay đổi, <b>vì chúng ta đang tìm điểm chung của tệp data bằng 1 TIÊU CHÍ luôn khác nhau.</b>
+                            <br>Tuy nhiên với việc sử dụng GROUP BY với >= 1 column PK/Unique thì sau khi GROUP BY số lượng row(s) sẽ không thay đổi, <b>vì chúng ta đang tìm điểm chung của tệp data bằng 1 TIÊU CHÍ luôn khác nhau.</b>
                         </p>
                         <strong class="text-danger">=> Không bao giờ sử dụng Primary Key/Unique của tệp data để GROUP BY</strong>
 
@@ -252,14 +252,14 @@
                         </div>
 
                         <h4 class="mt-4">#3. Không xác định được khi nào nên dùng WHERE hoặc HAVING với GROUP BY</h4>
-                        <p>Đôi khi làm việc với GROUP BY chúng ta sẽ phải filter data theo 1 hoặc nhiều tiêu chí nào đó. Lúc này thì việc lựa chọn giữa WHERE và HAVING sẽ dẫn đến một số bạn bối rối. Hãy cùng nhau so sánh: </p>
+                        <p>Đôi khi làm việc với GROUP BY chúng ta sẽ phải filter data theo 1 hoặc nhiều tiêu chí nào đó. Lúc này một số bạn sẽ bối rối giữa việc lựa chọn giữa WHERE và HAVING. Hãy cùng nhau so sánh: </p>
                         <div class="table-responsive bg-white shadow rounded mb-3">
                             <table class="table mb-0 table-center">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">WHERE</th>
-                                    <th scope="col">HAVING</th>
+                                    <th style="width: 45%" scope="col">WHERE</th>
+                                    <th style="width: 45%" scope="col">HAVING</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -506,10 +506,10 @@
 
                                         <p>Chúng ta có thể thấy WHERE và HAVING đều trả về 1 kết quả. Tuy nhiên cách thức filter sẽ khác nhau. <br>
                                             Với WHERE (pre-filter) sẽ loại bỏ data trước khi GROUP BY, chúng ta chỉ còn 3 rows sau filter để GROUP BY và COUNT.<br>
-                                            Ngược lại với HAVING (post-filter), chúng ta sẽ phải GROUP BY chia nhóm và COUNT với 10 rows sau đó mới loại bỏ data ko phù hợp.
+                                            Ngược lại với HAVING (post-filter), chúng ta sẽ phải GROUP BY chia nhóm và COUNT với 10 rows sau đó mới loại bỏ data không phù hợp.
                                         </p>
                                         <div class="font-weight-bold">
-                                            => Trong trường hợp 1 điều kiện có thể filter tại WHERE thì ưu tiên sử dụng WHERE trước để đảm bảo performance
+                                            => Trong trường hợp điều kiện có thể filter tại WHERE thì ưu tiên sử dụng WHERE trước để đảm bảo performance tốt hơn
                                         </div>
                                     </div>
                                 </div>
@@ -549,7 +549,7 @@
                                             </tbody>
                                         </table>
                                         <div class="font-weight-bold">
-                                            => WHERE và HAVING có thể cùng nằm trong 1 câu Query
+                                            => WHERE và HAVING hoàn toàn có thể cùng nằm trong cùng 1 câu query
                                         </div>
                                     </div>
                                 </div>
