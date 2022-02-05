@@ -4337,11 +4337,39 @@ p {
 .blog-detail h2 {
   font-size: 1.6rem!important;
 }
+.blog-detail h3 {
+  font-size: 1.4rem!important;
+}
+.blog-detail h4 {
+  font-size: 1.2rem!important;
+}
 .quote {
   background: #deeafd;
   color: #174ea6;
 }
+.sql-quote {
+  background: #E7E9EB;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.sql-quote .keyword {
+  color: mediumblue;
+}
 .caution {
   background: #feefe3;
   color: #bf360c;
+}
+.blog-detail .table-data tr:nth-child(even) {
+  background-color: #E7E9EB;
+}
+.blog-detail figure img {
+  border: 2px solid #ddd;
+}
+.blog-detail figure figcaption {
+  text-align: center;
+}
+@media only screen and (min-width: 1024px) {
+  .blog-detail .content {
+    padding: 2rem!important;
+  }
 }

@@ -78,26 +78,209 @@
                         <section class="table-content rounded">
                             <ul class="list-unstyled mb-0">
                                 <li><a href="#how-group-by-working">GROUP BY hoạt động như nào?</a></li>
-                                <li><a href="#">GROUP BY được sử dụng khi nào?</a></li>
+                                <li><a href="#common-mistake">Những hiểu lầm phổ biến.</a></li>
                                 <li><a href="#">WHERE/HAVING khi kết hợp với GROUP BY</a></li>
                             </ul>
                         </section>
                         <p class="mt-3">
-                            <strong><i>GROUP BY là một trong những statement được sử dụng thường xuyên khi chúng ta muốn nhóm dữ liệu và sử dụng với các aggregate functions.
-                                    Nó không thực sự khó nhưng với một số bạn Beginer, Fresher lại không thực sự hiểu đúng bản chất dẫn đến không thể đưa ra sự lựa chọn đúng đắn khi cần dùng.
+                            <strong><i>GROUP BY là một trong những statement được sử dụng thường xuyên khi chúng ta muốn nhóm data và sử dụng với các aggregate functions.
+                                    Nó không khó nhưng với một số bạn Beginer, Fresher lại không thực sự hiểu đúng bản chất dẫn đến không thể đưa ra sự lựa chọn đúng đắn khi cần dùng.
                             </i></strong>
                         </p>
                         <h2 id="how-group-by-working">GROUP BY hoạt động như nào?</h2>
                         <blockquote class="quote rounded mt-3 p-3">
-                            <p class="mb-0 font-italic">GROUP BY statement sẽ nhóm những rows có dữ liệu giống nhau tại một hoặc nhiều column thành một summary rows. <br>
-                                                        GROUP BY thường được kết hợp sử dụng với aggregate functions (SUM, COUNT, AVG...) để đưa ra các kết quả có tính chất tổng hợp
+                            <p class="mb-0 font-italic">GROUP BY statement sẽ nhóm những rows có data giống nhau tại một hoặc nhiều column thành một summary rows. <br>
+                                                        GROUP BY thường được kết hợp sử dụng với aggregate functions (SUM, COUNT, AVG...) để đưa ra các kết quả có tính chất tổng hợp.
                             </p>
                         </blockquote>
+                        <h4 class="mt-4">GROUP BY syntax:</h4>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">SELECT</span> column_name(s)<br>
+                            <span class="keyword">FROM</span> table_name<br>
+                            <span class="keyword">WHERE</span> condition<br>
+                            <span class="keyword">GROUP BY</span> column_name(s)<br>
+                            <span class="keyword">HAVING</span> condition<br>
+                            <span class="keyword">ORDER BY</span> column_name(s);<br>
+                        </blockquote>
 
-                        <p>Với những bài toán cần dữ liệu tổng hợp, chức năng báo cáo như: "tính doanh thu theo thời gian, tính trung bình điểm của học viên..." thì GROUP BY là một solution được nghĩ đến đầu tiên.</p>
-                        <p>Để giải thích cách hoạt động của GROUP BY, trong bài viết này chúng ta sẽ sử dụng 1 tệp dữ liệu để trả lời câu hỏi "Hãy tìm ra 3 sinh viên có điểm trung bình cao nhất lớp"</p>
-                        <div class="caution rounded p-3">
-                            <i class="fas fa-exclamation-circle"></i> Trong bài viết này tôi sẽ sử dụng SQL SERVER 2019 để demo source
+                        <p>Với những bài toán cần data tổng hợp, chức năng báo cáo như: "tính doanh thu theo thời gian, tính trung bình điểm của học viên..." thì GROUP BY là một solution được nghĩ đến đầu tiên.
+                            Để giải thích cách hoạt động của GROUP BY, chúng ta cùng làm 1 ví dụ.<br> <b>Hãy sử dụng table Employees với cấu trúc/data cho trước và trả lời câu hỏi bên dưới:</b></p>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i> SQL Query trong bài viết này sẽ sử dụng SQL SERVER 2019 để demo source
+                        </p>
+                        <div class="table-responsive bg-white shadow rounded">
+                            <table class="table mb-0 table-center table-data">
+                                <thead>
+                                <tr>
+                                    <th scope="col">EmployeeID</th>
+                                    <th scope="col">FullName</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Ken Sánchez</td>
+                                    <td>ken@test.com</td>
+                                    <td>Fresher</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Brian Welcker</td>
+                                    <td>brian@test.com</td>
+                                    <td>Junior</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Stephen Jiang</td>
+                                    <td>stephen@test.com</td>
+                                    <td>Senior</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Linda Mitchell</td>
+                                    <td>linda@test.com</td>
+                                    <td>Senior</td>
+                                    <td><span class="text-danger">Out</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Michael Blythe</td>
+                                    <td>michael@test.com</td>
+                                    <td>Junior</td>
+                                    <td><span class="text-warning">Unpaid Leave</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Syed Abbas</td>
+                                    <td>syed@test.com</td>
+                                    <td>Fresher</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Lynn Tsoflias</td>
+                                    <td>lynn@test.com</td>
+                                    <td>Fresher</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>David Bradley</td>
+                                    <td>david@test.com</td>
+                                    <td>Junior</td>
+                                    <td>Working</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>Mary Gibson</td>
+                                    <td>mary@test.com</td>
+                                    <td>Senior</td>
+                                    <td><span class="text-warning">Unpaid Leave</span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>Clever</td>
+                                    <td>clever@test.com</td>
+                                    <td>Senior</td>
+                                    <td>Working</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="mt-4">[Q.1] Mỗi level trong công ty có bao nhiêu nhân viên đã/đang làm việc?</h5>
+                        <p><b>* Phân tích: </b> Với yêu cầu [Q.1], rõ ràng mục tiêu của chúng ta sẽ phải đi tìm: Có bao nhiêu nhân viên Fresher? Có bao nhiêu nhân viên Junior...?</p>
+                        <figure>
+                            <img class="rounded" src="../images/blog/01/groupbysql_figure01.png" alt="GROUP BY Employee by Level" style="width:100%">
+                            <figcaption><b>Figure 01. Nhóm nhân viên theo level.</b></figcaption>
+                        </figure>
+
+                        <p>Đối chiếu khái niệm của GROUP BY và mục đích nhóm data như Figure 01. Ta sẽ cần nhóm các nhân viên theo colum "Level" với query như sau:</p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                            <span class="keyword">FROM</span> Employees<br>
+                            <span class="keyword">GROUP BY</span> Level<br>
+                        </blockquote>
+
+                        <p>Chúng ta sẽ được kết quả như bên dưới:</p>
+                        <div class="table-responsive bg-white shadow rounded mb-3">
+                            <table class="table mb-0 table-center">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Level</th>
+                                    <th scope="col">TotalEmployee</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Fresher</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Junior</td>
+                                    <td>3</td>
+                                <tr>
+                                    <td>Senior</td>
+                                    <td>4</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2 id="common-mistake" class="mt-5">Những hiểu lầm phổ biến.</h2>
+                        <h4 class="mt-3">#1. Lựa chọn sai column để group by</h4>
+                        <p>Với yêu cầu của [Q.1] rất nhiều bạn đưa ra sự lựa chọn là sẽ GROUP BY theo EmployeeID. Điều này hoàn toàn sai.
+                            <br>Chúng ta phải dựa vào yêu cầu để xác định rõ ràng 2 yếu tố:</p>
+                        <p>1. ĐỐI TƯỢNG nhóm: Employee <br>
+                            2. TIÊU CHÍ nhóm: Level</p>
+                        <strong class="text-danger">=> Column(s) cho GROUP BY clause luôn luôn là TIÊU CHÍ vì thế cần lựa chọn đúng TIÊU CHÍ thay vì ĐỐI TƯỢNG.</strong>
+
+                        <h4 class="mt-4">#2. Sử dụng Primary Key/Unique column(s) để GROUP BY</h4>
+                        <p>Mục đích chúng ta sử dụng GROUP BY là sẽ nhóm đối tượng theo một tiêu chí chung nào đó. Đồng nghĩa rằng nếu ta có X số lượng row(s) thì sau khi GROUP BY số lượng row(s) sẽ phải <= X.
+                            <br>Tuy nhiên với việc sử dụng GROUP BY với 1 column PK/Unique thì sau khi GROUP BY tổng số record sẽ ko thay đổi, <b>vì chúng ta đang tìm điểm chung của tệp data bằng 1 TIÊU CHÍ luôn khác nhau.</b>
+                        </p>
+                        <strong class="text-danger">=> Không bao giờ sử dụng Primary Key/Unique của tệp data để GROUP BY</strong>
+                        <h4 class="mt-4">#3. Không xác định được khi nào nên dùng WHERE hoặc HAVING với GROUP BY</h4>
+                        <p>Đôi khi làm việc với GROUP BY chúng ta sẽ phải filter data theo 1 hoặc nhiều tiêu chí nào đó. Lúc này thì việc lựa chọn giữa WHERE và HAVING sẽ dẫn đến bối rối một số bạn. Hãy cùng nhau so sánh: </p>
+                        <div class="table-responsive bg-white shadow rounded mb-3">
+                            <table class="table mb-0 table-center">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">WHERE</th>
+                                    <th scope="col">HAVING</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="font-weight-bold">Định nghĩa</td>
+                                    <td>Dùng để filter row(s) data <b>trước</b> khi GROUP BY (Pre-filter).</td>
+                                    <td>Dùng để filter row(s) data <b>sau</b> khi GROUP BY (Post-filter).</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Vị trí</td>
+                                    <td>Trước GROUP BY</td>
+                                    <td>Sau GROUP BY</td>
+                                <tr>
+                                    <td class="font-weight-bold">Hạn chế</td>
+                                    <td>Không thể sử dụng với aggregate functions function.</td>
+                                    <td>Chỉ filter được với các column trong GROUP BY clause hoặc trong aggregate functions.</td>
+                                </tr>
+<!--                                <tr>-->
+<!--                                    <td colspan="3" class="text-danger">* Khi 1 điều kiện có thể filter được cả ở WHERE và HAVING. Thì</td>-->
+<!--                                </tr>-->
+                                <tr>
+                                    <td  class="font-weight-bold">Performance</td>
+                                    <td>Nhanh hơn</td>
+                                    <td>Chậm hơn</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
