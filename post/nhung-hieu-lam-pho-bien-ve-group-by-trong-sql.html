@@ -79,15 +79,15 @@
                             <ul class="list-unstyled mb-0">
                                 <li><a href="#how-group-by-working">GROUP BY hoạt động như nào?</a></li>
                                 <li><a href="#common-mistake">Những hiểu lầm phổ biến.</a></li>
-                                <li><a href="#">WHERE/HAVING khi kết hợp với GROUP BY</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
                             </ul>
                         </section>
-                        <p class="mt-3">
+                        <div class="mt-3">
                             <strong><i>GROUP BY là một trong những statement được sử dụng thường xuyên khi chúng ta muốn nhóm data và sử dụng với các aggregate functions.
                                     Nó không khó nhưng với một số bạn Beginer, Fresher lại không thực sự hiểu đúng bản chất dẫn đến không thể đưa ra sự lựa chọn đúng đắn khi cần dùng.
                             </i></strong>
-                        </p>
-                        <h2 id="how-group-by-working">GROUP BY hoạt động như nào?</h2>
+                        </div>
+                        <h2 id="how-group-by-working" class="mt-5">GROUP BY hoạt động như nào?</h2>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0 font-italic">GROUP BY statement sẽ nhóm những rows có data giống nhau tại một hoặc nhiều column thành một summary rows. <br>
                                                         GROUP BY thường được kết hợp sử dụng với aggregate functions (SUM, COUNT, AVG...) để đưa ra các kết quả có tính chất tổng hợp.
@@ -194,7 +194,7 @@
                             </table>
                         </div>
 
-                        <h5 class="mt-4">[Q.1] Mỗi level trong công ty có bao nhiêu nhân viên đã/đang làm việc?</h5>
+                        <h5 class="mt-4">[Q.1] Mỗi level trong công ty có bao nhiêu nhân viên?</h5>
                         <p><b>* Phân tích: </b> Với yêu cầu [Q.1], rõ ràng mục tiêu của chúng ta sẽ phải đi tìm: Có bao nhiêu nhân viên Fresher? Có bao nhiêu nhân viên Junior...?</p>
                         <figure>
                             <img class="rounded" src="../images/blog/01/groupbysql_figure01.png" alt="GROUP BY Employee by Level" style="width:100%">
@@ -232,6 +232,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div>Mọi thứ đơn giản phải không?<br> Tuy nhiên sẽ có nhiều sự bối rối khi yêu cầu là 1 câu SQL Query phức tạp hơn. Cùng nhau xem bạn có những hiểu lầm nào dưới đây không nhé.</div>
                         <h2 id="common-mistake" class="mt-5">Những hiểu lầm phổ biến.</h2>
                         <h4 class="mt-3">#1. Lựa chọn sai column để group by</h4>
                         <p>Với yêu cầu của [Q.1] rất nhiều bạn đưa ra sự lựa chọn là sẽ GROUP BY theo EmployeeID. Điều này hoàn toàn sai.
@@ -242,11 +243,16 @@
 
                         <h4 class="mt-4">#2. Sử dụng Primary Key/Unique column(s) để GROUP BY</h4>
                         <p>Mục đích chúng ta sử dụng GROUP BY là sẽ nhóm đối tượng theo một tiêu chí chung nào đó. Đồng nghĩa rằng nếu ta có X số lượng row(s) thì sau khi GROUP BY số lượng row(s) sẽ phải <= X.
-                            <br>Tuy nhiên với việc sử dụng GROUP BY với 1 column PK/Unique thì sau khi GROUP BY tổng số record sẽ ko thay đổi, <b>vì chúng ta đang tìm điểm chung của tệp data bằng 1 TIÊU CHÍ luôn khác nhau.</b>
+                            <br>Tuy nhiên với việc sử dụng GROUP BY với >= 1 column PK/Unique thì sau khi GROUP BY tổng số row sẽ ko thay đổi, <b>vì chúng ta đang tìm điểm chung của tệp data bằng 1 TIÊU CHÍ luôn khác nhau.</b>
                         </p>
                         <strong class="text-danger">=> Không bao giờ sử dụng Primary Key/Unique của tệp data để GROUP BY</strong>
+
+                        <div class="caution rounded p-3 mt-3">
+                            <i class="fas fa-exclamation-circle"></i> Hãy lưu ý rằng EmployeeID là PK của Employees table. Nên khi chúng ta GROUP BY trên Employees table thì không bao giờ dùng EmployeeID. Tuy nhiên vẫn là column EmployeeID đó chúng ta hoàn toàn có thể sử dụng ở những table khác nếu EmployeeID không đóng vai trò là UNIQUE.<br>
+                        </div>
+
                         <h4 class="mt-4">#3. Không xác định được khi nào nên dùng WHERE hoặc HAVING với GROUP BY</h4>
-                        <p>Đôi khi làm việc với GROUP BY chúng ta sẽ phải filter data theo 1 hoặc nhiều tiêu chí nào đó. Lúc này thì việc lựa chọn giữa WHERE và HAVING sẽ dẫn đến bối rối một số bạn. Hãy cùng nhau so sánh: </p>
+                        <p>Đôi khi làm việc với GROUP BY chúng ta sẽ phải filter data theo 1 hoặc nhiều tiêu chí nào đó. Lúc này thì việc lựa chọn giữa WHERE và HAVING sẽ dẫn đến một số bạn bối rối. Hãy cùng nhau so sánh: </p>
                         <div class="table-responsive bg-white shadow rounded mb-3">
                             <table class="table mb-0 table-center">
                                 <thead>
@@ -268,20 +274,292 @@
                                     <td>Sau GROUP BY</td>
                                 <tr>
                                     <td class="font-weight-bold">Hạn chế</td>
-                                    <td>Không thể sử dụng với aggregate functions function.</td>
-                                    <td>Chỉ filter được với các column trong GROUP BY clause hoặc trong aggregate functions.</td>
+                                    <td>Không thể sử dụng với aggregate functions. <a href="javascript:void(0)">Refer [Q.3]</a></td>
+                                    <td>Chỉ filter được với các column trong GROUP BY clause hoặc trong aggregate functions. <a href="javascript:void(0)">Refer [Q.2]</a></td>
                                 </tr>
-<!--                                <tr>-->
-<!--                                    <td colspan="3" class="text-danger">* Khi 1 điều kiện có thể filter được cả ở WHERE và HAVING. Thì</td>-->
-<!--                                </tr>-->
-                                <tr>
-                                    <td  class="font-weight-bold">Performance</td>
-                                    <td>Nhanh hơn</td>
+                                    <td> <span class="font-weight-bold">Performance</span> <br> <span class="text-danger">* Điều kiện có thể filter được cả ở WHERE và HAVING.</span></td>
+                                    <td>Nhanh hơn <a href="javascript:void(0)">Refer [Q.4]</a></td>
                                     <td>Chậm hơn</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
+
+                        <p>Để làm rõ hơn về những so sánh trên, chúng ta cùng nhau trả lời những câu hỏi tiếp theo</p>
+
+                        <div class="accordion" id="accordionExplainSQL">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            [Q.2] Mỗi level trong công ty có bao nhiêu nhân viên <span class="text-danger">đang làm việc</span> ?
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExplainSQL">
+                                    <div class="card-body">
+                                        <p>Với yêu cầu nhóm những nhân viên <span class="text-danger">đang làm việc</span>, thì chúng ta sẽ chỉ thực hiện thao tác với dữ liệu <span class="sql-quote p-1">Status = 'Working'</span>
+                                        </p>
+                                        <div class="table-responsive bg-white shadow rounded mb-3">
+                                            <table class="table mb-0 table-center">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th style="width: 45%" scope="col">WHERE</th>
+                                                    <th style="width: 45%" scope="col">HAVING</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>SQL</td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">WHERE</span> Status = 'Working'<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                        </blockquote>
+
+<!--                                                        <a target="_blank" href="../images/blog/01/groupbysql_figure03.png">Giải thích chi tiết</a>-->
+                                                    </td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                            <span class="keyword">HAVING</span> Status = 'Working'<br>
+                                                        </blockquote>
+<!--                                                        <a target="_blank" href="../images/blog/01/groupbysql_figure04.png">Giải thích chi tiết</a>-->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kết quả</td>
+                                                    <td>
+                                                        <table class="table mb-0 table-center">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Level</th>
+                                                                <th scope="col">TotalEmployee</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Fresher</td>
+                                                                <td>3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Junior</td>
+                                                                <td>2</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Senior</td>
+                                                                <td>2</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td class="text-danger">
+                                                        ERROR: Column 'Employees.Status' is invalid in the HAVING clause because it is not contained in either an aggregate function or the GROUP BY clause.
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="font-weight-bold">=> Từ ví dụ này chúng ta có thể thấy HAVING sẽ chỉ filter được column nằm trong GROUP BY clause hoặc aggregate function.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            [Q.3] Hãy SELECT những level có <span class="text-danger"> >= 4 nhân viên </span>
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExplainSQL">
+                                    <div class="card-body">
+                                        <p>Với yêu cầu <span class="text-danger">số lượng nhân viên >= 4</span>, thì chúng ta sẽ chỉ thực hiện thao tác với dữ liệu <span class="sql-quote p-1">Count(1) >= 4</span>
+                                        </p>
+                                        <div class="table-responsive bg-white shadow rounded mb-3">
+                                            <table class="table mb-0 table-center">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th style="width: 45%" scope="col">WHERE</th>
+                                                    <th style="width: 45%" scope="col">HAVING</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>SQL</td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">WHERE</span> COUNT(1) >= 4<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                        </blockquote>
+                                                    </td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                            <span class="keyword">HAVING</span> COUNT(1) >= 4<br>
+                                                        </blockquote>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kết quả</td>
+                                                    <td class="text-danger">
+                                                        ERROR: An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+                                                    </td>
+                                                    <td>
+                                                        <table class="table mb-0 table-center">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Level</th>
+                                                                <th scope="col">TotalEmployee</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Senior</td>
+                                                                <td>4</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="font-weight-bold">=> Từ ví dụ này chúng ta có thể thấy WHERE "Không thể sử dụng với aggregate functions" </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            [Q.4] Hãy SELECT số lượng <span class="text-danger">nhân viên Fresher</span>
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExplainSQL">
+                                    <div class="card-body">
+                                        <div class="table-responsive bg-white shadow rounded mb-3">
+                                            <table class="table mb-0 table-center">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th style="width: 45%" scope="col">WHERE</th>
+                                                    <th style="width: 45%" scope="col">HAVING</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>SQL</td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">WHERE</span> Level = 'Fresher'<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                        </blockquote>
+                                                    </td>
+                                                    <td>
+                                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                                            <span class="keyword">FROM</span> Employees<br>
+                                                            <span class="keyword">GROUP BY</span> Level<br>
+                                                            <span class="keyword">HAVING</span> Level = 'Fresher'<br>
+                                                        </blockquote>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kết quả</td>
+                                                    <td colspan="2">
+                                                        <table class="table mb-0 table-center">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Level</th>
+                                                                <th scope="col">TotalEmployee</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Fresher</td>
+                                                                <td>3</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <p>Chúng ta có thể thấy WHERE và HAVING đều trả về 1 kết quả. Tuy nhiên cách thức filter sẽ khác nhau. <br>
+                                            Với WHERE (pre-filter) sẽ loại bỏ data trước khi GROUP BY, chúng ta chỉ còn 3 rows sau filter để GROUP BY và COUNT.<br>
+                                            Ngược lại với HAVING (post-filter), chúng ta sẽ phải GROUP BY chia nhóm và COUNT với 10 rows sau đó mới loại bỏ data ko phù hợp.
+                                        </p>
+                                        <div class="font-weight-bold">
+                                            => Trong trường hợp 1 điều kiện có thể filter tại WHERE thì ưu tiên sử dụng WHERE trước để đảm bảo performance
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            [Q.5] Có bao nhiêu nhóm level nhân viên <span class="text-danger">đang làm việc</span> và <span class="text-danger">có số lượng > 2</span>?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExplainSQL">
+                                    <div class="card-body">
+                                        <p>Với yêu cầu này chúng ta cần filter 2 tiêu chí <span class="sql-quote p-1">Status = 'Working'</span> và <span class="sql-quote p-1">COUNT(1) > 2</span>
+                                        </p>
+
+                                        <blockquote class="sql-quote rounded mt-3 p-3">
+                                            <span class="keyword">SELECT</span> Level, Count(1) <span class="keyword">AS</span> TotalEmployee<br>
+                                            <span class="keyword">FROM</span> Employees<br>
+                                            <span class="keyword">WHERE</span> Status = 'Working'<br>
+                                            <span class="keyword">GROUP BY</span> Level<br>
+                                            <span class="keyword">HAVING</span> COUNT(1) > 2<br>
+                                        </blockquote>
+                                        <table class="table mb-0 table-center">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Level</th>
+                                                <th scope="col">TotalEmployee</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Fresher</td>
+                                                <td>3</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="font-weight-bold">
+                                            => WHERE và HAVING có thể cùng nằm trong 1 câu Query
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 id="summary" class="mt-5">Kết luận</h2>
+                        <p>Trên đây là những hiểu lầm/thiếu sót phổ biến ở các bạn Beginer. Hi vọng rằng sau bài viết này chúng ta sẽ thực sự hiểu và sẽ có những sự lựa chọn đúng đắn khi dùng GROUP BY.</p>
+
+                        <p><a href="https://github.com/phuongdp-tech/demo-source-winzone-blog/blob/main/SQL/GROUP_BY_IN_SQL.sql" target="_blank">Source code tham khảo</a></p>
                     </div>
                 </div>
             </div>
