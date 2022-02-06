@@ -11,7 +11,8 @@ $(document).ready(function () {
     const endIndex = startIndex + PAGE_SIZE;
 
     // Get category
-    const category = window.location.pathname.split('/').at(-1).replace('.html', '');
+    const pathNameArray = window.location.pathname.split('/');
+    const category = pathNameArray[pathNameArray.length - 1].replace('.html', '');
     let postList = POST_DATA;
     if (category && category !== 'index') {
         postList = postList.filter(p => p.category?.includes(category));
