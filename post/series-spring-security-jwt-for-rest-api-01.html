@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Series Spring Security + JWT cho REST API (Phần 01)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Series Spring Security + JWT authentication cho REST API (Phần 01)</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 05/Mar/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+<!--                    <img src="../images/blog/spring_security.jpeg" class="img-fluid rounded-top" alt="">-->
+                    <div class="card-body content">
+<!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">Java</a></h6>-->
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#authentication-flow">Authentication flow</a></li>
+                                <li><a href="#setup">Setup</a></li>
+                                <li><a href="#validate-user-generate-jwt-token">Validate user & generate token</a></li>
+                                <li><a href="#create-validate-filter-jwt-token">JWT Filter & configure api</a></li>
+                                <li><a href="#testing">Testing</a></li>
+                                <li><a href="#summary">Kết luận</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong><i>Trong series này chúng ta sẽ cùng nhau sử dụng spring security kết hợp JWT để xây dựng tính năng authentication và authorization cho một Java web application</i>
+                            </strong>
+                        </div>
+                        <h2 id="authentication-flow" class="mt-4">Authentication flow</h2>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic">
+                                JWT token là một chuỗi ký tự encode và được đính kèm với một SIGNATURE để đảm bảo tính toàn vẹn của token. <br/>
+                                Nhờ đó mà bất kỳ sửa đổi nào cũng sẽ khiến JWT token trở thành không hợp lệ.
+                            </p>
+                        </blockquote>
+                        <p>Thông thường một ứng dụng sử dụng <a href="https://jwt.io/" target="_blank">JWT (Json web Token)</a> để authentication sẽ có flow như bên sau: </p>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/02/ArchitectureOverview.svg" alt="Spring security overview">
+                            <figcaption><b>Figure 01. Architecture Overview.</b></figcaption>
+                        </figure>
+                        <h2 id="setup" class="mt-4">Setup</h2>
+                        <p>Chúng ta sẽ sử dụng <a href="https://start.spring.io/" target="_blank">Spring boot</a> để tạo và config một web application có apply spring security. Các dependency cần thiết trong file <i>pom.xml</i> như sau:</p>
+                        <div class="code-content-container">
+                            <pre><code class="language-xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.jsonwebtoken<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jjwt<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.9.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- ... dependency working with database ... --&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-comment">&lt;!-- ... OTHER DEPENDENCIES: lombok ... --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</code></pre>
+                        </div>
+                        <p class="mt-2">Khi chúng ta add spring-security vào application thì Spring boot sẽ tự động đăng ký <a href="https://docs.spring.io/spring-security/reference/servlet/architecture.html#servlet-security-filters" target="_blank">filters chain</a> để chặn và kiểm tra tính hợp lệ của tất các các request từ phía client gửi lên.
+                        Mỗi filter trong filters chain sẽ có một nhiệm vụ khác nhau, ví dụ: </p>
+                        <ul>
+                            <li>UsernamePasswordAuthenticationFilter: Thực hiện validate thông tin username và password</li>
+                            <li>CorsFilter: Ngăn chặn việc truy cập <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">Cross origin request</a> từ các domain khác với server hoặc không được cho phép</li>
+                            <li>....</li>
+                        </ul>
+                        <p>Nhiệm vụ của chúng ta sẽ là tạo ra 1 api login để generate JWT token (Step 1 + Step 2) và JWTFilter để xác thực token (Step 3) trong authentication flow</p>
+
+                        <h2 id="validate-user-generate-jwt-token" class="mt-4">Validate user & generate token</h2>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/02/AuthenticationStep2.svg" alt="Spring security overview">
+                            <figcaption><b>Figure 02. Validate user & generate token flow</b></figcaption>
+                        </figure>
+
+                        <h4 id="loginControllerJava">LoginController.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping(<span class="hljs-string">"/api/login"</span>)</span>
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> LoginController </span>{
+    <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
+
+    <span class="hljs-keyword">private final</span> AuthenticationManagerBuilder <span class="hljs-title">authenticationManagerBuilder</span>;
+
+    <span class="hljs-meta">@PostMapping()</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ResponseEntity&lt;JWTToken&gt; <span class="hljs-method">authorize</span><span class="hljs-params">(<span class="hljs-meta">@Valid @RequestBody</span> LoginRequestDto requestDto)</span> </span>{
+        UsernamePasswordAuthenticationToken authenticationToken = <span class="hljs-keyword">new</span> UsernamePasswordAuthenticationToken(
+                requestDto.getAccount().toLowerCase(),
+                requestDto.getPassword()
+        );
+
+        <span class="hljs-comment">// This line will call the implementation of UserDetailsService</span>
+        Authentication authentication = <span class="hljs-title">authenticationManagerBuilder</span>.getObject().authenticate(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        <span class="hljs-comment">// If have no exception is thrown, it's mean account valid</span>
+        String jwt = <span class="hljs-title">tokenProvider</span>.createToken(authentication);
+        <span class="hljs-keyword">return</span> ResponseEntity.ok(JWTToken.builder().accessToken(jwt).build());
+    }
+}
+</code></pre></div>
+                        Class này có nhiệm vụ expose 1 API POST /login nhận tham số là account & password. Sau đó call <code>AuthenticationService</code> để xác thực và response về JWT token khi account hợp lệ.
+
+                     <h4 class="mt-3" id="authenticationServiceJava">AuthenticationService.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> AuthenticationService</span> <span class="hljs-keyword">implements</span> UserDetailsService {
+    <span class="hljs-keyword">private final</span> AccountRepository <span class="hljs-title">accountRepository</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-keyword">public</span> UserDetails <span class="hljs-method">loadUserByUsername</span>(<span class="hljs-keyword">final</span> String account) {
+        <span class="hljs-keyword">return</span> accountRepository
+                .findByAccount(account)
+                .map(<span class="hljs-keyword">this</span>::createSpringSecurityUser)
+                .orElseThrow(() -> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"Account "</span> + account + <span class="hljs-string">" was not found in the database"</span>));
+    }
+
+    <span class="hljs-keyword">private</span> org.springframework.security.core.userdetails.User <span class="hljs-method">createSpringSecurityUser</span>(Account account) {
+        List&lt;GrantedAuthority&gt; grantedAuthorities =
+                Collections.singletonList(<span class="hljs-keyword">new</span> SimpleGrantedAuthority(account.getAuthority().name()));
+        <span class="hljs-keyword">return new</span> org.springframework.security.core.userdetails.User(account.getAccount(), account.getPassword(), grantedAuthorities);
+    }
+}</code></pre></div>
+                        <code>UserDetailsService</code> là một interface định nghĩa duy nhất một method loadUserByUsername() với ý nghĩa tạo ra một cơ chế mở "làm thể nào để xác thực user tồn tại hay không?". Chúng ta sẽ cần phải implement và cài đặt chi tiết cách thức xác thực.<br>
+                        Trường hợp account input là hợp lệ, chúng ta sẽ tạo ra 1 "internal" user theo format quy định của spring-security, ngược lại sẽ throw exception.
+                        <h4 class="mt-3" id="tokenProviderJava">TokenProvider.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> TokenProvider</span> {
+
+    <span class="hljs-keyword">private</span> String <span class="hljs-title">secretKey</span>;
+    <span class="hljs-keyword">private final</span> String <span class="hljs-title">AUTHORITIES_KEY</span> = <span class="hljs-string">"authorities"</span>;
+
+     <span class="hljs-keyword">public</span> String <span class="hljs-method">createToken</span>(Authentication authentication) {
+        String authorities = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority).collect(Collectors.joining(<span class="hljs-string">","</span>));
+
+        LocalDateTime exp = LocalDateTime.now().plusHours(1);
+
+        <span class="hljs-keyword">return</span> Jwts.builder()
+                .setSubject(authentication.getName())
+                .claim(<span class="hljs-title">AUTHORITIES_KEY</span>, authorities)
+                .setExpiration(DateTimeUtils.convertToUtilDate(exp))
+                .signWith(SignatureAlgorithm.<span class="hljs-title">HS512</span>, <span class="hljs-title">secretKey</span>)
+                .compact();
+    }
+
+    <span class="hljs-keyword">public</span> Authentication <span class="hljs-method">getAuthentication</span>(String token) {
+        <span class="hljs-keyword">if</span> (!StringUtils.hasText(token)) {
+            <span class="hljs-keyword">return null</span>;
+        }
+        <span class="hljs-keyword">try</span> {
+           Claims claims = Jwts.parser()
+                                .setSigningKey(<span class="hljs-title">secretKey</span>)
+                                .parseClaimsJws(token)
+                                .getBody();
+
+           Collection&lt;? <span class="hljs-keyword">extends</span> GrantedAuthority&gt; authorities = Arrays
+                                .stream(claims.get(AUTHORITIES_KEY).toString().split(<span class="hljs-string">","</span>))
+                                .filter(auth -> !auth.trim().isEmpty())
+                                .map(SimpleGrantedAuthority::<span class="hljs-keyword">new</span>)
+                                .collect(Collectors.toList());
+
+           User principal = <span class="hljs-keyword">new</span> User(claims.getSubject(), <span class="hljs-string">""</span>, authorities);
+
+           <span class="hljs-keyword">return new</span> UsernamePasswordAuthenticationToken(principal, token, authorities);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-keyword">return null</span>;
+        }
+
+    }
+}</code></pre></div>
+                    <code>TokenProvider</code> cung cấp 2 methods:
+                        <ul>
+                            <li>createToken: mục đích generate JWT token</li>
+                            <li>getAuthentication: parse và lấy thông tin từ JWT token</li>
+                        </ul>
+
+                    <h2 id="create-validate-filter-jwt-token" class="mt-4">JWT Filter & configure api</h2>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" style="max-width: 100%" src="../images/blog/02/AuthenticationStep3.svg" alt="Spring security overview">
+                            <figcaption><b>Figure 03. Validate JWT token</b></figcaption>
+                        </figure>
+
+                    Như đề cập bên trên chúng ta sẽ có <a href="https://docs.spring.io/spring-security/reference/servlet/architecture.html#servlet-security-filters" target="_blank">filters chain</a> của spring security được auto configuration.
+                    Những filters này có nhiệm vụ bảo vệ các API trước tất cả các request từ phía client.
+                    Nếu trong <code>SecurityContext</code> có thông tin Authentication thì request được xác định là authorized, ngược lại thì sẽ là 1 unauthorized request.
+                    <ul>
+                        <li><code>Authentication</code>: Là thông tin (username/authorities...) của currently authentucated user.</li>
+                        <li><code>SecurityContext</code>: Nơi lưu thông tin của currently authenticated user.</li>
+                        <li><code>SecurityContextHolder</code>: Là một helper class giúp ta access vào <code>SecurityContext</code>.</li>
+                    </ul>
+
+                        <p>Nhiệm vụ của chúng sẽ sẽ cần tạo ra <code>JWTFilter</code> để xác thực token và đảm bảo rằng JWTFilter cần chạy trước filter chain của spring-security. Nếu token hợp lệ thì một <code>UsernamePasswordAuthenticationToken</code> sẽ được khởi tạo và đưa vào SecurityContext, ngược lại thì 1 HTTP Status 401 sẽ được response</p>
+                        <h4 class="mt-3" id="JWTFilterJava">JWTFilter.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+
+<span class="hljs-keyword">public class</span> JWTFilter <span class="hljs-keyword">extends</span> GenericFilterBean {
+
+    <span class="hljs-keyword">public static final</span> String <span class="hljs-title">AUTHORIZATION_HEADER</span> = <span class="hljs-string">"Authorization"</span>;
+
+    <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
+
+    <span class="hljs-keyword">public</span> JWTFilter(TokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public void</span> <span class="hljs-method">doFilter</span>(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+        <span class="hljs-keyword">throws</span> IOException, ServletException {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        String jwt = resolveToken(httpServletRequest);
+        Authentication authentication = <span class="hljs-keyword">this</span>.<span class="hljs-title">tokenProvider</span>.getAuthentication(jwt);
+        <span class="hljs-keyword">if</span> (Objects.nonNull(authentication)) {
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    <span class="hljs-keyword">private</span> String <span class="hljs-method">resolveToken</span>(HttpServletRequest request) {
+        String bearerToken = request.getHeader(<span class="hljs-title">AUTHORIZATION_HEADER</span>);
+        <span class="hljs-keyword">if</span> (StringUtils.hasText(bearerToken) && bearerToken.startsWith(<span class="hljs-string">"Bearer "</span>)) {
+            <span class="hljs-keyword">return</span> bearerToken.substring(7);
+        }
+        <span class="hljs-keyword">return null</span>;
+    }
+}</code></pre></div>
+                   <h4 class="mt-3" id="JWTConfigurer.java">JWTConfigurer.java</h4>
+                   <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-keyword">public class</span> JWTConfigurer <span class="hljs-keyword">extends</span> SecurityConfigurerAdapter&lt;DefaultSecurityFilterChain, HttpSecurity&gt; {
+    <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
+
+    <span class="hljs-keyword">public</span> JWTFilter(TokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public void</span> <span class="hljs-method">configure</span>(HttpSecurity http) {
+        JWTFilter customFilter = <span class="hljs-keyword">new</span> JWTFilter(<span class="hljs-title">tokenProvider</span>);
+        http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}</code></pre></div>
+                    <code>JWTConfigurer</code> có mục đích config đảm bảo <code>JWTFilter</code> sẽ chạy trước <code>UsernamePasswordAuthenticationFilter</code> (Một trong những filter có chức năng kiểm tra thông request đã authenticated hay chưa thông qua username/password)
+                    <h4 class="mt-3" id="SecurityConfiguration">SecurityConfiguration.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-meta">@EnableWebSecurity</span>
+<span class="hljs-meta">@EnableGlobalMethodSecurity</span>(prePostEnabled = <span class="hljs-keyword">true</span>, securedEnabled = <span class="hljs-keyword">true</span>)
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-keyword">public class</span> SecurityConfiguration <span class="hljs-keyword">extends</span> WebSecurityConfigurerAdapter {
+
+    <span class="hljs-keyword">private final</span> CorsFilter <span class="hljs-title">corsFilter</span>;
+    <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
+    <span class="hljs-keyword">private final</span> JwtAuthenticationEntryPoint <span class="hljs-title">jwtAuthenticationEntryPoint</span>;
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-keyword">public</span> PasswordEncoder <span class="hljs-method">passwordEncoder</span>() {
+        <span class="hljs-keyword">return new</span> BCryptPasswordEncoder();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public void</span> <span class="hljs-method">configure</span>(HttpSecurity http) <span class="hljs-keyword">throws</span> Exception {
+        // @formatter:off
+        http
+            .csrf()
+            .disable()
+            .addFilterBefore(<span class="hljs-title">corsFilter</span>, UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling()
+            .authenticationEntryPoint(<span class="hljs-title">jwtAuthenticationEntryPoint</span>)
+        .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.<span class="hljs-title">STATELESS</span>)
+        .and()
+            .authorizeRequests()
+            .antMatchers(<span class="hljs-string">"/api/login"</span>).permitAll()
+            .anyRequest().authenticated()
+        .and()
+            .httpBasic()
+        .and()
+            .apply(securityConfigurerAdapter());
+        // @formatter:on
+    }
+
+    <span class="hljs-keyword">private</span> JWTConfigurer <span class="hljs-method">securityConfigurerAdapter</span>() {
+        <span class="hljs-keyword">return new</span> JWTConfigurer(<span class="hljs-title">tokenProvider</span>);
+    }
+}</code></pre></div>
+                   Trong <code>SecurityConfiguration</code> chúng ta có một số config quan trọng như sau:
+                   <ul>
+                       <li>Thuật toán mã hoã password: @Bean PasswordEncoder</li>
+                       <li>Unprotected api với url sau: <code>/api/login</code></li>
+                       <li>Apply <code>JWTConfigurer</code> và <code>JwtAuthenticationEntryPoint</code></li>
+                       <li>Disable <a href="https://portswigger.net/web-security/csrf" target="_blank">csrf</a></li>
+                       <li>Apply <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">cors</a> filter</li>
+                   </ul>
+                   <h2 id="testing" class="mt-4">Testing</h2>
+                   Chúng ta sẽ cần 1 account demo để thực hiện test. Khi start app tôi đã sử dụng <code>CommandLineRunner</code> để khởi tạo 1 account <code>admin/123456</code>
+
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/02/ExecuteTest01.png" alt="Start application">
+                    </figure>
+                    <p>Chúng ta sẽ thử call 1 protected API mà không có JWT token đi kèm. Kết quả mong đợi thì request này sẽ nhận về HTTP 401 Unauthorized</p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/02/CallProtectedAPIWithoutToken.png" alt="Call protected API without JWT token">
+                    </figure>
+                    <p>Call API login với thông tin account <code>admin/123456</code> để nhận về JWT token</p>
+
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/02/CallLoginAPI.png" alt="Call API login to get JWT token">
+                    </figure>
+
+                    <p>Sử dụng JWT token vừa nhận được add vào request header và call protected API</p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/02/CallProtectedAPIWithToken.png" alt="Call protected API with JWT token">
+                    </figure>
+
+                    <h2 id="summary" class="mt-4">Kết luận</h2>
+                    <p>
+                        Với spring-security chúng ta có nhiều cách thức triển khai: OAuth2, SAML2... Trên đây là 1 cách thức đơn giản triển khai cùng với JWT Token.<br/>
+                        Hi vọng rằng sau bài viết này các bạn có thể hiểu và áp dụng spring-security được với app của mình
+                    </p>
+
+                    <p><a href="https://github.com/phuongdp-tech/winzone-training-spring/tree/main/winzone-spring-security" target="_blank">Source code tham khảo</a></p>
+                    </div>
+                </div>
+                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/nhung-hieu-lam-pho-bien-ve-group-by-trong-sql.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
