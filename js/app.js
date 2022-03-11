@@ -60,5 +60,5 @@ const loadFooterHtml = function () {
     $('#footer-page').load(`${HOST_URL}/fragment/footer.html`);
 };
 
-const HOST_URL = `${window.location.origin}`;
-// const HOST_URL = `${window.location.origin}/winzone-blog-github/phuongdp`;
+// const HOST_URL = `${window.location.origin}`;
+const HOST_URL = `${window.location.origin}/winzone-blog-github/phuongdp`;

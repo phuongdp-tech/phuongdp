@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Gửi email với SendGrid service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Gửi email với SendGrid service</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> <a href="about-me.html">Phuong Dang</a></li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 11/Mar/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+<!--                    <img src="../images/blog/spring_security.jpeg" class="img-fluid rounded-top" alt="">-->
+                    <div class="card-body content">
+<!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">Java</a></h6>-->
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#installation">Installation</a></li>
+                                <li><a href="#usage">Usage</a></li>
+                                <li><a href="#summary">Conclusion</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong>
+                                <a href="https://sendgrid.com/pricing/?source=sendgrid-java" target="_blank">Twilio SendGrid</a> là một dịch vụ gửi mail rất phổ biến, cho phép gửi email free lên tới 40.000 emails trong 30 ngày đầu tiên và free 100 emails/ngày vĩnh viễn.
+                                Trong bài này chúng sẽ sẽ cùng nhau sử dụng Spring + SendGrid để tạo một service gửi email hoàn toàn miễn phí cho ứng dụng của mình.
+                            </strong>
+                        </div>
+
+                        <h2 id="installation" class="mt-4">1. Installation</h2>
+                        <h4 id="maven-setup" class="mt-3">Maven</h4>
+                        <p>Trong demo này chúng ta sẽ sử dụng Maven để tạo và config application sử dụng SendGrid. Các dependency cần thiết trong file <i>pom.xml</i> như sau:</p>
+                        <div class="code-content-container">
+                            <pre><code class="language-xml hljs"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.sendgrid<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>sendgrid-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.9.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-comment">&lt;!-- ... OTHER DEPENDENCIES: lombok ... --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</code></pre>
+                        </div>
+                        <h4 id="account-sendgrid" class="mt-3">Account SendGrid</h4>
+                        Chúng ta cần đăng ký 1 account free với <a href="https://signup.sendgrid.com/" target="_blank">SendGrid</a>. Bạn sẽ không cần phải add credit card, tuy nhiên để sử dụng thì bắt buộc sẽ cần enable 2FA nên nha.
+
+                        <h4 id="api-key-sendgrid" class="mt-3">API Key</h4>
+                        Để có thể gửi mail chúng ta cần call RESTful V3 API của SendGrid. Chính vì thế cần phải đăng ký 1 API Key và gửi kèm request header để xác thực.
+                        <br>
+                        <p>Sau khi login hãy vào mục <code>Settings > API Keys > Create API Key</code></p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/03/CreateAPIKey.png" alt="Create send grid api key">
+                        </figure>
+
+                        <h4 id="setup-sendgrid" class="mt-2">Sender Identity</h4>
+                        <p>Chúng ta sẽ cần định danh email đại diện gửi đi. Có 2 cách thức định danh là <mark>Domain Authentication</mark> và <mark>Single Sender Verification</mark>. Điểm khác nhau giữa 2 cách như ảnh mô tả:</p>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/03/CompareSenderIdentity.png" alt="CompareSenderIdentity">
+                        </figure>
+
+                        <p>Với mục đích "testing" nên trong demo này tôi sẽ dùng <mark>Single Sender Verification</mark> để định danh Sender. Hãy vào mục <code>Settings > Sender Authentication > Verify a Single Sender</code> và verify email của bạn</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/03/VerifySender.png" alt="Verify sender">
+                        </figure>
+
+                        <h2 id="usage" class="mt-4">2. Usage</h2>
+                        <p>Chúng ta sẽ define <code>EmailService</code> interface và <code>SendGridService</code> class với mục đích prepare parameter và call RESTful v3 API của SendGrid</p>
+                        <h4 id="EmailServiceJava">EmailService.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> EmailService </span>{
+
+    <span class="hljs-function">boolean <span class="hljs-method">sendEmail</span><span class="hljs-params">(EmailDto emailDto)</span>;</span>
+}
+</code></pre></div>
+
+                     <h4 class="mt-3" id="authenticationServiceJava">SendGridService.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> SendGridService</span> <span class="hljs-keyword">implements</span> EmailService {
+    <span class="hljs-keyword">private final</span> AccountRepository <span class="hljs-title">accountRepository</span>;
+
+    <span class="hljs-comment">// Maybe change to config properties or environment variable</span>
+    <span class="hljs-keyword">private final</span> String <span class="hljs-title">SENDER_NAME</span> = <span class="hljs-string">"{Please replace your sender name}"</span>;
+    <span class="hljs-keyword">private final</span> String <span class="hljs-title">SENDER_EMAIL</span> = <span class="hljs-string">"{Please replace your sender email}"</span>;
+    <span class="hljs-keyword">private final</span> String <span class="hljs-title">API_KEY</span> = <span class="hljs-string">"{Please replace your API_KEY}"</span>;
+
+    <span class="hljs-comment">/**
+     * Method will call v3 API of SendGrid service
+     * @param emailDto the email information
+     * @return
+     * true: Sent success
+     * false: Sent failed
+     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public boolean</span> <span class="hljs-method">sendEmail</span>(EmailDto emailDto) {
+        Objects.requireNonNull(emailDto.getEmailToList());
+
+        <span class="hljs-comment">// Setting sender information</span>
+        Email sender = <span class="hljs-keyword">new</span> Email(<span class="hljs-title">SENDER_EMAIL</span>, <span class="hljs-title">SENDER_NAME</span>);
+
+        <span class="hljs-comment">// Setting email to, email cc, email bcc</span>
+        Personalization personalization = <span class="hljs-keyword">new</span> Personalization();
+        emailDto.getEmailToList().forEach(e -> <span class="hljs-title">personalization</span>.addTo(<span class="hljs-keyword">new</span> Email(e)));
+
+        if (Objects.nonNull(emailDto.getEmailCcList())) {
+            emailDto.getEmailCcList().forEach(e -> <span class="hljs-title">personalization</span>.addCc(<span class="hljs-keyword">new</span> Email(e)));
+        }
+
+        if (Objects.nonNull(emailDto.getEmailBccList())) {
+            emailDto.getEmailBccList().forEach(e -> <span class="hljs-title">personalization</span>.addBcc(<span class="hljs-keyword">new</span> Email(e)));
+        }
+
+        <span class="hljs-comment">// Setting content with default type HTML</span>
+        Content content = <span class="hljs-keyword">new</span> Content(<span class="hljs-string">"text/html"</span>, emailDto.getBody());
+
+        Mail mail = <span class="hljs-keyword">new</span> Mail();
+        mail.setFrom(sender);
+        mail.setSubject(emailDto.getSubject());
+        mail.addPersonalization(personalization);
+        mail.addContent(content);
+
+        <span class="hljs-keyword">try</span> {
+            SendGrid sendGrid = <span class="hljs-keyword">new</span> SendGrid(<span class="hljs-title">API_KEY</span>);
+            Request request = <span class="hljs-keyword">new</span> Request();
+            request.setMethod(Method.<span class="hljs-title">POST</span>);
+            request.setEndpoint(<span class="hljs-string">"mail/send"</span>);
+            request.setBody(mail.build());
+            Response response = sendGrid.api(request);
+
+            <span class="hljs-keyword">return</span> response.getStatusCode() == <span class="hljs-keyword">202</span>;
+        } <span class="hljs-keyword">catch</span> (IOException exception) {
+            <span class="hljs-keyword">return false</span>;
+        }
+    }
+}</code></pre></div>
+                        <p><code>SendGridService.sendEmail()</code> sẽ gửi mail bằng cách call v3 API của SendGrid và nhận về kết quả là 1 đối tượng Response. Khi Response có status code = 202 tức là gửi mail thành công</p>
+                        <table class="table mb-0 table-center table-data">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 200px">Status Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="color: green">
+                                    <td>202</td>
+                                    <td>Success</td>
+                                </tr>
+                                <tr>
+                                    <td>400</td>
+                                    <td>Bad request</td>
+                                </tr>
+                                <tr>
+                                    <td>401</td>
+                                    <td>Requires authentication</td>
+                                </tr>
+                                <tr>
+                                    <td>406</td>
+                                    <td>Missing Accept header. For example: <code>Accept: application/json</code></td>
+                                </tr>
+                                <tr>
+                                    <td>429</td>
+                                    <td>Too many requests/Rate limit exceeded</td>
+                                </tr>
+                                <tr>
+                                    <td>500</td>
+                                    <td>Internal server error</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 class="mt-3" id="MainJava">Main.java (Testing)</h4>
+
+
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> Main</span> {
+
+    <span class="hljs-keyword">public static void</span> <span class="hljs-method">main</span>(String[] args) {
+        EmailService emailService = <span class="hljs-keyword">new</span> SendGridService();
+        EmailDto emailDto = EmailDto.builder()
+                .subject(<span class="hljs-string">"Winzone test send email"</span>)
+                .emailToList(Collections.singletonList(<span class="hljs-string">"phuongdp.tech@gmail.com"</span>))
+                .body(<span class="hljs-string">"&lt;b&gt;Winzone send to you a welcome message&lt;/b&gt;"</span>)
+                .build();
+
+        emailService.sendEmail(emailDto);
+    }
+}</code></pre></div>
+                    <div class="caution rounded p-3 mt-3">
+                        <i class="fas fa-exclamation-circle"></i> Hãy đảm bảo rằng đã replace API Key và Email to với thông tin của bạn trước khi execute<br>
+                    </div>
+                    <p class="mt-2">Trong hàm <code>main</code> chúng ta hard code một email test với nội dung như trên và thực hiện execute. Trong trường hợp gửi thành công chúng ta sẽ nhận được 1 email như sau: </code>
+                    </p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" src="../images/blog/03/ReceiveAnEmail.png" alt="ReceiveAnEmail">
+                    </figure>
+
+                    <h2 id="summary" class="mt-4">3. Conclusion</h2>
+                    <p>
+                        Trong bài này chúng ta đã cùng nhau sử dụng SendGrid service để thực hiện gửi email. Chúc các bạn thành công
+                    </p>
+
+                    <p><a href="https://github.com/phuongdp-tech/winzone-training-java/tree/main/sendgrid-email" target="_blank">Source code tham khảo</a></p>
+                    </div>
+                </div>
+                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/send-email-with-send-grid-service.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>

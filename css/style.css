@@ -4387,6 +4387,9 @@ p {
   font-weight: 400;
   width: 100%;
 }
+.blog-detail figure img {
+  max-width: 100%;
+}
 .hljs-tag, .hljs-name, .hljs-attribute {
   color: #000080!important;
   font-weight: normal;

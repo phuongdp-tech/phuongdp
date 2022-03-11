@@ -13,7 +13,7 @@ $(document).ready(function () {
     // Get category
     const pathNameArray = window.location.pathname.split('/');
     const category = pathNameArray[pathNameArray.length - 1].replace('.html', '');
-    let postList = POST_DATA;
+    let postList = POST_DATA.sort((a, b) => (a.order < b.order) ? 1 : -1);
     if (category && category !== 'index') {
         postList = postList.filter(p => p.category?.includes(category));
     }
@@ -44,7 +44,7 @@ $(document).ready(function () {
                         <h5><a href="${HOST_URL}/${item.url}" class="card-title title text-dark">${item.title}</a></h5>
                         <p>${item.brief}</p>
                         <div class="post-meta d-flex justify-content-end mt-3">
-                            <a href="${HOST_URL}/${item.url}" class="btn btn-outline-primary">Đọc tiếp</a>
+                            <a href="${HOST_URL}/${item.url}" class="btn btn-outline-primary">Read more</a>
                         </div>
                     </div>
                     <div class="author">
@@ -88,7 +88,8 @@ $(document).ready(function () {
             "url": "post/nhung-hieu-lam-pho-bien-ve-group-by-trong-sql.html",
             "author": "Phuong Dang",
             "createDate": "03/Feb/2022",
-            "category": ['sql']
+            "category": ['sql'],
+            "order": 1
         },
         {
             "id": 2,
@@ -99,7 +100,19 @@ $(document).ready(function () {
             "url": "post/series-spring-security-jwt-for-rest-api-01.html",
             "author": "Phuong Dang",
             "createDate": "05/Mar/2022",
-            "category": ['java', 'spring', 'spring-security']
+            "category": ['java', 'spring', 'spring-security'],
+            "order": 2
+        },{
+            "id": 3,
+            "title": "Gửi email với SendGrid service",
+            "image": "images/blog/sg-twilio-lockup.svg",
+            "brief": "Twilio SendGrid là một dịch vụ gửi mail rất phổ biến, cho phép gửi email free lên tới 40.000 emails trong 30 ngày đầu tiên và free 100 emails/ngày vĩnh viễn",
+            "content": "",
+            "url": "post/send-email-with-send-grid-service.html",
+            "author": "Phuong Dang",
+            "createDate": "11/Mar/2022",
+            "category": ['java', 'spring'],
+            "order": 3
         }
     ];
 
