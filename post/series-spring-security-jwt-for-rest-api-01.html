@@ -62,7 +62,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level">
-                    <h1 class="title title-blog-detail">Series Spring Security + JWT authentication cho REST API (Phần 01)</h1>
+                    <h1 class="title title-blog-detail">Series Spring Security + JWT cho REST API (Phần 01)</h1>
                     <ul class="list-unstyled mt-4">
                         <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
                         <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 05/Mar/2022</li>
@@ -205,7 +205,7 @@
 
     <span class="hljs-keyword">private</span> org.springframework.security.core.userdetails.User <span class="hljs-method">createSpringSecurityUser</span>(Account account) {
         List&lt;GrantedAuthority&gt; grantedAuthorities =
-                Collections.singletonList(<span class="hljs-keyword">new</span> SimpleGrantedAuthority(account.getAuthority().name()));
+                Collections.singletonList(<span class="hljs-keyword">new</span> SimpleGrantedAuthority(<span class="hljs-string">"ROLE_"</span> + account.getAuthority().name()));
         <span class="hljs-keyword">return new</span> org.springframework.security.core.userdetails.User(account.getAccount(), account.getPassword(), grantedAuthorities);
     }
 }</code></pre></div>
@@ -423,7 +423,9 @@
                         Hi vọng rằng sau bài viết này các bạn có thể hiểu và áp dụng spring-security được với app của mình
                     </p>
 
-                    <p><a href="https://github.com/phuongdp-tech/winzone-training-spring/tree/main/winzone-spring-security" target="_blank">Source code tham khảo</a></p>
+                    <p><a href="https://github.com/phuongdp-tech/winzone-training-spring/tree/main/winzone-spring-security-part1" target="_blank">Source code tham khảo</a></p>
+
+                    <div><strong>Phần 2</strong>: <a href="series-spring-security-jwt-for-rest-api-02.html">Series Spring Security + JWT cho REST API (Phần 02)</a></div>
                     </div>
                 </div>
                 <div class="fb-comments mt-4" data-href="https://winzone.vn/post/series-spring-security-jwt-for-rest-api-01.html" data-width="100%" data-numposts="5"></div>

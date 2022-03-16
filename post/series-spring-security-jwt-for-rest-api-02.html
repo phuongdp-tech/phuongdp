@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Series Spring Security + JWT cho REST API (Phần 01)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Series Spring Security + JWT cho REST API (Phần 02)</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 16/Mar/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+<!--                    <img src="../images/blog/spring_security.jpeg" class="img-fluid rounded-top" alt="">-->
+                    <div class="card-body content">
+<!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">Java</a></h6>-->
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#authorization-flow">Authorization flow</a></li>
+                                <li><a href="#authorization-with-hasRole">Authorization with hasRole() / hasAnyRole()</a></li>
+                                <li><a href="#testing">Testing</a></li>
+                                <li><a href="#summary">Conclusion</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong>Trong <a href="series-spring-security-jwt-for-rest-api-02.html" target="_blank">phần 01</a> chúng ta đã sử dụng spring security kết hợp JWT để xây dựng tính năng authentication cho một Java web application. Trong phần này chúng ta tiếp tục áp dụng spring-security để thực hiện authorization.</strong>
+                        </div>
+                        <h2 id="authorization-flow" class="mt-4">1. Authorization flow</h2>
+                        <p>Giả sử ứng dụng của chúng ta có 2 roles: User và Admin. Mỗi role chỉ truy cập vào những API được cho phép. Làm thế nào để server biết được JWT token của request hiện tại đang là User hay Admin?</p>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/04/Authorization.svg" alt="Spring authorization overview">
+                            <figcaption><b>Figure 01. Authorization Overview.</b></figcaption>
+                        </figure>
+
+                        <p>Trong <a href="series-spring-security-jwt-for-rest-api-02.html" target="_blank">phần 01</a> chúng ta đã lưu role của account đăng nhập bằng với GrantedAuthority objects được implement tại <code>createSpringSecurityUser()</code></p>
+                        <div class="caution rounded p-3 mt-3">
+                            <i class="fas fa-exclamation-circle"></i> Role được lưu với GrantedAuthority là 1 string có prefix <code>"ROLE_"</code><br>
+                        </div>
+                        <div class="caution rounded p-3 mt-3">
+                            <i class="fas fa-exclamation-circle"></i> Một account đăng nhập có thể có nhiều hơn 1 role<br>
+                        </div>
+
+                        <h4 class="mt-3" id="authentication-service-java">AuthenticationService.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> AuthenticationService</span> <span class="hljs-keyword">implements</span> UserDetailsService {
+    <span class="hljs-keyword">private final</span> AccountRepository <span class="hljs-title">accountRepository</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-meta">@Transactional</span>
+    <span class="hljs-keyword">public</span> UserDetails <span class="hljs-method">loadUserByUsername</span>(<span class="hljs-keyword">final</span> String account) {
+        <span class="hljs-keyword">return</span> accountRepository
+                .findByAccount(account)
+                .map(<span class="hljs-keyword">this</span>::createSpringSecurityUser)
+                .orElseThrow(() -> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"Account "</span> + account + <span class="hljs-string">" was not found in the database"</span>));
+    }
+
+    <span class="hljs-keyword">private</span> org.springframework.security.core.userdetails.User <span class="hljs-method">createSpringSecurityUser</span>(Account account) {
+        List&lt;GrantedAuthority&gt; grantedAuthorities =
+                Collections.singletonList(<span class="hljs-keyword">new</span> SimpleGrantedAuthority(<span class="hljs-string">"ROLE_"</span> + account.getAuthority().name()));
+        <span class="hljs-keyword">return new</span> org.springframework.security.core.userdetails.User(account.getAccount(), account.getPassword(), grantedAuthorities);
+    }
+}</code></pre></div>
+
+                        <h2 id="authorization-with-hasRole" class="mt-4">2. Authorization with hasRole()/hasAnyRole()</h2>
+                        <p>Chúng ta phân quyền api theo role dựa trên request url như sau: </p>
+                        <ul>
+                            <li>
+                                <b>Protected API với prefix <code>"/api/admin"</code> thì chỉ role Admin có thể truy cập.</b> <br>Method hasRole() có ý nghĩa rằng chỉ những role được chỉ định bên trong mới có thể truy cập API với prefix tương ứng, chúng ta sẽ config như sau:
+                                <br><code class="language-Java hljs">.antMatchers(<span class="hljs-string">"/api/admin/**"</span>).hasRole(Role.<span class="hljs-title">ADMIN</span>.name())</code><br><br>
+                            </li>
+
+                            <li>
+                                <b>Protected API còn lại (<code>prefix != "/api/admin"</code>) thì role User + Admin có thể truy cập</b><br/>
+                                Vì trong system chỉ có 2 role nên với yêu cầu trên chúng ta không cần config thêm gì.
+                            </li>
+                        </ul>
+
+                        <div class="caution rounded p-3 mt-3">
+                            <i class="fas fa-exclamation-circle"></i> Trong trường hợp system có nhiều hơn 2 roles: User/Admin. Và "/api/user" cho phép role User + Admin truy cập, còn các role khác thì không. Lúc này chúng ta có thể cân nhắc sử dụng method <code>hasAnyRole()</code><br>
+                            <br>
+                            <b>Ví dụ:</b> <code class="language-Java hljs">.antMatchers(<span class="hljs-string">"/api/user/**"</span>).hasAnyRole(Role.<span class="hljs-title">USER</span>.name(), Role.<span class="hljs-title">ADMIN</span>.name())</code>
+                        </div>
+
+                        <h4 class="mt-3" id="SecurityConfiguration">SecurityConfiguration.java</h4>
+                        <div class="code-content-container">
+                        <pre><code class="language-Java hljs"><span class="hljs-comment">/**
+ * @author &lt;a href="mailto:phuongdp.tech@gmail.com"&gt;PhuongDP&lt;/a&gt;
+*/</span>
+<span class="hljs-meta">@EnableWebSecurity</span>
+<span class="hljs-meta">@EnableGlobalMethodSecurity</span>(prePostEnabled = <span class="hljs-keyword">true</span>, securedEnabled = <span class="hljs-keyword">true</span>)
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-keyword">public class</span> SecurityConfiguration <span class="hljs-keyword">extends</span> WebSecurityConfigurerAdapter {
+
+    <span class="hljs-keyword">private final</span> CorsFilter <span class="hljs-title">corsFilter</span>;
+    <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
+    <span class="hljs-keyword">private final</span> JwtAuthenticationEntryPoint <span class="hljs-title">jwtAuthenticationEntryPoint</span>;
+
+    <span class="hljs-meta">@Bean</span>
+    <span class="hljs-keyword">public</span> PasswordEncoder <span class="hljs-method">passwordEncoder</span>() {
+        <span class="hljs-keyword">return new</span> BCryptPasswordEncoder();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public void</span> <span class="hljs-method">configure</span>(HttpSecurity http) <span class="hljs-keyword">throws</span> Exception {
+        // @formatter:off
+        http
+            .csrf()
+            .disable()
+            .addFilterBefore(<span class="hljs-title">corsFilter</span>, UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling()
+            .authenticationEntryPoint(<span class="hljs-title">jwtAuthenticationEntryPoint</span>)
+        .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.<span class="hljs-title">STATELESS</span>)
+        .and()
+            .authorizeRequests()
+            .antMatchers(<span class="hljs-string">"/api/login"</span>).permitAll()
+          <span class="hljs-comment">//.antMatchers("/api/user/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())</span>
+            .antMatchers(<span class="hljs-string">"/api/admin/**"</span>).hasRole(Role.<span class="hljs-title">ADMIN</span>.name())
+            .anyRequest().authenticated()
+        .and()
+            .httpBasic()
+        .and()
+            .apply(securityConfigurerAdapter());
+        // @formatter:on
+    }
+
+    <span class="hljs-keyword">private</span> JWTConfigurer <span class="hljs-method">securityConfigurerAdapter</span>() {
+        <span class="hljs-keyword">return new</span> JWTConfigurer(<span class="hljs-title">tokenProvider</span>);
+    }
+}</code></pre></div>
+                   <h2 id="testing" class="mt-4">3. Testing</h2>
+                    <div class="caution rounded p-3 mt-3">
+                        <i class="fas fa-exclamation-circle"></i> Trong source demo của series này chúng ta sẽ sử dụng database với Mysql và Postman để call API.<br>
+                    </div>
+                   <p class="mt-2">Khi start app tôi đã sử dụng <code>CommandLineRunner</code> để khởi tạo 2 accounts: <code>user/123456</code> và <code>admin/123456</code></p>
+                    <p>Chúng ta sẽ thực hiện test với matrix như sau:</p>
+                    <div>
+                        <table class="table mb-0 table-center table-data">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 200px">Role</th>
+                                <th scope="col">API: <span style="color: green">/api/user/**</span></th>
+                                <th scope="col">API: <span style="color: green">/api/admin/**</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>USER</td>
+                                <td>ALLOWED ACCESS</td>
+                                <td style="color: red">DENIED ACCESS</td>
+                            </tr>
+                            <tr>
+                                <td>ADMIN</td>
+                                <td>ALLOWED ACCESS</td>
+                                <td>ALLOWED ACCESS</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <figure style="text-align: center;" class="mt-2">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest01.png" alt="Start application">
+                        <figcaption><b>Start application</b></figcaption>
+                    </figure>
+
+                    <h4 class="mt-3" id="execute-test-role-user">Thực hiện test role User</h4>
+
+                    <p>Call API login với thông tin account <code>user/123456</code> để nhận về JWT token</p>
+
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest02.png" alt="Call API login to get JWT token with role user">
+                    </figure>
+
+                    <p>Sử dụng JWT token vừa nhận được add vào request header và call protected API của User role. Kết quả mong đợi sẽ là <code style="color: green">ALLOWED ACCESS</code></p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest03.png" alt="Call user protected API with JWT token">
+                    </figure>
+
+                    <p>Vẫn token đó được add vào request header và call protected API của Admin role. Kết quả mong đợi sẽ là <code>DENIED ACCESS</code></p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest04.png" alt="Call user protected API with JWT token">
+                    </figure>
+
+                    <h4 class="mt-3" id="execute-test-role-user">Thực hiện test role Amin</h4>
+
+                    <p>Call API login với thông tin account <code>admin/123456</code> để nhận về JWT token</p>
+
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest05.png" alt="Call API login to get JWT token with role admin">
+                    </figure>
+
+                    <p>Sử dụng JWT token vừa nhận được add vào request header và call protected API của User & Admin role. Kết quả mong đợi đều là <code style="color: green">ALLOWED ACCESS</code></p>
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest06.png" alt="Call user protected API with JWT token">
+                    </figure>
+
+                    <figure style="text-align: center;">
+                        <img class="rounded p-4" style="max-width: 100%" src="../images/blog/04/ExecuteTest07.png" alt="Call user protected API with JWT token">
+                    </figure>
+
+                    <h2 id="summary" class="mt-4">6. Conclusion</h2>
+                    <p>
+                        Với spring-security chúng ta cũng có nhiều cách thức triển khai Authorization. Trên đây là 1 cách thức đơn giản sử dụng methods: <code>hasRole()</code> hoặc <code>hasAnyRole()</code><br/>
+                        Hi vọng rằng sau series này các bạn có thể hiểu và áp dụng đầy đủ Authentication và Authorization cho với app của mình.
+                    </p>
+
+                    <p><a href="https://github.com/phuongdp-tech/winzone-training-spring/tree/main/winzone-spring-security-part2" target="_blank">Source code tham khảo</a></p>
+                    </div>
+                </div>
+                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/series-spring-security-jwt-for-rest-api-02.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
