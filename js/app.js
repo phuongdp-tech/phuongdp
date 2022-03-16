@@ -53,11 +53,11 @@ $(document).ready(function () {
 });
 
 const loadMenuHtml = function () {
-    $('#topnav').load(`${HOST_URL}/fragment/menu.html`);
+    $('#topnav').load(`${HOST_URL}/fragment/menu.html?v=17032021`);
 };
 
 const loadFooterHtml = function () {
-    $('#footer-page').load(`${HOST_URL}/fragment/footer.html`);
+    $('#footer-page').load(`${HOST_URL}/fragment/footer.html?v=17032021`);
 };
 
 const HOST_URL = `${window.location.origin}`;

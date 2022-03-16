@@ -3,5 +3,5 @@ $(document).ready(function () {
 });
 
 const loadPostHtml = function () {
-    $('#post-list-container').load(`${HOST_URL}/fragment/post-area.html`);
+    $('#post-list-container').load(`${HOST_URL}/fragment/post-area.html?v=17032022`);
 };
