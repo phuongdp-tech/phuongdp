@@ -329,10 +329,6 @@
 <span class="hljs-keyword">public class</span> JWTConfigurer <span class="hljs-keyword">extends</span> SecurityConfigurerAdapter&lt;DefaultSecurityFilterChain, HttpSecurity&gt; {
     <span class="hljs-keyword">private final</span> TokenProvider <span class="hljs-title">tokenProvider</span>;
 
-    <span class="hljs-keyword">public</span> JWTFilter(TokenProvider tokenProvider) {
-        this.tokenProvider = tokenProvider;
-    }
-
     <span class="hljs-meta">@Override</span>
     <span class="hljs-keyword">public void</span> <span class="hljs-method">configure</span>(HttpSecurity http) {
         JWTFilter customFilter = <span class="hljs-keyword">new</span> JWTFilter(<span class="hljs-title">tokenProvider</span>);
