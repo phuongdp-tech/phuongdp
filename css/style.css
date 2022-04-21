@@ -2062,7 +2062,7 @@ p {
   left: 0;
   top: 0;
   z-index: 1030;
-  background-color: transparent;
+  background-color: #ffffff;
   border: 0;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
