@@ -132,8 +132,15 @@
                         </figure>
 
                         <p>Thực tế có rất rất nhiều <a href="https://en.wikipedia.org/wiki/List_of_algorithms" target="_blank">algorithms</a> được định nghĩa sẵn và chính các bạn cũng có thể tạo ra thuật toán của riêng mình được. Tuy nhiên bạn cũng không cần quá lo lắng, vì nếu không phải nghiên cứu chuyên sâu thì chúng ta chỉ cần nắm được một số loại thuật toán phổ biến: sắp xếp, tìm kiếm, merge là có thể làm việc hiệu quả.</p>
+                        <h4 class="mt-3">3.1 Thế nào là một thuận toán tốt.</h4>
                         <p>Việc đánh giá hiệu quả của một thuật toán không thể dùng trực quan để phán đoán. Chúng ta sẽ phải dùng <a href="https://en.wikipedia.org/wiki/Big_O_notation" target="_blank">Big O notation</a> để so sánh mức độ hiệu quả của nhiều thuật toán khi giải quyết cùng 1 vấn đề.
-                            Topic này này chúng ta sẽ cùng tìm hiểu trong một bài viết khác nhé.</p>
+                            Topic này chúng ta sẽ cùng tìm hiểu chi tiết trong một bài viết khác nhé. Tuy nhiên có thể tóm tắt rằng một thuận toán tốt sẽ phụ thuộc vào 2 yếu tố: </p>
+                            <ul>
+                                <li><b>Memory (Space Complexity)</b>: Dung lượng bộ nhớ mà thuật toán sẽ sử dụng dựa trên số lượng dữ liệu đầu vào.</li>
+                                <li><b>Speed (Time Complexity)</b>: Số lượng câu lệch cần phải thực thi ~ thời gian thực thi của thuật toán dựa trên số lượng dữ liệu đầu vào.</li>
+                            </ul>
+
+                            Lý tưởng nhất là thuật toán sẽ sử dụng ít bộ nhớ nhất mà vẫn đạt được tốc độ nhanh nhất. Tuy nhiên trong thực tế đôi khi ta không đạt được điều đó. Vì vậy tuỳ tình huống, bài toán thực tế mà developer cần phải cân nhắc bù trừ để cân bằng giữa 2 yếu tố trên. Sẽ có lúc thì mục tiêu speed ưu tiên cao hơn memory và ngược lại.
                         <h2 id="summary" class="mt-4">4. Kết luận</h2>
                         <p>Chúng ta thường nói lập trình bằng ngôn ngữ nào không quan trọng, mà quan trọng là có "tư duy lập trình" tốt.
                             Nếu tư duy tốt thì việc tiếp cận một ngôn ngữ mới thực sự đơn giản.
