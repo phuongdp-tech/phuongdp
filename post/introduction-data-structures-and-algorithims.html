@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Data Structures and Algorithms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, Data Structures and Algorithms" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Data Structures và Algorithms quan trọng như nào</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 22/Apr/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#what-is-good-code">Yếu tố nào tạo nên source code tốt?</a></li>
+                                <li><a href="#what-is-a-data-structure">Data structures (Cấu trúc dữ liệu) là gì?</a></li>
+                                <li><a href="#what-is-an-algorithm">Algorithm (Giải thuật/Thuật toán) là gì?</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong>Niklaus Wirth đã từng nói <a href="https://en.wikipedia.org/wiki/Algorithms_%2B_Data_Structures_%3D_Programs" target="_blank">Programs = Data Structures + Algorithms</a>, đây là 2 yếu tố được đánh giá quan trọng nhất trong lập trình và tạo nên thứ gọi là "tư duy lập trình". Thậm chí 2 yếu tố này được cho rằng sẽ phân định được "đẳng cấp" của một developers. Các công ty lớn khi tuyển dụng họ rất quan tâm đến ứng viên có kinh nghiệm với Data Structures + Algorithms hơn là một ứng viên rất thuộc Java syntax.</strong>
+                        </div>
+                        <h2 id="what-is-good-code" class="mt-4">1. Yếu tố nào tạo nên source code tốt?</h2>
+                        <p>Với mình ngoài yếu tố phải "chạy đúng" thì source code tốt cần đảm bảo ít nhất những yếu tố sau: </p>
+                        <ul>
+                            <li><b>Readable</b>: Source code cần phải rõ ràng mạch lạc, tuân thủ rules/conventions.</li>
+                            <li><b>Scalable</b>: Source code cần phải phân bổ cấu trúc hợp lý để dễ dàng cho việc bảo trì và mở rộng sau này.</li>
+                            <li><b>Good performance</b>: Source code có thể execute với một hiệu năng tốt. Giải quyết một bài toán sử dụng tài nguyên (Memmory) ít nhất có thể để đạt được tốc độ (Speed) cao nhất có thể. </li>
+                        </ul>
+                        Để đạt được tiêu chí thứ 3, chúng ta cần phải biết và áp dụng <code>Data Structures + Algorithms</code>.
+
+                        <h2 id="what-is-a-data-structure" class="mt-4">2. Data structures (Cấu trúc dữ liệu) là gì?</h2>
+                        <p>
+                            Một computer program là tập hợp nhiều câu lệch để thực hiện một nhiệm vụ cụ thể nào đó. Thông thường thì computer program sẽ cần phải lưu trữ, truy xuất và tính toán trên tệp dữ liệu nào đó.
+                            Ví dụ với một "phần mềm quản lý sinh viên", thì chúng sẽ phải quản lý (tạo mới, sửa, xoá...) thông tin sinh viên.
+                        </p>
+
+                        <p>Cụ thể chúng ta có thể chia nhỏ <code>data structures</code> thành 2 phần là <code>data</code> và <code>structure</code>:</p>
+                        <ul>
+                            <li><code>Data</code> là những dữ liệu được lưu trữ, truy xuất và tính toán bởi computer program. <br>Trong ví dụ "phần mềm quản lý sinh viên", ta có thể hiểu data là "Sinh viên"</li>
+                            <li><code>Structure</code> là cách thức tổ chức và sắp xếp dữ liệu trong máy tính theo một cấu trúc để giúp computer program có thể truy xuất, cập nhật một cách hiệu quả. <br>Trong ví dụ "phần mềm quản lý sinh viên", ta có thể hiểu rằng chúng ta cần quản lý nhiều "Sinh viên" vì vậy chúng ta sẽ cần tổ chức data ở dạng List (danh sách).</li>
+                        </ul>
+
+                        <p>Về mặt khái niệm ta có thể hiểu rằng: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic"><b>Data structures</b> là một tập hợp dữ liệu có cấu trúc.
+                            </p>
+                        </blockquote>
+
+                        <p>Trong thực tế có rất nhiều data structures (Arrays, Stacks, Queues, Linked List...) và sẽ tuỳ thuộc vào yêu cầu bài toán mà chúng ta lựa chọn sử dụng data structure một cách hợp lý.
+                            Đến đây các bạn cũng không cần phải lo lắng làm sao để học hết được nhiều data structures thế. Bởi vì chỉ cần nắm được 6-8 common data structures cũng đủ để các bạn làm việc hiệu quả rồi.</p>
+
+                        <h2 id="what-is-an-algorithm" class="mt-4">3. Algorithm (Giải thuật/Thuật toán) là gì?</h2>
+                        Bên trên chúng ta đã đề cập đến việc một computer program sẽ lưu trữ, truy xuất và tính toán trên tệp dữ liệu nào đó. Vậy câu hỏi đặt ra là làm thế nào để lưu trữ, truy xuất và tính toán một cách hiệu quả.
+                        Để đạt được tính "hiệu quả" đó chúng ta cần lựa chọn một phương pháp phù hợp, đó chính là <code>Algorithm</code>.
+
+                        <p>Về mặt khái niệm ta có thể hiểu rằng:</p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic"><b>Algorithm</b> là một phương pháp để giải quyết một bài toán nào đó. Nó bao gồm nhiều câu lệch để thực thi trên data structure đầu vào (Input) và cho ra một data structure mong đợt (Output).
+                            </p>
+                        </blockquote>
+                        <p><b>Ví dụ</b>: Thuật toán tìm số lớn nhất.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" style="max-width: 80%; height: 500px" src="../images/blog/05/dsa_find_the_max_number.png" alt="Winzone.vn the algorithm find max number.">
+                        </figure>
+
+                        <p>Thực tế có rất rất nhiều <a href="https://en.wikipedia.org/wiki/List_of_algorithms" target="_blank">algorithms</a> được định nghĩa sẵn và chính các bạn cũng có thể tạo ra thuật toán của riêng mình được. Tuy nhiên bạn cũng không cần quá lo lắng, vì nếu không phải nghiên cứu chuyên sâu thì chúng ta chỉ cần nắm được một số loại thuật toán phổ biến: sắp xếp, tìm kiếm, merge là có thể làm việc hiệu quả.</p>
+
+                        <h2 id="summary" class="mt-4">4. Kết luận</h2>
+                        <p>Chúng ta thường nói lập trình bằng ngôn ngữ nào không quan trọng, mà quan trọng là có "tư duy lập trình" tốt.
+                            Nếu tư duy tốt thì việc tiếp cận một ngôn ngữ mới thực sự đơn giản.
+                            Và đứng trên cương vị người phỏng vấn, thì bản thân mình cũng đã nhiều lần tạo điều kiện cho các bạn ứng viên có tư duy lập trình tốt mặc dù tại thời điểm đó các bạn chưa đáp ứng được yêu cầu tuyển dụng.</p>
+
+                        <p>Một lần nữa khẳng định 2 yếu tố này cực kỳ quan trọng. Hi vọng bài viết này cung cấp đến cho các bạn một cái nhìn cơ bản về Data Structures và Algorithms. Và là bước đệm để các bạn tiếp tục tìm hiểu và thực hành với rất nhiều Data Structures và Algorithms sau này. </p>
+
+<!--                        <p style="text-align: right; font-weight: bold; font-size: 1.2rem"><b>Happy coding!</b></p>-->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="fb-comments mt-4" data-href="https://winzone.vn/post/introduction-data-structures-and-algorithims.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
