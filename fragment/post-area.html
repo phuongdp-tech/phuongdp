@@ -14,19 +14,20 @@ $(document).ready(function () {
     const pathNameArray = window.location.pathname.split('/');
     const category = pathNameArray[pathNameArray.length - 1].replace('.html', '');
     let postList = POST_DATA.sort((a, b) => (a.order < b.order) ? 1 : -1);
+
     if (category && category !== 'index') {
         postList = postList.filter(p => p.category?.includes(category));
     }
+
     if (searchKeyword) {
         $('#search-keyword').val(searchKeyword);
         $('#search-result').show();
         $('#search-result .keyword').text(searchKeyword);
         postList = postList.filter(p => p.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1
-            || p.brief.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1);
+            || p.brief.toLowerCase().indexOf(searchKeyword.toLowerCase()) !== -1 || p.category?.includes(searchKeyword));
     } else {
         $('#search-result').hide();
     }
-
     const totalPage = Math.ceil(postList.length / PAGE_SIZE);
 
     $('#post-list-container .row').html('');
@@ -124,7 +125,7 @@ $(document).ready(function () {
             "url": "post/send-email-with-send-grid-service.html",
             "author": "Phuong Dang",
             "createDate": "11/Mar/2022",
-            "category": ['java', 'spring'],
+            "category": ['java', 'java-utility', 'spring'],
             "order": 3
         },
         {
@@ -149,6 +150,19 @@ $(document).ready(function () {
             "author": "Phuong Dang",
             "createDate": "22/Apr/2022",
             "category": ['data-structures-and-algorithms'],
+            "order": 5
+        },
+        {
+            "id": 7,
+            "title": "Code hiệu quả hơn với Lambda Expression - Java 8",
+            "image": "images/blog/winzone-lambda-expression-java8.png",
+            "brief": "Chúng ta biết đến Java là một ngôn ngữ lập trình hướng đối tượng rất phổ biến. " +
+                "Từ version 8, Java cung cấp thêm một cách thức viết code mang style funtional programing với lambda expression.",
+            "content": "",
+            "url": "post/lambda-expression-functional-interface-java-8.html",
+            "author": "Phuong Dang",
+            "createDate": "03/May/2022",
+            "category": ['java', 'java-se', 'java8'],
             "order": 5
         }
     ];

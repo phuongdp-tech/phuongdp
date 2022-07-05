@@ -4409,3 +4409,9 @@ p {
 .language-Java .hljs-method {
   color: #6f42c1!important;
 }
+.code-blue-text {
+  color: #007bff!important;
+}
+#answerArea {
+  display: none;
+}
