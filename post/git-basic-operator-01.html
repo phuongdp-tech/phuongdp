@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Thao tác cơ bản với Git - Phần 01</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 01/May/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=git" class="text-primary">Git</a></h6>
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#vcs">Version system control (VCS)</a></li>
+                                <li><a href="#cvcs">Centralized version control system (CVCS)</a></li>
+                                <li><a href="#dvcs">Distributed version control system (DVCS)</a></li>
+                                <li><a href="#compare-git-gitlab">So sánh Git và GitHub/GitLab</a></li>
+                                <li><a href="#git-basic-operators">Thao tác cơ bản với Git</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong>Làm việc với Git là skill chắc chắn phải có của tất cả các developers dù là FE hay BE. Bạn có thể tham khảo trên rất nhiều trang tuyển dụng IT sẽ thấy đây là một skill luôn luôn có của vị trí developer.</strong>
+                        </div>
+                        <h2 id="vcs" class="mt-4">1. Version system control (VCS)</h2>
+                        <p class="mt-3">Trước khi tìm hiểu "Git là gì?" hay "Git làm việc như nào?", chúng ta hãy cùng nhau tìm hiểu qua khái niệm <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" target="_blank">Version system control (VCS)</a>.
+                            VSC là 1 loại software tool giúp quản lý sự thay đổi của data/source code theo thời gian. Nó sẽ lưu trữ mọi sự thay đổi của source code trong 1 dạng database đặc biệt. Khi có lỗi xảy ra thì developer có thể revert lại hoặc compare các version trước để detect vấn đề 1 cách nhanh nhất.
+                        </p>
+                        <h2 id="cvcs" class="mt-4">2. Centralized version control system (CVCS)</h2>
+                        <p>Ý tưởng của <code>CVCS</code> là sẽ chỉ có 1 nơi lưu trữ source của project được gọi là Central repository. Developer có thể commit trực tiếp bất kỳ 1 sự thay đổi nào lên Central repository.
+                            Lúc này những developer khác có thể thấy được sự thay đổi này bằng cách update, <code>CVCS</code> sẽ tự động update nội dung mới nhất cho bất kỳ file nào có sự thay đổi.</p>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/cvcs.png" alt="Winzone.vn Centralized version control system (CVCS)">
+                            <figcaption><b>Figure 01. CVCS.</b></figcaption>
+                        </figure>
+
+                        <p>Làm việc với <code>CVCS</code> khi cần thêm tính năng mới hoặc fix bug thì có một trình tự điển hình như sau:</p>
+                        <ul>
+                            <li>Update toàn bộ sự thay đổi hiện tại trên Central repository xuống local.</li>
+                            <li>Thực hiện sự thay đổi mong muốn.</li>
+                            <li>Commit sự thay đổi lên Central repository.</li>
+                        </ul>
+                        <p>Có 1 vài central version control system phổ biến có thể bạn đã nghe hoặc dùng như: <a href="https://tortoisesvn.net/" target="_blank">SVN</a> và <a href="https://www.perforce.com/solutions/version-control" target="_blank">Perforce</a></p>
+
+                        <h2 id="dvcs" class="mt-4">3. Distributed version control system (DVCS)</h2>
+                        <p>Với <code>CVCS</code> thì các thao tác update/commit là từ máy local của developer sẽ làm việc trực tiếp với Central Repository (Figure 01).<br>
+                            Còn với <code>DVCS</code> là mỗi developer sẽ clone <u>Central</u> Repository về local để tạo thành một <u>Local</u> Repository.
+                            Tất cả các thao tác update/commit thì sẽ làm việc với Local Repository trong mô hình <code>DVCS</code> (Figure 02).
+                        </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/dvcs.png" alt="Winzone.vn Decentralized version control system (DVCS)">
+                            <figcaption><b>Figure 02. DVCS.</b></figcaption>
+                        </figure>
+                        <p>
+                            Nếu bạn cho rằng cách thức này là lãng phí tài nguyên thì hãy yên tâm. Thực tế thì source của project đa phần là plain text file chỉ phần ít là image. Do đó thì sẽ không quá lãng phí disk space phải không?
+                            Ngược lại bằng cách đó lại mang khá nhiều lợi ích sau:
+                        </p>
+                        <ul>
+                            <li>Có thể commit sự thay đổi lên local repository mà không ai bị ảnh hưởng cũng như nhìn thấy. Khi mọi thứ đã sẵn sàng bạn có thể push chúng lên central reposity.</li>
+                            <li>Tất cả những hành động ngoài push/pull thì sẽ cực kỳ nhanh vì lúc này tool đang access vào hard drive thay vì 1 remote server.</li>
+                            <li>Tất cả những hành động ngoài push/pull thì đều có thể thực hiện mà không cần internet.</li>
+                        </ul>
+                        <p>Hiện nay với mô hình <code>DVCS</code> thì <a href="https://www.mercurial-scm.org/" target="_blank">Mercurial</a>, và <a href="https://git-scm.com/" target="_blank">Git</a> là những loại tool phổ biến nhất. Bài viết hôm nay chúng ta sẽ cùng thảo luận về cách sử dụng <a href="https://git-scm.com/" target="_blank">Git</a></p>
+                        <h2 class="mt-4" id="compare-git-gitlab">4. So sánh Git và GitHub/GitLab</h2>
+                        Thông thường chúng ta sẽ phải setup một Git tool trên 1 remote server để làm việc như Central Repository.
+                        <ul class="mt-3">
+                            <li><code>Git</code>: là <a href="https://git-scm.com/about/free-and-open-source" target="_blank">free open source DVCS software</a> như khái niệm chúng ta đã mô tả ở section 3</li>
+                            <li><code>GitHub/GitLab</code>: là một Git-based platform/Git provider được xây dựng dựa trên Git. Ngoài những tính năng có sẵn của Git, cả 2 platforms này đều cung cấp thêm nhiều tính năng khác. Dự án có thể tận dụng GitHub/GitLab mà không cần phải setup một Git trên remote server.
+                            </li>
+                        </ul>
+                        Trong bài viết này chúng ta sẽ dùng <code>GitLab</code> để thực hiện các thao tác cơ bản.
+                        <h2 id="git-basic-operators" class="mt-4">5. Thao tác cơ bản với Git - GitLab</h2>
+                        <p>Trước khi thao tác hãy chắc chắn rằng bạn đã thực hiện 2 điều dưới đây: </p>
+                        <ul>
+                            <li>Cài đặt Git, refer <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">link</a> này để cài đặt với môi trường phù hợp. </li>
+                            <li>Đăng ký tài khoản <a href="https://gitlab.com/users/sign_up/" target="_blank">GitLab</a> - free</li>
+                        </ul>
+                        <h4 class="mt-3">5.1 Khởi tạo project trên GitLab</h4>
+                        <p>Đây sẽ là remote repository lưu trữ source code trên một remote server, giúp team có thể quản lý source trên môi trường internet.</p>
+                        <p>Sau khi login, bạn tạo project với các bước sau: <b>Menu > Projects > Create new project > Create blank project</b>.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-create-blank-project-in-gitlab.png" alt="Winzone.vn Create project blank in GitLab">
+                            <figcaption><b>Figure 03. Create project blank in GitLab</b></figcaption>
+                        </figure>
+                        <p>Điển các thông tin tương ứng: Project Name, Project URL và click "Create Project" button. Sau khi tạo thành công sẽ có kết quả như sau: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-create-blank-project-in-gitlab-success.png" alt="Winzone.vn Create project blank success in GitLab">
+                            <figcaption><b>Figure 04. Create success project blank in GitLab</b></figcaption>
+                        </figure>
+                        <p>Bạn cũng có thể kiểm tra theo navigation như sau: <b>Projects > Your Projects > Project name bạn vừa tạo </b></p>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i> Trong thực tế bước 5.1 chỉ làm 1 lần bởi người phụ trách. Nên có thể skip nếu bạn tham gia vào dự án maintain đã có sẵn remote repository, hoặc bạn không phải là người phụ trách tạo remote repository.
+                        </p>
+                        <h4 class="mt-3">5.2 Clone repository</h4>
+                        <p>Công việc khi tham gia vào dự án mới thông thường là clone source về máy local. Syntax như sau: </p>
+                        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">clone</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">repo</span> <span style="color: #f8f8f2">url</span><span style="color: #f92672">&gt;</span></pre></div>
+                        <p class="mt-3">Chúng ta cần cung cấp 1 repository URL để có thể clone source code được. Git support nhiều giao thức như SSH, HTTPS, trong ví dụ này chúng ta sẽ clone thông qua giao thức HTTPS. Bạn có thể lấy được repository url trên GitLab như hướng dẫn bên dưới: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-clone-empty-project.png" alt="Winzone.vn Clone project from GitLab">
+                            <figcaption><b>Figure 05. Clone project from GitLab</b></figcaption>
+                        </figure>
+
+                        Chúng ta có thể clone như sau:
+                        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">clone</span> <span style="color: #f92672">https://gitlab.com/phuongdp/winzone-demo-git.git</span></pre></div>
+                        <p class="mt-3">Sau khi câu lệnh được execute thì phiên bản mới nhất của central reposity trên default branch (main or master) sẽ được download về và add vào một thư mực với có tên giống reposity name(trong ví dụ là <code>winzone-demo-git</code>)</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-clone-project-success-01.png" alt="Winzone.vn Clone project from GitLab success">
+                            <img class="rounded p-4" style="margin-top: 10px" src="../images/blog/07/winzone.vn-clone-project-success-02.png" alt="Winzone.vn Clone project from GitLab success">
+                            <figcaption><b>Figure 06. Trạng thái sau khi clone source thành công.</b></figcaption>
+                        </figure>
+                        <h4 class="mt-3">5.3 Commit changes to the local repository</h4>
+                        <p>Git hoạt động theo mô hình <code><a href="#dvcs">DVCS</a></code> nên tất các sự thay đổi từ local cần phải được <code>update</code> vào local repository sau đó mới có thể <code>push</code> lên remote repository. Một số command làm việc với local repository: </p>
+                        <ul>
+                            <li><code>git status</code>: compare trạng thái của repository hiện tại với trạng thái local repository để liệt kê ra những kiểm khác nhau.</li>
+                            <li><code>git add</code>: chỉ định những file sẽ được lưu lên local repository bằng cách add chúng vào staging area.</li>
+                            <li><code>git commit</code>: lưu những sự thay đổi sau khi lựa chọn từ <code>git add</code> lên local repository.</li>
+                        </ul>
+                        <p><code>git add</code> có thể dùng với một số cách chỉ định file/folder hoặc toàn bộ sự thay đổi: </p>
+                        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">add</span> <span style="color: #f92672">demo.txt</span>                       <span style="color: green;"># Chỉ định file demo.txt</span>
+<span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">add</span> <span style="color: #f92672">demoFolder</span>                     <span style="color: green;"># Chỉ định file toàn bộ file trong demoFolder</span>
+<span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">add</span> <span style="color: #f92672">.</span>                              <span style="color: green;"># Chỉ định toàn bộ sự thay đổi trong project</span>
+</pre></div>
+                        <p class="mt-3"><code>git commit</code> với message có syntax như sau: </p>
+                        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">commit</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">m</span> <span style="color: #e6db74">&quot;&lt;message&gt;&quot;</span>
+</pre></div>
+                        <p class="mt-3">Áp dụng với project demo như sau:</p>
+                        <ol>
+                            <li>Tạo mới 1 file <code>demo.txt</code> trong project folder.</li>
+                            <li>Kiểm tra trạng thái thay đổi bằng <code>git status</code>: có 1 file <code>demo.txt</code> untracked.</li>
+                            <li>Chỉ định toàn bộ sự thay đổi trong project bằng <code>git add .</code> lên staging area</li>
+                            <li>Kiểm tra lại trạng thái so với local repository bằng <code>git status</code>: có 1 file <code>demo.txt</code> được tạo mới.</li>
+                            <li>Commit sự thay đổi đó với message "commit demo.txt file" lên local repository bằng <code>git commit -m "commit demo.txt file"</code>.</li>
+                        </ol>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone-git-commit-to-local-repository.png" alt="Winzone.vn Git commit to local repository">
+                            <figcaption><b>Figure 07. Commit changes to the local repository.</b></figcaption>
+                        </figure>
+                        <p class="caution rounded p-3 mt-3"><i class="fas fa-exclamation-circle"></i> Tất cả các thay đổi này chỉ thực hiện trên local repository. Kiểm tra central repository trên GitLab chúng ta sẽ chưa thấy có gì thay đổi.</p>
+                        <h4 class="mt-3">5.4 Push changes to the central repository</h4>
+                        <p>Việc tiếp theo cần làm là push chúng lên central repository. Chúng ta sẽ sử dụng <code>git push</code> với syntax như sau: </p>
+                        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">git</span> <span style="color: #f8f8f2">push</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">remote</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">branch</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+                        <p class="mt-3">Áp dụng với project demo như sau: </p>
+                        <ul>
+                            <li><code>origin</code>: là tên default prefix name cho những remote branch.</li>
+                            <li><code>main</code>: default branch của project trên GitLab (GitHub sẽ sử dụng branch default là <code>master</code>). Khái niệm branch chúng ta sẽ để cập trong bài viết sau.</li>
+                        </ul>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-push-success.png" alt="Winzone.vn Git push to central repository">
+                            <img class="rounded p-4" style="margin-top: 10px" src="../images/blog/07/winzone.vn-push-success-01.png" alt="Winzone.vn Git push to central repository">
+                            <figcaption><b>Figure 08. Push changes to the central repository.</b></figcaption>
+                        </figure>
+                        <h4 class="mt-3">5.5 Pull changes from the central repository</h4>
+                        <p>Trong thực tế 1 project sẽ có nhiều member cùng làm việc, thế nên chúng ta cũng cần phải lấy source code mà member khác push lên.
+                            Để giả lập cho việc này, chúng ta sẽ tạo mới 1 file trên central repository để tạo ra 1 sự thay đổi cần pull về local.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-create-file-in-git-lab.png" alt="Winzone.vn create new file in gitlab">
+                            <img class="rounded p-4" style="margin-top: 10px" src="../images/blog/07/winzone.vn-create-file-in-git-lab-01.png" alt="Winzone.vn create new file in gitlab">
+                            <figcaption><b>Figure 09. Create new file in GitLab.</b></figcaption>
+                        </figure>
+                        <p>Để lấy source code mới nhất của branch đang sử dụng (<code>main</code> branch) trên central repository. Chúng ta sẽ sử dụng <code>git pull</code> command.</p>
+                        <ol>
+                            <li>Trạng thái trước khi pull project folder chưa có <code>new_file_need_to_pull.txt</code> file</li>
+                            <li>Thực hiện <code>git pull</code></li>
+                            <li>Trạng thái sau khi pull project folder có <code>new_file_need_to_pull.txt</code> file</li>
+                        </ol>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/07/winzone.vn-git-pull-success.png" alt="Winzone.vn git pull success from git lab">
+                            <figcaption><b>Figure 10. Git pull success from central repository</b></figcaption>
+                        </figure>
+                        <h2 id="summary" class="mt-4">6. Kết luận</h2>
+                        <p>Hi vọng sau bàu viết này, các bạn đã hiểu về mô hình VCS và có thể thao tác cơ bản với Git/GibLab thông qua các command: <code>clone, status, add, commit, pull, push</code>.</p>
+                        <p>Nếu bạn đang cảm thấy làm việc với Git có nhiều câu lệnh thế này thì thật khó nhớ. Hãy yên tâm nhé, ngoài cách làm việc với command chúng ta có nhất nhiều tool hỗ trợ làm việc một cách thân thiện với Guide thông qua
+                            <a target="_blank" href="https://git-scm.com/downloads/guis">Git Guide Client</a>, hoặc 1 số loại extension được tích hợp sẵn trong các IDE
+                        </p>
+
+
+                        <!--                        <div class="caution rounded p-3 mt-3">-->
+<!--                            <div>- <b>update</b>, <b>commit</b> là command làm việc với local repository.</div>-->
+<!--                            <div>- <b>pull</b>, <b>push</b> là command làm việc với central repository.</div>-->
+<!--                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="fb-comments mt-4" data-href="https://winzone.vn/post/git-basic-operator.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
