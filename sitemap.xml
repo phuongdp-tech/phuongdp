@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://winzone.vn/</loc>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/nhung-hieu-lam-pho-bien-ve-group-by-trong-sql.html</loc>
+        <lastmod>2022-02-03</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/series-spring-security-jwt-for-rest-api-01.html</loc>
+        <lastmod>2022-03-05</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/series-spring-security-jwt-for-rest-api-02.html</loc>
+        <lastmod>2022-03-16</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/send-email-with-send-grid-service.html</loc>
+        <lastmod>2022-03-11</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/top-nhung-dieu-can-luu-y-khi-tham-gia-phong-van.html</loc>
+        <lastmod>2022-04-20</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/lambda-expression-functional-interface-java-8.html</loc>
+        <lastmod>2022-05-03</lastmod>
+    </url>
+    <url>
+        <loc>https://winzone.vn/post/git-basic-operator-01.html</loc>
+        <lastmod>2022-05-01</lastmod>
+    </url>
+</urlset>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Lambda expression and functional interface in java 8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, Data Structures and Algorithms" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Code hiệu quả hơn với Lambda Expression - Java 8</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 03/May/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=java8" class="text-primary">Java - 8</a></h6>
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#functional-interface">Functional interface</a></li>
+                                <li><a href="#lambda-expression">Lambda expression</a></li>
+                                <li><a href="#implement-source-code-by-traditional-way">Triển khai source code theo cách truyền thống</a></li>
+                                <li><a href="#implement-source-code-by-lambdas-way">Triển khai source theo lambda expression</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <p><strong>Chúng ta biết đến Java là một ngôn ngữ lập trình hướng đối tượng rất phổ biến. Từ version 8, Java cung cấp thêm một cách thức viết code mang style funtional programing với lambda expression.</strong></p>
+                            <p>Lambda expression không phải là khái niệm thuộc về chỉ mình Java, có thể trước đây bạn đã nghe thấy ở những ngôn ngữ khác rồi. Nó còn được biết đến với cái tên ngắn gọn hơn là "Lambda".</p>
+                        </div>
+                        <h2 id="functional-interface" class="mt-4">1. Functional interface</h2>
+                        Trước khi có thể tạo và sử dụng được Lambda, chúng ta cùng tìm hiểu về <code>functional interface</code>.
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic">Functional interface là interface có một và chỉ một abstract method (Không bao gồm những abstract method được kế thừa từ Object class).</p>
+                            <p class="mb-0 font-italic">Functional interface có thể có nhiều default và static method.</p>
+                        </blockquote>
+
+                        <p class="mt-3">Dựa trên định nghĩa hãy xác định những interface dưới đây có phải functional interface hay không?</p>
+
+                        <div class="funtional-interface-demo mt-2">
+                            <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> AbstractAction {
+}
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> CandidateAction {
+    <span style="color: #000080; font-weight: bold">void</span> interview();
+}
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> FresherCandidateAction <span style="color: #000080; font-weight: bold">extends</span> CandidateAction {
+    <span style="color: #000080; font-weight: bold">void</span> interview();
+}
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> JuniorCandidateAction {
+    <span style="color: #000080; font-weight: bold">void</span> interview();
+    <span style="color: #000080; font-weight: bold">void</span> interviewRound02();
+}
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> SeniorCandidateAction {
+    <span style="color: #000080; font-weight: bold">void</span> interview();
+    <span style="color: #000080; font-weight: bold">default</span> <span style="color: #000080; font-weight: bold">void</span> interviewWithHr() {
+    };
+}
+</pre></div>
+                        </div>
+
+                        <ul class="list-unstyled mt-3">
+                            <li><input type="radio" value="optionA" name="rdFunctionalInterface"> <strong>A.</strong> <code>AbstractAction</code> là functional interface.</li>
+                            <li><input type="radio" value="optionA" name="rdFunctionalInterface"> <strong>B.</strong> <code>CandidateAction</code>, <code>FresherCandidateAction</code> là functional interface.</li>
+                            <li><input type="radio" value="optionB" name="rdFunctionalInterface"> <strong>C.</strong> <code>CandidateAction</code>, <code>FresherCandidateAction</code>, <code>JuniorCandidateAction</code> là functional interface.</li>
+                            <li><input type="radio" value="optionC" name="rdFunctionalInterface"> <strong>D.</strong> <code>CandidateAction</code>, <code>FresherCandidateAction</code>, <code>SeniorCandidateAction</code> là functional interface.</li>
+                            <li><input type="radio" value="optionD" name="rdFunctionalInterface"> <strong>E.</strong> Cả 5 interfaces là functional interface.</li>
+                        </ul>
+                        <button class="btn btn-primary mb-3" id="btn-answer" onclick="answer()">Show Answer</button>
+
+                        <div id="answerArea">
+                            <strong>Đáp án đúng: <code>D</code></strong>
+                            <ul class="mt-2">
+                                <li><code>AbstractAction</code> không phải là functional interface vì chỉ có không có abstract method nào.</li>
+                                <li><code>CandidateAction</code> là functional interface vì chỉ có 1 abstract method.</li>
+                                <li><code>FresherCandidateAction</code> dù extends <code>CandidateAction</code> những vẫn chỉ có 1 abstract method do method signarure giống nhau nên vẫn là functional interface</li>
+                                <li><code>JuniorCandidateAction</code> có 2 abstract method nên KHÔNG phải là functional interface.</li>
+                                <li><code>SeniorCandidateAction</code> có 2 methods tuy nhiên 1 default method và 1 abstract method nên vẫn là functional interface.</li>
+                            </ul>
+                        </div>
+
+                        <script>
+                            function answer() {
+                                const chooseOpt = document.querySelector('input[name="rdFunctionalInterface"]:checked')?.value;
+                                if (chooseOpt != null) {
+                                    document.getElementById('answerArea').style.display = 'block';
+                                }
+                            }
+                        </script>
+
+                        <h2 id="lambda-expression" class="mt-4">2. Lambda expression</h2>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic">Lambda expression là một anonymous method (unnamed method) có thể thực hiện công việc như một method thông thường. </p>
+                            <p class="mb-0 font-italic">Lambda expression implement một abstract method được định nghĩa trong interface method. </p>
+                        </blockquote>
+                        <h4 class="mt-4">Lambda expression syntax:</h4>
+                        <p>Cú pháp của lambda expression mà dễ bị nhầm lẫn do nhiều phần là optional. Lambda expression bao gồm 3 phần:</p>
+                        <ol>
+                            <li><code>parameter_list</code>: Danh sách parameter đầu vào.
+                                <ul>
+                                    <li>Nếu empty thì dùng () để đại diện</li>
+                                    <li>Nếu chỉ có 1 parameter thì dấu () là optional</li>
+                                    <li>Nếu có nhiều hơn 1 paramater thì dấu () là required, và mỗi parameter phân cách bởi dấu phẩy ","</li>
+                                    <li>data_type của parameter là optional</li>
+                                </ul>
+                            </li>
+                            <li><code>arrow operator</code>: -></li>
+                            <li><code>function_body</code>:
+                                <ul>
+                                    <li>Nếu chỉ có 1 statement thì dấu {} là optional</li>
+                                    <li>Nếu có > 1 statement thì dấu {} là required</li>
+                                </ul>
+                        </ol>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            parameter -> expression
+                        </blockquote>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            (data_type parameter1, data_type parameter2) -> expression
+                        </blockquote>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            (paramater1, parameter2) -> { function_body }
+                        </blockquote>
+
+                        <p>Sau đây là ví dụ 5 valid lambda expressions</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">// 01. Expression không có tham số và luôn return true</span>
+() -&gt; <span style="color: #000080; font-weight: bold">true</span>
+
+<span style="color: #008800; font-style: italic">// 02. Expression nhận vào 1 String parameter và call method startsWith</span>
+s -&gt; s.<span style="color: #FF0000">startsWith</span>(<span style="color: #0000FF">&quot;winzone&quot;</span>)
+
+<span style="color: #008800; font-style: italic">// 03. Tương tự 02 chỉ khác là chỉ định rõ data type của parameter</span>
+(String s) -&gt; s.<span style="color: #FF0000">startsWith</span>(<span style="color: #0000FF">&quot;winzone&quot;</span>)
+
+<span style="color: #008800; font-style: italic">// 04: Expression nhận vào 2 tham số và call method equals</span>
+(s1, s2) -&gt; s1.<span style="color: #FF0000">equals</span>(s2)
+
+<span style="color: #008800; font-style: italic">// 05: Tương tự 04 chỉ khác là chỉ định rõ data type của parameter</span>
+(String s1, String s2) -&gt; s1.<span style="color: #FF0000">equals</span>(s2)
+</pre></div>
+                        <p class="mt-3">Sau đây là ví dụ 3 <span class="text-danger">invalid</span> lambda expressions
+                            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-style: italic">// 01. Thiếu () khi expression có 2 parameters</span>
+s1, s2 -&gt; s1.<span style="color: #FF0000">equals</span>(s2)
+
+<span style="color: #008800; font-style: italic">// 02. Thiếu keyword &quot;return&quot; do đang được wrap trong {}</span>
+s1 -&gt; { s1.<span style="color: #FF0000">startsWith</span>(<span style="color: #0000FF">&quot;winzone&quot;</span>); }
+
+<span style="color: #008800; font-style: italic">// 03. Thiếu dấu &quot;;&quot;</span>
+s1 -&gt; { <span style="color: #000080; font-weight: bold">return</span> s1.<span style="color: #FF0000">startsWith</span>(<span style="color: #0000FF">&quot;winzone&quot;</span>) }
+</pre></div>
+                        <h2 id="implement-source-code-by-traditional-way" class="mt-4">3. Triển khai source code theo cách truyền thống</h2>
+                        <p>Để hiểu và vận dụng được lambda, chúng ta cùng nhau triển khai source code của yêu cầu như sau: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/06/winzone-lambda-expression-problem.png" alt="Winzone.vn lambda expression problem.">
+                        </figure>
+
+                        <p>Project bao gồm 3 classes/interfaces với những chức năng nhiệm vụ như sau: </p>
+                        <ul>
+                            <li>Class <b>Candidate</b>: Define thông tin của một ứng viên bao gồm 2 fields cơ bản: email và entryTest.</li>
+                            <li>Interface <b>PassingCriteria</b>: Define một method <code>pass()</code>, sẽ return <span class="code-blue-text">true</span> nếu điểm entryTest thoả mãn điều kiện, ngược lại sẽ return <span class="code-blue-text">false</span>.
+                            </li>
+                            <li>Class <b>CandidateService</b>: Define một method <code>displayResult()</code> với mục đích hiển thị kết quả của từng ứng viên (Qualified/Unqualified). </li>
+                        </ul>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> Candidate.java
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>.<span style="color: #FF0000">entity</span>;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> Candidate {
+    <span style="color: #000080; font-weight: bold">private</span> String email;
+    <span style="color: #000080; font-weight: bold">private</span> <span style="color: #000080; font-weight: bold">float</span> entryTest;
+
+    <span style="color: #000080; font-weight: bold">public</span> Candidate() {
+    }
+
+    <span style="color: #000080; font-weight: bold">public</span> Candidate(String email, <span style="color: #000080; font-weight: bold">float</span> entryTest) {
+        <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">email</span> = email;
+        <span style="color: #000080; font-weight: bold">this</span>.<span style="color: #FF0000">entryTest</span> = entryTest;
+    }
+
+    <span style="color: #008800; font-style: italic">// Getter/Setter</span>
+}
+</pre></td></tr></table></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> PassingCriteria.java
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>.<span style="color: #FF0000">function</span>;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+@FunctionalInterface
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">interface</span> PassingCriteria {
+
+    <span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic">     * Check Candidate is Qualified or Unqualified</span>
+<span style="color: #008800; font-style: italic">     *</span>
+<span style="color: #008800; font-style: italic">     * @param entryTest: Candidate&#39;s entryTest</span>
+<span style="color: #008800; font-style: italic">     * @return</span>
+<span style="color: #008800; font-style: italic">     * If Candidate&#39;s entryTest is passing criteria return true</span>
+<span style="color: #008800; font-style: italic">     * otherwise return false</span>
+<span style="color: #008800; font-style: italic">     */</span>
+    <span style="color: #000080; font-weight: bold">boolean</span> pass(<span style="color: #000080; font-weight: bold">float</span> entryTest);
+}
+</pre></td></tr></table></div>
+                                        <div class="caution rounded p-3 mt-3 mb-3">
+                                            <i class="fas fa-exclamation-circle"></i> Note: <br>
+                                            - PassingCriteria là một functional interface được mark @FunctionalInterface (line 6). <br>
+                                            - Một interface mà chỉ có 1 abstract method thì dù được mark hay không mark @FunctionalInterface annotation thì vẫn là functional interface.
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> CandidateService.java
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>.<span style="color: #FF0000">service</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.entity.Candidate;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.PassingCriteria;
+
+<span style="color: #000080; font-weight: bold">import</span> java.util.List;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> CandidateService {
+
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">void</span> displayResult(List&lt;Candidate&gt; candidates, PassingCriteria criteria) {
+        <span style="color: #000080; font-weight: bold">for</span> (Candidate candidate : candidates) {
+            <span style="color: #000080; font-weight: bold">if</span> (criteria.<span style="color: #FF0000">pass</span>(candidate.<span style="color: #FF0000">getEntryTest</span>())) {
+                System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">printf</span>(<span style="color: #0000FF">&quot;Candidate: %s is QUALIFIED with entry test = %.2f!\n&quot;</span>,
+                        candidate.<span style="color: #FF0000">getEmail</span>(), candidate.<span style="color: #FF0000">getEntryTest</span>());
+            } <span style="color: #000080; font-weight: bold">else</span> {
+                System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">printf</span>(<span style="color: #0000FF">&quot;Candidate: %s is UNQUALIFIED with entry test = %.2f!\n&quot;</span>,
+                        candidate.<span style="color: #FF0000">getEmail</span>(), candidate.<span style="color: #FF0000">getEntryTest</span>());
+            }
+        }
+    }
+}
+</pre></td></tr></table></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-2">Chúng ta có yêu cầu của đề như sau:</p>
+                        <div class="caution rounded p-3"> Điều kiện pass của mỗi ứng viên sẽ tuỳ thuộc vào vị trí apply như sau:
+                            <ul>
+                                <li>Fresher: Entry Test >= 6</li>
+                                <li>Senior: Entry Test >= 8.5</li>
+                            </ul>
+
+                            Hãy tạo 1 class CandidateManagement (tạo main method) và print kết quả của mỗi ứng viên sau khi có điểm entry test
+                        </div>
+
+                        <h4 class="mt-3">1.1 Triển khai source - tạo concrete class:</h4>
+                        <p>Với yêu cầu của đề bài chúng ta sẽ có 2 công việc cần thực hiện:</p>
+                        <p><strong> - Implement phần kiểm tra điểm entry test bằng cách override method abstract <code>PassingCriteria.pass()</code></strong></p>
+
+                        <div class="accordion" id="accordionPassingCriteria">
+                            <div class="card">
+                                <div class="card-header" id="headFresherPassingCriteria">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#fresherPassingCriteria" aria-expanded="true" aria-controls="fresherPassingCriteria">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> FresherPassingCriteria.java
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="fresherPassingCriteria" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>.<span style="color: #FF0000">function</span>.<span style="color: #FF0000">impl</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.PassingCriteria;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> FresherPassingCriteria <span style="color: #000080; font-weight: bold">implements</span> PassingCriteria {
+
+    @Override
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">boolean</span> pass(<span style="color: #000080; font-weight: bold">float</span> entryTest) {
+        <span style="color: #000080; font-weight: bold">return</span> entryTest &gt;= <span style="color: #0000FF">6</span>;
+    }
+}
+</pre></td></tr></table></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSeniorPassingCriteria">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#seniorPassingCriteria" aria-expanded="false" aria-controls="seniorPassingCriteria">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> SeniorPassingCriteria.java
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="seniorPassingCriteria" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>.<span style="color: #FF0000">function</span>.<span style="color: #FF0000">impl</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.PassingCriteria;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> SeniorPassingCriteria <span style="color: #000080; font-weight: bold">implements</span> PassingCriteria {
+
+    @Override
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">boolean</span> pass(<span style="color: #000080; font-weight: bold">float</span> entryTest) {
+        <span style="color: #000080; font-weight: bold">return</span> entryTest &gt;= <span style="color: #0000FF">8.5</span>;
+    }
+}
+</pre></td></tr></table></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-3"><strong>- Tạo class <code>CandidateManagement</code></strong></p>
+                        <div class="accordion" id="candidateManagementExample">
+                            <div class="card">
+                                <div class="card-header" id="headingCandidateManagement">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#candidateManagement" aria-expanded="true" aria-controls="candidateManagement">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> CandidateManagement.java
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="candidateManagement" class="collapse" aria-labelledby="candidateManagement" data-parent="#candidateManagementExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.entity.Candidate;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.impl.SeniorPassingCriteria;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.impl.FresherPassingCriteria;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.service.CandidateService;
+
+<span style="color: #000080; font-weight: bold">import</span> java.util.Arrays;
+<span style="color: #000080; font-weight: bold">import</span> java.util.List;
+
+<span style="color: #008800; font-style: italic">/**</span>
+<span style="color: #008800; font-style: italic"> * @author &lt;a href=&quot;mailto:phuongdp.tech@gmail.com&quot;&gt;PhuongDP&lt;/a&gt;</span>
+<span style="color: #008800; font-style: italic"> */</span>
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> CandidateManagement {
+
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+        CandidateService candidateService = <span style="color: #000080; font-weight: bold">new</span> CandidateService();
+
+        Candidate candidate01 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate01@gmail.com&quot;</span>, <span style="color: #0000FF">7</span>);
+        Candidate candidate02 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate02@gmail.com&quot;</span>, <span style="color: #0000FF">9</span>);
+        Candidate candidate03 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate03@gmail.com&quot;</span>, <span style="color: #0000FF">6</span>);
+        List&lt;Candidate&gt; candidateList = Arrays.<span style="color: #FF0000">asList</span>(candidate01, candidate02, candidate03);
+
+
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;Candidate apply FRESHER position: &quot;</span>);
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, <span style="color: #000080; font-weight: bold">new</span> FresherPassingCriteria());
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;\n-----------------------------------&quot;</span>);
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;\nCandidate apply SENIOR position: &quot;</span>);
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, <span style="color: #000080; font-weight: bold">new</span> SeniorPassingCriteria());
+    }
+}
+</pre></td></tr></table></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <p class="mt-3">Execute <code>main()</code> method và ta có kết quả như sau: </p>
+                        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">Candidate apply FRESHER position:
+Candidate: candidate01@gmail.com is QUALIFIED with entry test = <span style="color: #0000FF">7.00</span>!
+Candidate: candidate02@gmail.com is QUALIFIED with entry test = <span style="color: #0000FF">9.00</span>!
+Candidate: candidate03@gmail.com is QUALIFIED with entry test = <span style="color: #0000FF">6.00</span>!
+
+-----------------------------------
+
+Candidate apply SENIOR position:
+Candidate: candidate01@gmail.com is UNQUALIFIED with entry test = <span style="color: #0000FF">7.00</span>!
+Candidate: candidate02@gmail.com is QUALIFIED with entry test = <span style="color: #0000FF">9.00</span>!
+Candidate: candidate03@gmail.com is UNQUALIFIED with entry test = <span style="color: #0000FF">6.00</span>!
+</pre></div>
+
+                        <p class="mt-3">Với cách triển khai bên trên chúng ta đã đáp ứng được yêu cầu đề bài khi đã verify được chất lượng ứng viên theo từng vị trí apply.</p>
+                        Tuy nhiên cách triển khai này có một yếu điểm đó là: với mỗi vị trí (Fresher, Senior...) chúng ta sẽ cần phải tạo ra 1 class implement interface PassingCriteria.
+                        <p><strong>Đây là một cách triển khai khiến chúng ta phải tạo nhiều class không cần thiết.</strong></p>
+
+                        <h4 class="mt-3">1.2 Triển khai source - sử dụng anonymous class:</h4>
+                        <p><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html" target="_blank">Anonymous classes</a> là 1 expression cho phép bạn khai báo và khởi tạo instance của class cùng 1 thời điểm và đặc biệt không cần chỉ định tên Class.</p>
+                        <p>Yếu điểm của cách <i>triển khai source 1.1</i> đó là dài dòng khi phải tạo nhiều class tương ứng với mỗi loại position (Fresher, Senior). Ta có thể tận dụng tính năng của anonymous classes để triển khai source như sau: </p>
+
+                        <p><strong>- Tạo class <code>CandidateManagementWithAnonymousClass</code></strong></p>
+
+                        <div class="accordion" id="candidateManagementWithAnonymousClassExample">
+                            <div class="card">
+                                <div class="card-header" id="headingCandidateManagementWithAnonymousClass">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#candidateManagementWithAnonymousClass" aria-expanded="true" aria-controls="candidateManagementWithAnonymousClass">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> CandidateManagementWithAnonymousClass.java
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="candidateManagementWithAnonymousClass" class="collapse" aria-labelledby="headingCandidateManagementWithAnonymousClass" data-parent="#candidateManagementWithAnonymousClassExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.entity.Candidate;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.function.PassingCriteria;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.service.CandidateService;
+
+<span style="color: #000080; font-weight: bold">import</span> java.util.Arrays;
+<span style="color: #000080; font-weight: bold">import</span> java.util.List;
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> CandidateManagementWithAnonymousClass {
+
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+        CandidateService candidateService = <span style="color: #000080; font-weight: bold">new</span> CandidateService();
+
+        Candidate candidate01 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate01@gmail.com&quot;</span>, <span style="color: #0000FF">7</span>);
+        Candidate candidate02 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate02@gmail.com&quot;</span>, <span style="color: #0000FF">9</span>);
+        Candidate candidate03 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate03@gmail.com&quot;</span>, <span style="color: #0000FF">6</span>);
+        List&lt;Candidate&gt; candidateList = Arrays.<span style="color: #FF0000">asList</span>(candidate01, candidate02, candidate03);
+
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;Candidate apply FRESHER position: &quot;</span>);
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, <span style="color: #000080; font-weight: bold">new</span> PassingCriteria() {
+            @Override
+            <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">boolean</span> pass(<span style="color: #000080; font-weight: bold">float</span> entryTest) {
+                <span style="color: #000080; font-weight: bold">return</span> entryTest &gt;= <span style="color: #0000FF">6</span>;
+            }
+        });
+
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;\n-----------------------------------&quot;</span>);
+        System.<span style="color: #FF0000">out</span>.<span style="color: #FF0000">println</span>(<span style="color: #0000FF">&quot;\nCandidate apply SENIOR position: &quot;</span>);
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, <span style="color: #000080; font-weight: bold">new</span> PassingCriteria() {
+            @Override
+            <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">boolean</span> pass(<span style="color: #000080; font-weight: bold">float</span> entryTest) {
+                <span style="color: #000080; font-weight: bold">return</span> entryTest &gt;= <span style="color: #0000FF">7</span>;
+            }
+        });
+    }
+}
+</pre></td></tr></table></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-3">Execute <code>main()</code> method và ta có kết quả <strong>KHÔNG THAY ĐỔI</strong>.</p>
+
+                        <p class="mt-3">Với cách triển khai bên trên chúng ta cũng đáp ứng được yêu cầu đề bài khi đã verify được chất lượng ứng viên theo từng vị trí apply.</p>
+                        Với cách dùng anonymous classes ta đã giảm bớt được 2 class cần phải tạo là <code>FresherPassingCriteria, SeniorPassingCriteria</code>.
+                        Tuy nhiên trong class <code>CandidateManagementWithAnonymousClass</code> bạn có thể thấy chưa thực sự hoàn hảo khi 2 blocks dòng 21-26 và 30-35 <strong>source code đang duplicate</strong> và chỉ khác điều kiện so sánh.
+                        <p class="mt-3">
+                            Để giải quyết các vấn đề <strong>tạo thừa class không cần thiết</strong>, <strong>duplicate source</strong> của 2 cách bên trên, chúng ta sẽ cùng nhau triển khai theo các dùng Lambda Expression.
+                        </p>
+
+
+                        <h2 id="implement-source-code-by-lambdas-way" class="mt-4">4. Triển khai source theo lambda expression</h2>
+                        <p><strong>- Tạo class <code>CandidateMngtByLambdaExpression</code></strong></p>
+
+                        <div class="accordion" id="candidateMngtByLambdaExpressionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingCandidateMngtByLambdaExpression">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#candidateMngtByLambdaExpression" aria-expanded="true" aria-controls="candidateMngtByLambdaExpression">
+                                            <i data-feather="code" class="fea icon-sm icons"></i> CandidateMngtByLambdaExpression.java
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="candidateMngtByLambdaExpression" class="collapse" aria-labelledby="headingCandidateMngtByLambdaExpression" data-parent="#candidateMngtByLambdaExpressionExample">
+                                    <div class="card-body">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">package</span> winzonevn.<span style="color: #FF0000">training</span>;
+
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.entity.Candidate;
+<span style="color: #000080; font-weight: bold">import</span> winzonevn.training.service.CandidateService;
+
+<span style="color: #000080; font-weight: bold">import</span> java.util.Arrays;
+<span style="color: #000080; font-weight: bold">import</span> java.util.List;
+
+<span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">class</span> CandidateMngtByLambdaExpression {
+
+    <span style="color: #000080; font-weight: bold">public</span> <span style="color: #000080; font-weight: bold">static</span> <span style="color: #000080; font-weight: bold">void</span> main(String[] args) {
+        Candidate candidate01 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate01@gmail.com&quot;</span>, <span style="color: #0000FF">7</span>);
+        Candidate candidate02 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate02@gmail.com&quot;</span>, <span style="color: #0000FF">9</span>);
+        Candidate candidate03 = <span style="color: #000080; font-weight: bold">new</span> Candidate(<span style="color: #0000FF">&quot;candidate03@gmail.com&quot;</span>, <span style="color: #0000FF">6</span>);
+
+        List&lt;Candidate&gt; candidateList = Arrays.<span style="color: #FF0000">asList</span>(candidate01, candidate02, candidate03);
+
+        CandidateService candidateService = <span style="color: #000080; font-weight: bold">new</span> CandidateService();
+        <span style="color: #008800; font-style: italic">// Check for Fresher position</span>
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, entryTest -&gt; entryTest &gt;= <span style="color: #0000FF">6</span>);
+
+        <span style="color: #008800; font-style: italic">// Other ways</span>
+        <span style="color: #008800; font-style: italic">// candidateService.displayResult(candidateList, (float entryTest) -&gt; entryTest &gt;= 6);</span>
+        <span style="color: #008800; font-style: italic">// candidateService.displayResult(candidateList, (float entryTest) -&gt; {return entryTest &gt;= 6; });</span>
+
+        <span style="color: #008800; font-style: italic">// Check for Senior position</span>
+        candidateService.<span style="color: #FF0000">displayResult</span>(candidateList, entryTest -&gt; entryTest &gt;= <span style="color: #0000FF">8.5</span>);
+
+    }
+
+}
+</pre></td></tr></table></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3">Execute <code>main()</code> method và ta có kết quả cũng <strong>KHÔNG THAY ĐỔI</strong>.</p>
+                        <p>Với những khái niệm về functional interfaces, lambda expressions ta có thể loại bỏ việc phải tạo thừa class cũng như duplicate source.</p>
+                        <p>Làm thế nào mà lambda line 20 <code>entryTest -> entryTest >= 6</code> có thể execute tương tự như <code>FresherPassingCriteria.pass()</code> của cách 01. Tham khảo cách giải thích trong figure 02.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-4" src="../images/blog/06/winzone-lambda-explain.png" alt="Winzone.vn lambda expression explain.">
+                            <figcaption><b>Figure 02.</b></figcaption>
+                        </figure>
+
+                        <h2 id="summary" class="mt-4">5. Kết luận</h2>
+                        <p>Hi vọng rằng bài viết này đã cung cấp đến cho các bạn các kiến thức cơ bản về cú pháp, cách dùng và cách thức hoạt động của lambda expression. Hãy thực hành thật nhiều đề thành thạo với lambda, vì còn khá nhiều các topic mới của Java 8 chúng ta sẽ cần sử dụng đến nó.</p>
+
+                        <p><a href="https://github.com/phuongdp-tech/winzone-training-java/tree/main/lambda-expression-training" target="_blank">Source code tham khảo</a></p>
+
+                        <div><strong>Related Post</strong>: <a href="winzone-java-streams-java8.html">Series Spring Security + JWT cho REST API (Phần 02)</a></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fb-comments mt-4" data-href="https://winzone.vn/post/lambda-expression-functional-interface-java-8.html" data-width="100%" data-numposts="5"></div>
+    </div>
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
