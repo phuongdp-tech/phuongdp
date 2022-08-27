@@ -2591,7 +2591,6 @@ p {
 }
 
 .bg-home {
-  height: 100vh;
   background-size: cover;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
