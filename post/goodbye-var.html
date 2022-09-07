@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win - Tạm biệt var</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, Data Structures and Algorithms" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Tạm biệt var…</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 07/Sep/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#declare-variable-with-var">Khai báo biến với var</a></li>
+                                <li><a href="#declare-variable-with-let">Khai báo biến với let</a></li>
+                                <li><a href="#declare-variable-with-const">Khai báo biến với const</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <p>Bạn sẽ trả lời thế nào khi gặp câu hỏi <i>"Dùng keyword nào để khai báo biến trong javascript?"</i>. Tôi đã thử hỏi học viên của mình và nhiều câu trả lời là: <code>var</code>. Câu trả lời đó không sai nhưng tiêu đề của bài viết lại là <i>"Tạm biệt var"</i>, hãy cùng nhau thảo luận tại sao lại vậy nhé.</p>
+                        </div>
+                        <h2 id="declare-variable-with-var" class="mt-4">1. Khai báo biến với var</h2>
+                        <h4 class="mt-3">1.1 var scope</h4>
+                        <p>Với <code>var</code>, khi biến được tạo ra thì có scope là: <i>"execution context"</i>.</p>
+                        <ul>
+                            <li>Nếu biến được khai báo bên ngoài tất cả các function thì scope sẽ là global scope.</li>
+                            <li>Nếu biến được khai báo trong function thì scope sẽ là function scope. Biến có thể sử dụng trong function và tất cả nested functions. </li>
+                        </ul>
+
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">function</span> test() {
+  <span style="color: #000080; font-weight: bold">var</span> siteName = <span style="color: #0000FF">&#39;Winzone.vn&#39;</span>;
+
+  <span style="color: #000080; font-weight: bold">function</span> nestedTest() {
+  	console.log(siteName); <span style="color: #008800; font-style: italic">// Print &quot;Winzone.vn&quot;</span>
+  }
+  nestedTest();
+
+  console.log(siteName); <span style="color: #008800; font-style: italic">// Print &quot;Winzone.vn&quot;</span>
+}
+
+test();
+console.log(siteName); <span style="color: #008800; font-style: italic">// Uncaught ReferenceError: siteName is not defined</span>
+</pre></td></tr></table></div>
+
+                        <p class="mt-3">Biến <code>siteName</code> được khai báo trong test() function nên có thể sử dụng ở bất kỳ đâu trong test() function và nestedTest() function nhưng bên ngoài function đó thì không thể. Mọi thứ đến đây vẫn bình thường, hãy cùng nhau xem 1 ví dụ nữa:</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">function</span> test() {
+    <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">var</span> i = <span style="color: #0000FF">0</span>; i &lt; <span style="color: #0000FF">5</span>; i++) {
+    	<span style="color: #000080; font-weight: bold">var</span> userName = <span style="color: #0000FF">&#39;Phuong Dang&#39;</span>;
+    }
+
+    console.log(i); <span style="color: #008800; font-style: italic">// Print &quot;5&quot;									</span>
+    console.log(userName); <span style="color: #008800; font-style: italic">// Print &quot;Phuong Dang&quot;									</span>
+}
+
+test();
+</pre></td></tr></table></div>
+
+                        <p class="mt-3">Cả hai biến <code>i</code> và <code>userName</code> vẫn có thể dùng bên ngoài bên ngoài vòng lặp <code>for</code>.
+                            Với những người đã quen lập trình với <i>java, c#...</i> thì scope của biến sẽ chỉ được trong phạm vi của block {} biến đó được khai báo nên tư duy theo thói quen sẽ phán đoán 2 biến này sẽ không dùng bên ngoài <code>for</code> block được.
+                            Tuy nhiên cách hoạt động của <code>var</code> là một khi đã khai báo trong function thì nó là biến của toàn bộ function (in the entire function).
+     Điều này khiến <code>var</code> không được minh bạch cho lắm và vẫn chưa kết thúc vậy đâu. Hãy cùng tiếp tục xem <code>var</code> không tường minh như nào.
+</p>
+                        <h4 class="mt-3">1.2 var hoisting</h4>
+                        <p>Có một khái niệm gọi là "var hoisting" đó là: biến có thể xuất hiện trước khi nó được khai báo. Một điều không thể xuất hiện với khi khai báo biến ở các ngôn ngữ khác.</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3 </pre></td><td><pre style="margin: 0; line-height: 125%">blogName = <span style="color: #0000FF">&#39;Winzone.vn&#39;</span>;
+<span style="color: #000080; font-weight: bold">var</span> blogName;
+console.log(blogName) <span style="color: #008800; font-style: italic">// Print &#39;Winzone.vn&#39;</span>
+</pre></td></tr></table></div>
+
+                        <p class="mt-3">Đoạn source trên được hiểu tương tự như sau:</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">var</span> blogName;
+blogName = <span style="color: #0000FF">&#39;Winzone.vn&#39;</span>;
+console.log(blogName) <span style="color: #008800; font-style: italic">// Print &#39;Winzone.vn&#39;</span>
+</pre></td></tr></table></div>
+
+                        <h4 class="mt-3">1.3 var re-declaring</h4>
+                        <p><code>var</code> cũng cho phép ta có thể khai báo lại một biến trùng tên trong cùng scope đã được khai báo trước đó.
+                            Đây cũng là một điều không thể xuất hiện khi khai báo biến ở các ngôn ngữ khác</p>
+
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">var</span> siteName;
+<span style="color: #000080; font-weight: bold">var</span> siteName; <span style="color: #008800; font-style: italic">// Works fine.</span>
+</pre></td></tr></table></div>
+                        <h2 id="declare-variable-with-let" class="mt-4">2. Khai báo biến với let</h2>
+                        <p>Với <code>let</code>, khi biến được tạo ra thì có scope phụ thuộc vào block được khai báo.</p>
+                        <ul>
+                            <li>Nếu biến được khai báo bên ngoài tất cả các function thì scope sẽ là global scope.</li>
+                            <li>Nếu biến được khai báo trong function thì scope sẽ là block scope. Biến sẽ chỉ có thể sử dụng trong phạm vi của block và tất cả nested block được khai báo. Block ở đây có thể là cả function hoặc là if/loop.</li>
+                        </ul>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">function</span> test() {
+  <span style="color: #000080; font-weight: bold">let</span> siteName = <span style="color: #0000FF">&#39;Winzone.vn&#39;</span>;
+
+  <span style="color: #000080; font-weight: bold">function</span> nestedTest() {
+  	console.log(siteName); <span style="color: #008800; font-style: italic">// Print &quot;Winzone.vn&quot;</span>
+  }
+  nestedTest();
+
+  console.log(siteName); <span style="color: #008800; font-style: italic">// Print &quot;Winzone.vn&quot;</span>
+}
+
+test();
+console.log(siteName); <span style="color: #008800; font-style: italic">// Uncaught ReferenceError: siteName is not defined</span>
+</pre></td></tr></table></div>
+                        <p class="mt-3">Kết quả chúng ta nhận được cũng giống hệt khi sử dụng với <code>var</code>. Tiếp tục điều này với ví dụ 2:</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">function</span> test() {
+    <span style="color: #000080; font-weight: bold">for</span> (<span style="color: #000080; font-weight: bold">let</span> i = <span style="color: #0000FF">0</span>; i &lt; <span style="color: #0000FF">5</span>; i++) {
+    	<span style="color: #000080; font-weight: bold">let</span> userName = <span style="color: #0000FF">&#39;Phuong Dang&#39;</span>;
+    }
+
+    console.log(i); <span style="color: #008800; font-style: italic">// Uncaught ReferenceError: i is not defined</span>
+    console.log(userName); <span style="color: #008800; font-style: italic">// Never executes</span>
+}
+
+test();
+</pre></td></tr></table></div>
+                        <p class="mt-3">Kết quả lúc này đã khác bởi vì <code>i</code> và <code>userName</code> không thể sử dụng vì chúng chỉ có giá trị trong vòng lặp for được khai báo. Wow, đó chính xác là điều chúng ta muốn.</p>
+
+                        <p>Không hề có khái niệm "let hoisting" như "var hoisting". Bắt đầu start của block code cho đến khi biến được khởi tạo với let thì vùng đó được gọi là "temporal dead zone", tức là biến không thể được sử dụng trước khi khai báo với let.</p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5 </pre></td><td><pre style="margin: 0; line-height: 125%">a = <span style="color: #0000FF">1</span>; <span style="color: #008800; font-style: italic">// This works</span>
+b = <span style="color: #0000FF">2</span>; <span style="color: #008800; font-style: italic">// Uncaught ReferenceError: Cannot access &#39;b&#39; before initialization</span>
+
+<span style="color: #000080; font-weight: bold">var</span> a;
+<span style="color: #000080; font-weight: bold">let</span> b;
+</pre></td></tr></table></div>
+                        <p class="mt-3">Chúng ta cũng không thể re-declare biến trong cùng một scope khi sử dụng <code>let</code></p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">let</span> blogName;
+<span style="color: #000080; font-weight: bold">let</span> blogName; <span style="color: #008800; font-style: italic">// SyntaxError: Identifier &#39;blogName&#39; has already been declared</span>
+
+<span style="color: #000080; font-weight: bold">var</span> winzone;
+<span style="color: #000080; font-weight: bold">let</span> winzone; <span style="color: #008800; font-style: italic">// SyntaxError: Identifier &#39;winzone&#39; has already been declared</span>
+</pre></td></tr></table></div>
+
+                        <h2 id="declare-variable-with-const" class="mt-4">3. Khai báo biến với const</h2>
+                        <p>Scope của biến khi khai báo với <code>const</code> tương tự với <code>let</code>, nó đều thuộc về block được khai báo.</p>
+                        <p>Có 2 điểm khác biệt giữa const với <code>var</code>, <code>let</code>:</p>
+                        <ul>
+                            <li>Biến được tạo với <code>const</code> thì bắt buộc phải gán giá trị khi khởi tạo</li>
+                            <li>Biến được tạo với <code>const</code> thì không thể thay đổi giá trị.</li>
+                        </ul>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">const</span> a;  <span style="color: #008800; font-style: italic">// Uncaught SyntaxError: Missing initializer in const declaration</span>
+
+<span style="color: #000080; font-weight: bold">const</span> b = <span style="color: #0000FF">2</span>;
+b=<span style="color: #0000FF">3</span>; <span style="color: #008800; font-style: italic">// Uncaught TypeError: Assignment to constant variable.</span>
+</pre></td></tr></table></div>
+                        <p class="caution rounded p-3 mt-3">
+                            <i class="fas fa-exclamation-circle"></i> Cần lưu ý rằng giá trị của biến <code>const</code> thì không thể thay đổi, nhưng chúng ta hoàn toàn có thể thay đổi giá trị property của object, hoặc giá trị item của array được khai báo bằng const
+                        </p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">const</span> user = {
+    name: <span style="color: #0000FF">&quot;PhuongDP&quot;</span>,
+    age: <span style="color: #0000FF">28</span>
+};
+user.age = <span style="color: #0000FF">29</span>;
+console.log(user); <span style="color: #008800; font-style: italic">// {name: &quot;PhuongDP&quot;, age: 29}</span>
+</pre></td></tr></table></div>
+<p class="mt-3"></p>
+                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5 </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #000080; font-weight: bold">const</span> MY_ARRAY = [];
+MY_ARRAY.push(<span style="color: #0000FF">&#39;A&#39;</span>);
+console.log(MY_ARRAY); <span style="color: #008800; font-style: italic">// [&quot;A&quot;]</span>
+
+MY_ARRAY = [<span style="color: #0000FF">&#39;B&#39;</span>]; <span style="color: #008800; font-style: italic">// Uncaught TypeError: Assignment to constant variable.</span>
+</pre></td></tr></table></div>
+                        <h2 id="summary" class="mt-4">4. Kết luận</h2>
+                        <p>Sau đây là table tổng hợp 3 cách khai báo biến với <code>var</code>, <code>let</code>, <code>const</code>: </p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">var</th>
+                                    <th scope="col">let</th>
+                                    <th scope="col">const</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">origins</th>
+                                    <td>pre ES2015</td>
+                                    <td>ES2015 (ES6)</td>
+                                    <td>ES2015 (ES6)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">scope</th>
+                                    <td>global scope or function scope</td>
+                                    <td>global scope or block scope</td>
+                                    <td>global scope or block scope</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">hoisting</th>
+                                    <td><strong class="text-success">YES</strong></td>
+                                    <td><strong class="text-danger">NO</strong></td>
+                                    <td><strong class="text-danger">NO</strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">re-declaration within scope</th>
+                                    <td><strong class="text-success">YES</strong></td>
+                                    <td><strong class="text-danger">NO</strong></td>
+                                    <td><strong class="text-danger">NO</strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">re-assigned within scope</th>
+                                    <td><strong class="text-success">YES</strong></td>
+                                    <td><strong class="text-success">YES</strong></td>
+                                    <td><strong class="text-danger">NO</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>Bây giờ thì các bạn đã hiểu cách thức hoạt động của <code>var</code>, <code>let</code>, <code>const</code> rồi. Vậy thì chúng ta sẽ lựa chọn keyword nào để khai báo biến trong javascript.</p>
+                        <ul>
+                            <li>Sử dụng <code>const</code> ở bất kỳ nơi nào mà biến không cần gán lại giá trị.</li>
+                            <li>Sử dụng <code>let</code> ở bất kỳ nơi nào mà biến có thể gán lại giá trị.</li>
+                            <li>Ngừng sử dụng <code>var</code> ngay lập tức bởi sự không minh bạch cũng như có thể mang lại nhiều kết quả không như ý.
+                                Ngoại trừ trường hợp đặc biệt là dự án bạn làm cần phải support những <a target="_blank" href="https://www.w3schools.com/js/js_versions.asp">browser chưa hỗ trợ ES6</a>.</li>
+                        </ul>
+
+                        <p>Hi vọng rằng sau bài viết này chúng ta sẽ thực sự hiểu và sẽ có những sự lựa chọn đúng đắn khi khai báo biến trong javascript.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="fb-comments mt-4" data-href="https://winzone.vn/post/introduction-data-structures-and-algorithims.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
