@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Sharing knowledge, together we win</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+<!--                    <h1 class="title title-blog-detail">Thao tác cơ bản với Git - Phần 01</h1>-->
+                    <h1 class="title title-blog-detail">Top 50 câu hỏi phỏng vấn Spring</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 09/Sep/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=spring" class="text-primary">spring</a></h6>
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#compare-model-modelmap-modelandview-springmvc">[Spring MVC] 1. So sánh Model, ModelMap và ModelAndView</a></li>
+                                <li><a href="#compare-model-attribute-flash-attribute-springmvc">[Spring MVC] 2. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <p><strong>Dưới đây là tổng hợp những câu hỏi phỏng vấn Spring cho đối tượng Fresher.</strong></p>
+
+                            <p class="caution rounded p-3 mt-3">
+                                <i class="fas fa-exclamation-circle"></i>  Spring MVC version 5.3.2
+                            </p>
+                        </div>
+
+                        <h2 id="compare-model-modelmap-modelandview-springmvc" class="mt-4">1. So sánh Model, ModelMap và ModelAndView trong Spring MVC</h2>
+                        <div class="question-content">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">#</th>
+                                        <th scope="col" style="width: 30%"><code>Model</code></th>
+                                        <th scope="col" style="width: 30%"><code>ModelMap</code></th>
+                                        <th scope="col" style="width: 30%"><code>ModelAndView</code></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row" rowspan="2">Mục đích sử dụng</th>
+                                        <td colspan="3" class="text-center">[1] Cung cấp data (Model attributes) từ Controller layer đến View layer để rendering HTML.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>[2] Xác định view sẽ được response.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Vị trí sử dụng</th>
+                                        <td>Controller method argument</td>
+                                        <td>Controller method argument</td>
+                                        <td>Controller method return value</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Type</th>
+                                        <td><code>interface</code></td>
+                                        <td><code>class</code></td>
+                                        <td><code>class</code></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <strong>01. Model</strong>
+                                    <div style="width: 100%">
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+<span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">(</span>Model model<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+	<span style="color: #888888">// Add an attribute</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+
+	<span style="color: #888888">// Add a map attributes</span>
+	Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+	paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+	<span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                        <div class="mt-3"><strong>02. ModelMap</strong></div>
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">(</span>ModelMap model<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #888888">// Add an attribute</span>
+        model<span style="color: #333333">.</span><span style="color: #0000CC">addAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+
+        <span style="color: #888888">// Add a map attributes</span>
+        Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+        paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+        model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                        <div class="mt-3"><strong>03. ModelAndView</strong></div>
+                                        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+<span style="color: #008800; font-weight: bold">public</span> ModelAndView <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">()</span> <span style="color: #333333">{</span>
+	Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+	paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+
+	ModelMap model <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ModelMap<span style="color: #333333">();</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+	ModelAndView modelAndView <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ModelAndView<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">);</span>
+	modelAndView<span style="color: #333333">.</span><span style="color: #0000CC">addAllObjects</span><span style="color: #333333">(</span>model<span style="color: #333333">);</span>
+	modelAndView<span style="color: #333333">.</span><span style="color: #0000CC">addObject</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+
+	<span style="color: #008800; font-weight: bold">return</span> modelAndView<span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion" id="accordionExplainSQL">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                <i class="mdi mdi-code-tags mr-1"></i> Source code demo
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExplainSQL">
+                                        <div class="card card-body">
+                                            <strong>01. Model</strong>
+                                            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+<span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">(</span>Model model<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+	<span style="color: #888888">// Add an attribute</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+
+	<span style="color: #888888">// Add a map attributes</span>
+	Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+	paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+	<span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                            <div class="mt-3"><strong>02. ModelMap</strong></div>
+                                            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+    <span style="color: #008800; font-weight: bold">public</span> String <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">(</span>ModelMap model<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #888888">// Add an attribute</span>
+        model<span style="color: #333333">.</span><span style="color: #0000CC">addAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+
+        <span style="color: #888888">// Add a map attributes</span>
+        Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+        paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+        model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                            <div class="mt-3"><strong>03. ModelAndView</strong></div>
+                                            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@GetMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/showView&quot;</span><span style="color: #333333">)</span>
+<span style="color: #008800; font-weight: bold">public</span> ModelAndView <span style="color: #0066BB; font-weight: bold">showView</span><span style="color: #333333">(</span>ModelMap model<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+	Map<span style="color: #333333">&lt;</span>String<span style="color: #333333">,</span> String<span style="color: #333333">&gt;</span> paramMap <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> LinkedHashMap<span style="color: #333333">&lt;&gt;();</span>
+	paramMap<span style="color: #333333">.</span><span style="color: #0000CC">put</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;interviewQuestion&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Question Spring MVC&quot;</span><span style="color: #333333">);</span>
+	model<span style="color: #333333">.</span><span style="color: #0000CC">addAllAttributes</span><span style="color: #333333">(</span>paramMap<span style="color: #333333">);</span>
+
+	ModelAndView modelAndView <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ModelAndView<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;viewPage&quot;</span><span style="color: #333333">);</span>
+	modelAndView<span style="color: #333333">.</span><span style="color: #0000CC">addObject</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;greeting&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;Welcome to Winzone.vn&quot;</span><span style="color: #333333">);</span>
+	modelAndView<span style="color: #333333">.</span><span style="color: #0000CC">addAllObjects</span><span style="color: #333333">(</span>model<span style="color: #333333">);</span>
+
+	<span style="color: #008800; font-weight: bold">return</span> modelAndView<span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="compare-model-attribute-flash-attribute-springmvc" class="mt-4">2. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</h2>
+                        <div class="question-content">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 20%">#</th>
+                                        <th scope="col" style="width: 40%"><code>addAttribute()</code></th>
+                                        <th scope="col" style="width: 40%"><code>addFlashAttribute()</code></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Mục đích sử dụng</th>
+                                        <td colspan="2" class="text-center">Send attribute từ Controller này sang một Controller khác qua Redirect</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Source demo</th>
+                                        <td colspan="2">
+                                            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #555555; font-weight: bold">@PostMapping</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;/add&quot;</span><span style="color: #333333">)</span>
+<span style="color: #008800; font-weight: bold">public</span> ModelAndView <span style="color: #0066BB; font-weight: bold">add</span><span style="color: #333333">(</span>RedirectAttributes redirectAttributes<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+	<span style="color: #888888">// TODO: Validate and save object</span>
+
+	redirectAttributes<span style="color: #333333">.</span><span style="color: #0000CC">addAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;attribute&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;attributeValue&quot;</span><span style="color: #333333">);</span>
+	redirectAttributes<span style="color: #333333">.</span><span style="color: #0000CC">addFlashAttribute</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;flashAttribute&quot;</span><span style="color: #333333">,</span> <span style="background-color: #fff0f0">&quot;flashAttributeValue&quot;</span><span style="color: #333333">);</span>
+
+	<span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">new</span> <span style="color: #0066BB; font-weight: bold">ModelAndView</span><span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;redirect:/showView&quot;</span><span style="color: #333333">);</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kết quả</th>
+                                        <td>
+                                            <p>Attribute value sẽ được gửi đến endpoint <code>/showView</code> thông qua query string</p>
+                                            <code>/showView?attribute=attributeValue</code>
+                                        </td>
+                                        <td>
+                                            <p>Attribute value sẽ lưu trong <code>session</code> và redirect đến endpoint <code>/showView</code>.</p>
+                                            <p><code>session</code> attribute sẽ bị xóa sau khi request <code>/showView</code> được thực hiện.</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <h2 id="summary" class="mt-4">6. Kết luận</h2>
+                        <p>Hi vọng sau bàu viết này, các bạn đã hiểu về mô hình VCS và có thể thao tác cơ bản với Git/GibLab thông qua các command: <code>clone, status, add, commit, pull, push</code>.</p>
+                        <p>Nếu bạn đang cảm thấy làm việc với Git có nhiều câu lệnh thế này thì thật khó nhớ. Hãy yên tâm nhé, ngoài cách làm việc với command chúng ta có nhất nhiều tool hỗ trợ làm việc một cách thân thiện với Guide thông qua
+                            <a target="_blank" href="https://git-scm.com/downloads/guis">Git Guide Client</a>, hoặc 1 số loại extension được tích hợp sẵn trong các IDE
+                        </p>
+
+
+                        <!--                        <div class="caution rounded p-3 mt-3">-->
+<!--                            <div>- <b>update</b>, <b>commit</b> là command làm việc với local repository.</div>-->
+<!--                            <div>- <b>pull</b>, <b>push</b> là command làm việc với central repository.</div>-->
+<!--                        </div>-->
+
+                </div>
+            </div>
+
+            <div class="fb-comments mt-4" data-href="https://winzone.vn/post/git-basic-operator-01.html" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
