@@ -27,6 +27,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="css/colors/green.css" rel="stylesheet" id="color-opt">
     <style>
+        #about_me_fa_mobile {
+            display: none;
+        }
         @media screen and (max-width: 991px) {
             #author-name {
                 font-size: 2rem;
@@ -35,6 +38,12 @@
             .bg-home {
                 padding: 15px 0;
                 height: auto;
+            }
+            #about_me_fa_mobile {
+                display: block;
+            }
+            #about_me_fa {
+                display: none;
             }
         }
         #home {
@@ -151,7 +160,20 @@
             </div>
         </div>
     </div>
-
+    <div class="container px-3" style="background: white">
+        <hr>
+        <h3 class="py-3">About me</h3>
+        <div class="row">
+            <div class="col-12">
+                <a id="about_me_fa" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
+                    <img src="images/about-me/aboutme_fa.png" style="max-width: 100%" alt="FA about me">
+                </a>
+                <a id="about_me_fa_mobile" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
+                    <img src="images/about-me/aboutme_fa_mobile.jpg" style="max-width: 100%" alt="FA about me">
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="container px-3" style="background: white">
         <hr>
         <h3 class="pt-3">Những lời cảm ơn, chia sẻ niềm vui của học viên:</h3>
