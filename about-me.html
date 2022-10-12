@@ -166,10 +166,10 @@
         <div class="row">
             <div class="col-12">
                 <a id="about_me_fa" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
-                    <img class="border border-secondary rounded" src="images/about-me/aboutme_fa.png" style="max-width: 100%" alt="FA about me">
+                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/aboutme_fa.png" style="max-width: 100%" alt="FA about me">
                 </a>
                 <a id="about_me_fa_mobile" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
-                    <img class="border border-secondary rounded" src="images/about-me/aboutme_fa_mobile.jpg" style="max-width: 100%" alt="FA about me">
+                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/aboutme_fa_mobile.jpg" style="max-width: 100%" alt="FA about me">
                 </a>
             </div>
         </div>
@@ -180,24 +180,24 @@
         <div class="row py-3">
             <div class="col-12 col-lg-4 mb-5">
                 <a href="images/about-me/student-talk-about-me/studentTalkAboutMe01.jpg" target="_blank">
-                    <img src="images/about-me/student-talk-about-me/studentTalkAboutMe01.jpg" class="border border-secondary rounded"
+                    <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe01.jpg" class="border border-secondary rounded lazy-image"
                          style="max-width: 100%">
                 </a>
             </div>
             <div class="col-12 col-lg-4 mb-5">
-                <img src="images/about-me/student-talk-about-me/studentTalkAboutMe02.jpg" class="border border-secondary rounded"
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe02.jpg" class="border border-secondary rounded lazy-image"
                      style="max-width: 100%">
             </div>
             <div class="col-12 col-lg-4 mb-5">
-                <img src="images/about-me/student-talk-about-me/studentTalkAboutMe03.jpg" class="border border-secondary rounded"
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe03.jpg" class="border border-secondary rounded lazy-image"
                      style="max-width: 100%">
             </div>
             <div class="col-12 col-lg-4 mb-5">
-                <img src="images/about-me/student-talk-about-me/studentTalkAboutMe04.jpg" class="border border-secondary rounded"
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe04.jpg" class="border border-secondary rounded lazy-image"
                      style="max-width: 100%">
             </div>
             <div class="col-12 col-lg-4 mb-5">
-                <img src="images/about-me/student-talk-about-me/studentTalkAboutMe05.jpg" class="border border-secondary rounded"
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe05.jpg" class="border border-secondary rounded lazy-image"
                      style="max-width: 100%">
             </div>
         </div>
@@ -303,5 +303,13 @@
 
     <!-- Main Js -->
     <script src="js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            const elements = document.getElementsByClassName('lazy-image');
+            for (const e of elements) {
+                e.setAttribute('src', e.getAttribute('data-url'));
+            }
+        });
+    </script>
 </body>
 </html>
