@@ -83,6 +83,7 @@
                                 <li><a href="#compare-persist-and-save-method">2. So sánh persist() và save() method</a></li>
                                 <li><a href="#compare-update-and-merge-method">3. So sánh merge() và update() method</a></li>
                                 <li><a href="#compare-remove-and-delete-method">4. So sánh remove() và delete() method</a></li>
+                                <li><a href="#compare-first-level-cache-and-second-level-cache">5. So sánh First Level Cache và Second Level Cache</a></li>
                             </ul>
                         </section>
                         <div class="mt-3">
@@ -293,7 +294,58 @@
                                 </table>
                             </div>
                         </div>
-<!--                        <h2 id="summary" class="mt-4">6. Kết luận</h2>-->
+                        <h2 id="compare-first-level-cache-and-second-level-cache" class="mt-4">5. So sánh First Level Cache và Second Level Cache</h2>
+                        <div class="question-content">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">#</th>
+                                        <th scope="col" style="width: 30%">First Level Cache</th>
+                                        <th scope="col" style="width: 30%">Second Level Cache</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Purpose</th>
+                                        <td colspan="2" class="text-center">Cải thiện hiệu quả truy xuất dữ liệu</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Configuring</th>
+                                        <td>Default enable và không thể disable</td>
+                                        <td>Default disable và cần config để enable</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Scope</th>
+                                        <td>Session</td>
+                                        <td>SessionFactory</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Sharing among sessions</th>
+                                        <td>No</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Lifespan</th>
+                                        <td>
+                                            <ul>
+                                                <li>Khi Session object bị close thì First Level Cache thuộc về object đó sẽ mất đi.</li>
+                                                <li>Chủ động xóa entity object ra khỏi First Level Cache bằng các method: <code>evict(), clear()</code>.</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li>Khi SessionFactory bị close thì Second Level Cache sẽ bị mất đi</li>
+                                                <li>Chủ động xóa entity object ra khỏi Second Level Cache bằng các method: <code>evict(), evictAll(), evictEntityData()</code>.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--                        <h2 id="summary" class="mt-4">6. Kết luận</h2>-->
 
 
                 </div>
