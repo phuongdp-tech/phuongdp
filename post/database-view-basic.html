@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Cơ bản về Database View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Cơ bản về Database View</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 04/Feb/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+<!--                    <img src="../images/blog/groupbyinsql.png" class="img-fluid rounded-top" alt="">-->
+                    <div class="card-body content">
+<!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">SQL</a></h6>-->
+                        <section class="table-content rounded">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#what-is-the-database-view">Database View là gì?</a></li>
+                                <li><a href="#view-in-sql-server">Thao tác cơ bản với View</a></li>
+                                <li><a href="#advantages-and-disadvantages">Ưu điểm và nhược điểm của View</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ul>
+                        </section>
+                        <div class="mt-3">
+                            <strong>
+                                <p>Database View không chỉ là khái niệm riêng của SQL Server hay MySQL mà nó là khái niệm chung của hầu hết những loại cơ sở dữ liệu quan hệ RDBMS (MySQL, SQL Server, Oracle, PostgreSQL...)</p>
+                                <p>Với bài viết này, chúng ta sẽ cùng thảo luận về khái niệm tư tưởng chung của view và cách sử dụng view trong oracle</p>
+                            </strong>
+                        </div>
+                        <h2 id="what-is-the-database-view" class="mt-4">1. Database View là gì?</h2>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0 font-italic">Database View là sự trình bày data theo ý muốn được trích xuất từ một hoặc nhiều table/view khác. View không lưu data nên nó còn được biết đến với cái tên "bảng ảo(virtual tables)".
+                            </p>
+                        </blockquote>
+                        <p>Bạn có thể thao tác select, insert, update và delete với view giống như table bình thường. Vì không lưu data nên tất cả những thao tác được thực hiện trên view thì đều được phản ánh đến <strong>base table</strong> mà được trích xuất dữ liệu.</p>
+
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/13/view_example.png" alt="View example">
+                            <figcaption><b>Figure 1: Ví dụ 1 view được tạo từ 2 base tables Employee và Department</b></figcaption>
+                        </figure>
+                        <h2 id="view-in-sql-server" class="mt-4">2. Thao tác cơ bản với View</h2>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i> SQL Statement trong bài viết này sẽ sử dụng SQL SERVER 2019 để demo source
+                        </p>
+                        <h4 class="mt-3">2.1 Create View</h4>
+                        <h6>Syntax:</h6>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">CREATE</span> [<span class="keyword">OR ALTER</span> ] <span class="keyword">VIEW</span> [ schema_name. ] view_name <span class="keyword">AS</span><br>
+                            select_statement<br>
+                            [<span class="keyword">WITH CHECK OPTION</span>]<br>
+                            [;]<br>
+                        </blockquote>
+
+                        <p>Chúng ta hãy thử tạo view với tiền đề có 2 table Employee và Department như Figure 1: </p>
+                        <h6>2.1.1 Tạo view truy xuất data từ 2 tables</h6>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">CREATE VIEW</span> employee_with_department_view <span class="keyword">AS</span><br>
+                            <span class="keyword">SELECT</span> E.EmployeeNo, E.EmployeeName, D.DepartmentName<br>
+                            <span class="keyword">FROM</span> Employee E<br>
+                            <span class="keyword">INNER JOIN</span> Department D ON E.DepartmentNo = D.DepartmentNo<br>
+                        </blockquote>
+                        <p>Thực hiện truy xuất dữ liệu qua view bằng câu lệch SELECT, và ta thu được kết quả như table 01</p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">SELECT</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;EmployeeNo, EmployeeName, DepartmentName<br>
+                            <span class="keyword">FROM</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;employee_with_department_view<br>
+                        </blockquote>
+
+                        <div class="table-responsive bg-white shadow rounded">
+                            <table class="table mb-0 table-center table-data">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="5">Table 01: employee_with_department_view</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">EmployeeNo</th>
+                                    <th scope="col">EmployeeName</th>
+                                    <th scope="col">DepartmentName</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Adam</td>
+                                    <td>Sale</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Susan</td>
+                                    <td>Marketing</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>John</td>
+                                    <td>IT</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6 class="mt-4">2.1.2 Tạo view <span class="text-danger">với CHECK OPTION</span></h6>
+                        <p>Tạo view truy xuất EmployeeNo, EmployeeName, DepartmentNo của những nhân viên thuộc Department 1 trong table Employee với <code>WITH CHECK OPTION</code> </p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">CREATE VIEW</span> employee_view <span class="keyword">AS</span><br>
+                            <span class="keyword">SELECT</span> E.EmployeeNo, E.EmployeeName, E.DepartmentNo<br>
+                            <span class="keyword">FROM</span> Employee E<br>
+                            <span class="keyword">WHERE</span> E.DepartmentNo = 1<br>
+                            <span class="keyword">WITH CHECK OPTION</span>;<br>
+                        </blockquote>
+                        <p>Dùng <code>CHECK OPTION</code> khi chúng ta muốn tạo ràng buộc cho việc INSERT/UPDATE data thông qua view. Chỉ những record thỏa mãn điều kiện trong câu lệch SELECT khi tạo index mới được INSERT/UPDATE.
+                            <br/>Cụ thể trong trường hợp này là record cần thỏa mãn điều kiện <code>WHERE E.DepartmentNo = 1</code></p>
+                        <p>Với employee_view vừa tạo khi chúng ta execute Statement_01 sẽ thành công và ngược lại Statement_02 sẽ thất bại</p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="comment">-- Statement_01: Success</span><br>
+                            <span class="keyword">INSERT INTO</span> employee_view(EmployeeName, DepartmentNo) <span class="keyword">VALUES</span> ('Selena', 1)<br><br>
+
+                            <span class="comment">-- Statement_02: The attempted insert or update failed because the target view either specifies WITH CHECK OPTION ...</span><br>
+                            <span class="keyword">INSERT INTO</span> employee_view(EmployeeName, DepartmentNo) <span class="keyword">VALUES</span> ('Peter', 2)<br>
+                        </blockquote>
+                        <h6 class="mt-4">2.1.3 Updatable view</h6>
+                        <p>Mặc định view được tạo ra đều có thể thao tác thay đổi data(UPDATE/DELETE/INSERT), tuy nhiên cần thỏa mãn các điều sau</p>
+                        <ul>
+                            <li>Bất kỳ sửa đổi thông qua view phải tham chiếu đến các column chỉ của một base table.</li>
+                            <li>Column được sửa đổi thông qua view phải reference trực tiếp đến column của base table, nên sẽ không để update data với những column như sau:
+                                <ul>
+                                    <li>Column được tạo ra từ các aggregate function (AVG, COUNT, SUM, MIN...)</li>
+                                    <li>Column được tạo bởi các phép tính.</li>
+                                    <li>Column được tạo bằng cách sử dụng các toán tử tập hợp UNION, UNION ALL, CROSSJOIN, EXCEPT và INTERSECT.</li>
+                                </ul>
+                            </li>
+                            <li>Column được sửa đổi không bị ảnh hưởng bởi các mệnh đề GROUP BY, HAVING hoặc DISTINCT.</li>
+                            <li>Nếu 1 column NOT NULL của base table không được liệt kê trong mệnh đề SELECT khi tạo view thì không thể insert dữ liệu thông qua view</li>
+                        </ul>
+                        <h6 class="mt-4">2.1.4 Tạo READ ONLY VIEW</h6>
+                        <p>Đôi khi chúng ta muốn disable việc update data thông qua view, ngoài cách deny UPDATE/DELETE/INSERT permissions với view
+                            thì ta có thể khiến cho việc update data qua view luôn vi phạm 1 trong những điều kiện được mô tả trong 2.1.3
+                        </p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">CREATE VIEW</span> employee_view_read_only <span class="keyword">AS</span><br>
+                            <span class="keyword">SELECT</span> E.EmployeeNo, E.EmployeeName, E.DepartmentNo<br>
+                            <span class="keyword">FROM</span> Employee E<br>
+                            <span class="keyword">UNION ALL</span><br>
+                            <span class="keyword">SELECT NULL</span>, <span class="keyword">NULL</span>, <span class="keyword">NULL</span><br>
+                        </blockquote>
+                        <p>Chúng ta sẽ gặp lỗi khi cố thực hiện Statement_03</p>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="comment">-- Statement_03: Update or insert of view or function 'employee_view_read_only' failed because it contains a derived or constant field.</span><br>
+                            <span class="keyword">INSERT INTO</span> employee_view_read_only(EmployeeName, DepartmentNo) <span class="keyword">VALUES</span> ('David', 2)<br>
+                        </blockquote>
+
+                        <h4 class="mt-3">2.2 Drop View</h4>
+                        <p>Để drop view hãy chắc chắn rằng bạn đang sử dụng user có quyển drop view tại schema mong muốn. Tất nhiên việc drop view sẽ không gây ảnh hưởng đến data của base table</p>
+                        <h6>Syntax:</h6>
+                        <blockquote class="sql-quote rounded mt-3 p-3">
+                            <span class="keyword">DROP VIEW</span> view_name
+                        </blockquote>
+
+                        <h4 class="mt-3">2.3 Alter View</h4>
+                        <p>Khi base table bị thay đổi (alter/drop) có thể gây ảnh hưởng đến view, hoặc khi ta muốn thay đổi cấu trúc của view thì có thể dùng <code>ALTER VIEW</code> </p>
+                        <p>Có 2 cách để thay đổi cấu trúc của view: </p>
+                        <ul>
+                            <li>Drop view cũ và re-create view mới</li>
+                            <li>Sử dụng syntax CREATE OR ALTER VIEW: Sẽ tạo mới khi view name chưa tồn tại hoặc update khi view name đã tồn tại
+                                <p>Ví dụ thay đổi view <code>employee_view</code> bên trên, loại bỏ DepartmentNo khỏi danh sách column muốn lấy.</p>
+                                <blockquote class="sql-quote rounded mt-3 p-3">
+                                    <span class="keyword">CREATE OR ALTER VIEW</span> employee_view <span class="keyword">AS</span><br>
+                                    <span class="keyword">SELECT</span> E.EmployeeNo, E.EmployeeName<br>
+                                    <span class="keyword">FROM</span> Employee E<br>
+                                    <span class="keyword">WHERE</span> E.DepartmentNo = 1<br>
+                                    <span class="keyword">WITH CHECK OPTION</span>;<br>
+                                </blockquote>
+
+                                <p><b>Note:</b> <i>Một số lại RDBMS khác có thể syntax sẽ khác nhau tuy nhiên ý nghĩa đều như vậy, ví dụ Oracle sẽ là CREATE OR REPLACE VIEW</i></p>
+                            </li>
+                        </ul>
+                        <h2 id="advantages-and-disadvantages" class="mt-4">3. Ưu điểm và nhược điểm của View</h2>
+                        <h4>3.1 Ưu điểm</h4>
+                        <ul>
+                            <li><b>View giúp đơn giản hóa những query phức tạp.</b>
+                                <p>Trong trường hợp cần truy xuất dữ liệu từ nhiều table với logic phức tạp.
+                                    Lúc này ta có thể tạo view với logic tương tự và thông qua view chúng ta sẽ chỉ cần sử dụng những câu query đơn giản để truy xuất dữ liệu.
+                                </p>
+                            </li>
+                            <li><b>Giới hạn data có thể truy cập với nhóm người dùng được chỉ định.</b>
+                                <p>Đôi khi ta không muốn những dữ liệu nhạy cảm được truy cập bởi nhóm user nào đó. View có thể giúp ta giới hạn row/column của những table theo điều kiện ta muốn lấy.</p>
+                            </li>
+                            <li><b>View cung cấp thêm 1 lớp bảo mật cho database.</b>
+                                <p>Có những dữ liệu mà một nhóm người dùng có thể truy cập nhưng lại không muốn họ có thể thao tác thay đổi. Option VIEW READ ONLY sẽ giải quyết được vấn đề này.
+                                </p>
+                            </li>
+                            <li><b>Cung cấp khả năng tương thích khi thay đổi cấu trúc dữ liệu.</b>
+                                <p>Giả sử rằng bạn có một database đang được chạy tại môi trường production. Nhưng lại đang tồn tại 1 table Employee với cấu trúc <b>không được tốt</b> như sau:</p>
+                                <blockquote class="sql-quote rounded mt-3 p-3">
+                                    Employee_Information(EmployeeNo (PK), EmployeeName, Salary, DepartmentNo, DepartmentName, DepartmentDescription)
+                                </blockquote>
+                                <p>Sau 1 thời gian dùng Employee số lượng tăng nhiều records nhưng số lượng department thì không nhiều, vài khi thay đổi thông tin Department thì lại phải thay đổi toàn bộ thông tin Employee của Department đó.
+                                  Để nhất quán và tránh việc dư thừa dữ liệu lúc này bạn quyết định tạo 2 tables mới.</p>
+                                <blockquote class="sql-quote rounded mt-3 p-3">
+                                    Employee(EmployeeNo (PK), EmployeeName, Salary, DepartmentNo (FK))<br>
+                                    Department(DepartmentNo (PK), DepartmentName, DepartmentDescription)
+                                </blockquote>
+
+                                <p>Tuy nhiên nếu xóa table Employee_Information ngay sẽ gây ảnh hưởng đến chức năng đang chạy hiện tại.
+                                   Hãy import data vào 2 tables mới sau đó tạo 1 view có name và cấu trúc với table Employee_Information, lúc này các phần SELECT vẫn sẽ hoạt động bình thường, ta cần đi điều tra những phần UPDATE/INSERT/DELETE để cập nhật.</p>
+                            </li>
+                        </ul>
+                        <h4>3.2 Nhược điểm</h4>
+                        <ul>
+                            <li><p>Performance</p>
+                                <p>Vì bản chất không lưu dữ liệu nên tất cả những thao tác được thực hiện trên view thì đều được phản ánh đến base table.
+                                    Do đó query processor phải translate view thành query đến base table nên hiệu năng truy xuất dữ liệu có thẻ giảm nếu view phức tạp được tạo từ nhiều table hoặc view được tạo từ view khác
+                                </p>
+                            </li>
+                            <li>
+                                <b>Phụ thuộc vào base table</b>
+                                <p>Mỗi khi base table có sự thay đổi cấu trúc điều đó có thể khiến view trở thành invalid</p>
+                            </li>
+                        </ul>
+                        <h2 id="summary" class="mt-4">4. Kết luận</h2>
+                        <p>Trên đây là kiến thức cơ bản về VIEW trong RDBMS. Hi vọng rằng sau bài viết này các bạn sẽ thực sự hiểu và sẽ có những sự lựa chọn đúng đắn khi dùng VIEW.</p>
+
+                        <p><a href="https://github.com/phuongdp-tech/demo-source-winzone-blog/blob/main/SQL/VIEW_IN_SQL.sql" target="_blank">Source code tham khảo</a></p>
+                    </div>
+                </div>
+
+<!--                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/nhung-hieu-lam-pho-bien-ve-group-by-trong-sql.html" data-width="100%" data-numposts="5"></div>-->
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>

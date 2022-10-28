@@ -4354,6 +4354,10 @@ p {
 .sql-quote .keyword {
   color: mediumblue;
 }
+.sql-quote .comment {
+  font-size: 0.9rem;
+  color: green;
+}
 .caution {
   background: #feefe3;
   color: #bf360c;
