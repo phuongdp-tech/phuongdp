@@ -62,3 +62,14 @@ const loadFooterHtml = function () {
 
 const HOST_URL = `${window.location.origin}`;
 // const HOST_URL = `${window.location.origin}/winzone-blog-github/phuongdp`;
+
+$('.collapse-icon').click(function () {
+    $(this).parent().next().hide();
+    $(this).parent().find('.expand-icon').show();
+    $(this).hide();
+})
+$('.expand-icon').click(function () {
+    $(this).parent().next().show();
+    $(this).parent().find('.collapse-icon').show();
+    $(this).hide();
+})

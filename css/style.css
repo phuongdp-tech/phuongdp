@@ -4418,3 +4418,10 @@ p {
 #answerArea {
   display: none;
 }
+.collapse-icon, .expand-icon {
+  cursor: pointer;
+  /*font-size: 1.2rem;*/
+}
+.expand-icon {
+  display: none;
+}
