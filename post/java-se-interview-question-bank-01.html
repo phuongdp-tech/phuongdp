@@ -499,21 +499,81 @@ numberList<span style="color: #333333">.</span><span style="color: #0000CC">add<
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>Là biến được khai báo cùng với từ khóa <code>static</code> và bên ngoài method</td>
-                                            <td>Là biến được khai báo <strong>không</strong> dùng từ khóa <code>static</code> và bên ngoài method</td>
-                                            <td>Là biến được khai báo bên trong method</td>
+                                            <td>Là biến được khai báo bên ngoài method cùng với từ khóa <code>static</code></td>
+                                            <td>Là biến được khai báo bên ngoài method <strong>không</strong> dùng từ khóa <code>static</code></td>
+                                            <td>Là biến được khai báo bên trong method <strong>không</strong> dùng từ khóa <code>static</code></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">Phạm vi sử dụng toàn bộ class được khai báo và bên ngoài class (phụ thuộc vào access modifier)</td>
                                             <td>Phạm vi sử dụng block scope, chỉ được dùng trong block {} được khai báo</td>
                                         </tr>
                                         <tr>
-                                            <td>Giá trị của biến phụ thuộc vào class được khai báo. Thông thường truy cập thông qua <code>ClassName.staticVariableName</code></td>
+                                            <td>Giá trị của biến phụ thuộc vào class mà biến được khai báo. Thông thường truy cập thông qua <code>ClassName.staticVariableName</code></td>
                                             <td>Giá trị của biến phụ thuộc vào instance (object). Thông thường truy cập thông qua <code>reference.instanceVariable</code></td>
                                             <td>-</td>
                                         </tr>
                                         </tbody>
                                     </table>
+                                    <div class="accordion" id="compareVariableSourceDemo">
+                                        <div class="card">
+                                            <div class="card-header" id="compareVariableSourceDemoHeadingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#compareVariableSourceDemoOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <i data-feather="code" class="fea icon-sm icons"></i> Source code demo
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id="compareVariableSourceDemoOne" class="collapse" aria-labelledby="compareVariableSourceDemoHeadingOne" data-parent="#compareVariableSourceDemo">
+                                                <div class="card-body">
+                                                    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">VariableDemo</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> number1 <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span> <span style="color: #888888">// a static variable</span>
+    <span style="color: #333399; font-weight: bold">int</span> number2 <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">20</span><span style="color: #333333">;</span> <span style="color: #888888">// an instance variable</span>
+
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        <span style="color: #888888">// Access static variable by class name</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>VariableDemo<span style="color: #333333">.</span><span style="color: #0000CC">number1</span><span style="color: #333333">);</span>
+
+        <span style="color: #888888">// Access instance variable by reference</span>
+        VariableDemo variableDeclare <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> VariableDemo<span style="color: #333333">();</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>variableDeclare<span style="color: #333333">.</span><span style="color: #0000CC">number2</span><span style="color: #333333">);</span>
+
+        <span style="color: #333333">{</span>
+            <span style="color: #333399; font-weight: bold">int</span> number3 <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">;</span> <span style="color: #888888">// a local variable;</span>
+            <span style="color: #888888">// Access local variable in block scope</span>
+            System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>number3<span style="color: #333333">);</span>
+        <span style="color: #333333">}</span>
+        <span style="color: #888888">// Access local variable out of Scope</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>number3<span style="color: #333333">);</span> <span style="color: #888888">// COMPILE ERROR</span>
+    <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -529,28 +589,49 @@ numberList<span style="color: #333333">.</span><span style="color: #0000CC">add<
                                     <table class="table table-bordered align-middle">
                                         <thead>
                                         <tr>
-                                            <th scope="col" style="width: 33%">Static variable</th>
-                                            <th scope="col" style="width: 33%">Instance variable</th>
-                                            <th scope="col" style="width: 33%">Local variable</th>
+                                            <th scope="col" style="width: 10%">#</th>
+                                            <th scope="col" style="width: 45%">== operator</th>
+                                            <th scope="col" style="width: 45%">equals method</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>Là biến được khai báo cùng với từ khóa <code>static</code> và bên ngoài method</td>
-                                            <td>Là biến được khai báo <strong>không</strong> dùng từ khóa <code>static</code> và bên ngoài method</td>
-                                            <td>Là biến được khai báo bên trong method</td>
+                                            <td>So sánh biến primitive</td>
+                                            <td>Sẽ luôn return <code>true</code> nếu chúng có cùng value (ngoại trừ float/double ở 1 số trường hợp đặc biệt)</td>
+                                            <td>Không dùng để so sánh các biến primitive.</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">Phạm vi sử dụng toàn bộ class được khai báo và bên ngoài class (phụ thuộc vào access modifier)</td>
-                                            <td>Phạm vi sử dụng block scope, chỉ được dùng trong block {} được khai báo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Giá trị của biến phụ thuộc vào class được khai báo. Thông thường truy cập thông qua <code>ClassName.staticVariableName</code></td>
-                                            <td>Giá trị của biến phụ thuộc vào instance (object). Thông thường truy cập thông qua <code>reference.instanceVariable</code></td>
-                                            <td>-</td>
+                                            <td>So sánh biến reference</td>
+                                            <td>So sánh memmory address của object mà 2 biến đó trỏ tới.
+                                                Kết quả sẽ là <code>true</code> nếu cả 2 biến reference đều trỏ vào 1 object, ngược lại thì return <code>false</code>
+                                            </td>
+                                            <td>
+                                                <ol>
+                                                    <li>Nếu equals() method chưa được <strong>override</strong> thì sẽ gọi đến equals() của class Object <br>=> So sánh memory address tương tự == operator.</li>
+                                                    <li>Nếu equals() method được <strong>override</strong> thì sẽ thực hiện logic theo mục tiêu đã implementation, thông thường sẽ so sánh value của Object (Tương tự như String).</li>
+                                                </ol>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="why-lost-default-constructor-when-define-a-constructor" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>8. Tại khi define constructor thì default constructor lại mất đi?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <p>Mặc định sử dụng <code>new</code> kết hợp constructor là cách khởi tạo object duy nhất của mỗi Class trong Java. Do đó Java luôn cung cấp cho chúng ta 1 default constructor không tham số.</p>
+                                    <p>Ngoài ra, Java cũng cho phép mỗi Class có nhiều constructor thông qua cơ chế overloading constructor với mục đích cung cấp linh hoạt cách thức khởi tạo object.</p>
+
+                                    <p>Mỗi constructor là một cách thức <strong>ta muốn</strong> khởi tạo object,
+                                        vì vậy khi ta đã cung cấp một constructor mới thì đó là cách mà developer muốn class được khởi tạo thông qua nó (Có 1 số design pattern còn muốn <code>private</code> lại constructor).
+                                        Lúc này Java không có lý do nào giữ lại default constructor, nếu muốn developer sẽ tự tạo một constructor không tham số.</p>
                                 </div>
                             </div>
                         </div>
