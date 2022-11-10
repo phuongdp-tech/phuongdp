@@ -74,6 +74,9 @@
                                 <li><a href="#dependency-injection">Bạn hiểu như nào về DI trong Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#dependency-injection-type">Có mấy loại DI trong Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#what-is-the-spring-bean">Spring Bean là gì?</a></li> <!--Spring Core-->
+                                <li><a href="#scope-of-spring-bean">Spring Bean có những scope nào?</a></li> <!--Spring Core-->
+                                <li><a href="#how-many-way-to-create-spring-bean">Có những cách nào để tạo Spring Bean?</a></li> <!--Spring Core-->
+                                <li><a href="#compare-spring-framework-springboot">So sánh Spring framework và Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#compare-model-modelmap-modelandview-springmvc">So sánh Model, ModelMap và ModelAndView</a></li> <!--Spring MVC-->
                                 <li><a href="#compare-model-attribute-flash-attribute-springmvc">So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</a></li><!--Spring MVC-->
                             </ol>
@@ -94,11 +97,10 @@
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
                                 <div class="answer-content">
-<!--                                    <p>Một dự án phần mềm được triển khai thông thường quá trình tạo mới sẽ chiếm khoảng 20-40%, effort còn lại sẽ là maintaince. Chính vì thế khi thiết kế chúng ta luôn cần phải đáp ứng đc tính: DỄ DÀNG MỞ RỘNG.</p>-->
                                     <p><strong>IoC - Inversion of Control</strong> là một nguyên lý thiết kế phần mềm (software design principle), với nguyên lý này chúng ta sẽ chuyển giao việc kiểm soát các objects cho framework xử lý.</p>
                                     <p>Với cách lập trình truyền thống thì trong source code của chúng ta sẽ khởi tạo và gọi đến các library cần dùng, ngược lại thì IoC sẽ cho phép framework kiểm soát được flow của chương trình và sẽ gọi lại source code của chúng ta, như cái tên của nó "Đảo ngược điều khiển".
                                         Để làm được điều này framework sẽ define sẵn các abstraction/interface ràng buộc yêu cầu source code của chúng ta cần implement theo.</p>
-                                    <p>Spring IoC container chính là container sẽ implement IoC principle, nó sẽ có trách nhiệm khởi tạo, cấu hình và lắp ráp các <strong>Spring Beans</strong></p>
+                                    <p>Spring IoC container chính là container sẽ implement IoC principle. Trong Spring thì interface <code>org.springframework.context.ApplicationContext</code> đại diện cho Spring IoC container, nó sẽ có trách nhiệm khởi tạo, cấu hình và lắp ráp các <strong>Spring Beans</strong></p>
                                 </div>
                             </div>
                             <div class="question-content">
@@ -149,8 +151,130 @@
                                 </div>
                             </div>
                             <div class="question-content">
+                                <h2 id="scope-of-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>5. Spring Bean có những scope nào?</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" colspan="2" style="width: 25%">Scope</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>singleton</code></td>
+                                                <td>Standard scope</td>
+                                                <td><strong>(Default)</strong> Spring container chỉ tạo 1 bean instance duy nhất cho tất cả các request inject.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>prototype</code></td>
+                                                <td>Standard scope</td>
+                                                <td>Spring container sẽ tạo mới bean instance mỗi khi có request inject bean đó.
+                                                    <div><code>prototype</code> scope nên được sử dụng cho stateful bean và <code>singleton</code> scope sử dụng cho stateless bean. </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>request</code></td>
+                                                <td>Web scope</td>
+                                                <td>Spring container sẽ tạo bean instance với mỗi HTTP request. Khi request kết thúc thì những bean này sẽ bị loại bỏ.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>session</code></td>
+                                                <td>Web scope</td>
+                                                <td>Spring container sẽ tạo bean instance với mỗi HTTP Session. Khi session bị loại bỏ thì những bean này sẽ bị loại bỏ.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>application</code></td>
+                                                <td>Web scope</td>
+                                                <td>
+                                                    <p>Spring container sẽ tạo 1 bean instance cho toàn bộ web application.</p>
+                                                    <p>Scope này dễ nhầm lẫn với <code>singleton</code> scope, điểm khác nhau đó là <code>singleton</code> scope có tính duy nhất ở level <code>ApplicationContext</code>, còn <code>application</code> scope lại có tính duy nhất ở level <code>ServletContext</code></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>websocket</td>
+                                                <td>Web scope</td>
+                                                <td>Bean instance được khởi tạo sẽ được liên kết với vòng đời của một WebSocket session</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="question-content">
+                                <h2 id="how-many-way-to-create-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>6. Có những cách nào để tạo Spring Bean?</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+                                    <p>Có 2 cách thức khởi tạo Spring Bean</p>
+                                    <ul>
+                                        <li><strong>XML-based configuration</strong>: Sử dụng <code>&lt;bean&gt;</code> tag, chỉ định type thông qua class attribute và name thông qua id/name attribute.</li>
+                                        <li>Annotation-based configuration
+                                            <ul>
+                                                <li>Sử dụng Annotation class level: <code>@Component</code></li>
+                                                <li>Sử dụng Annotation method level: @Bean + đặt trong 1 class có @Configuration</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p class="caution rounded p-3">
+                                        <i class="fas fa-exclamation-circle"></i> Các annotation <code>@Service</code>, <code>@Controller</code>, <code>@Repository</code> cũng có thể dùng đăng ký Spring Bean do chúng có compose @Component bên trong
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="question-content">
+                                <h2 id="compare-spring-framework-springboot" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>7. So sánh Spring framework và Spring?</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" style="width: 30%">Spring Framework</th>
+                                                <th scope="col" style="width: 30%">Spring Boot</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Là một framework được build dựa trên nền <strong>Java</strong> cung cấp rất nhiều các module hỗ trợ việc xây dựng các ứng dụng Java Enterprise, giúp developer focus vào business logic thay vì phải làm những task cơ bản, lặp đi lặp lại.</td>
+                                                <td>Là một tool giúp đơn giản hóa việc tạo Spring-based applications bằng cách auto-configuration và không cần config xml </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Một số features nổi bật: </p>
+                                                    <ul>
+                                                        <li><strong>Core technologies</strong>: dependency injection,  validation, data binding and AOP...</li>
+                                                        <li><strong>Testing</strong>: mock objects, Spring MVC Test</li>
+                                                        <li><strong>Data Access</strong>: transactions, DAO support, JDBC, ORM</li>
+                                                        <li><strong>Spring MVC</strong> and <strong>Spring WebFlux</strong> web frameworks.</li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <p>Một số features nổi bật: </p>
+                                                    <ul>
+                                                        <li>Tạo stand-alone Spring applications.</li>
+                                                        <li>Embed App server(Tomcat, Jetty), started bằng cách sử dụng <code>java -jar</code> một cách đơn giản không cần deploy WAR files như cách truyền thồng.</li>
+                                                        <li>Cung cấp các 'starter' dependencies giúp đơn giản hóa việc build configuration.</li>
+                                                        <li>Không cần cấu hình XML phức tạp.</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="question-content">
                                 <h2 id="compare-model-modelmap-modelandview-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>5. So sánh Model, ModelMap và ModelAndView</span>
+                                    <span>8. So sánh Model, ModelMap và ModelAndView</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -372,7 +496,7 @@
                             </div>
                             <div class="question-content">
                             <h2 id="compare-model-attribute-flash-attribute-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                <span>6. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
+                                <span>9. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
                                 <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                 <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                             </h2>
