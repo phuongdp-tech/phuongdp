@@ -27,7 +27,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="css/colors/green.css" rel="stylesheet" id="color-opt">
     <style>
-        #about_me_fa_mobile {
+        #about_me_fa_mobile, #happy-trainer-mobile {
             display: none;
         }
         @media screen and (max-width: 991px) {
@@ -39,10 +39,10 @@
                 padding: 15px 0;
                 height: auto;
             }
-            #about_me_fa_mobile {
+            #about_me_fa_mobile, #happy-trainer-mobile {
                 display: block;
             }
-            #about_me_fa {
+            #about_me_fa, #happy-trainer {
                 display: none;
             }
             .award-title {
@@ -80,12 +80,12 @@
     <section class="bg-home bg-sologan d-flex align-items-center" id="home">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-12 text-center">
-                    <img style="border-radius: 50%;max-width: 90%" src="images/author.jpeg" />
+                <div class="col-lg-6 col-12 text-center mb-3">
+<!--                    <h2 class="font-weight-bold mb-3" id="author-name">Đặng Phương Phương</h2>-->
+                    <img class="rounded" style="max-width: 100%" src="images/about-me/author.png" />
                 </div>
-                <div class="col-lg-8 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="title-heading pt-lg-5 pb-5">
-                        <h1 class="font-weight-bold mb-3" id="author-name">Đặng Phương Phương</h1>
                         <p class="para-desc"><b>Xin chào các bạn,</b></p>
                         <p class="para-desc">
                             Việc tạo blog này với mong muốn chia sẻ kiến thức, kinh nghiệm của bản thân đã tích luỹ sau một khoảng thời gian đi làm.
@@ -95,7 +95,8 @@
                             Hi vọng rằng mỗi bài viết tại blog này sẽ đem đến bạn đọc những kiến thức hữu ích, những góc nhìn đa chiều về một Developer.
                         </p>
                         <p class="para-desc">Những ý kiến đóng góp liên quan đến nội dung của bài viết hãy liên hệ với mình qua email: <a href="mailto:phuongdp.tech@gmail.com">phuongdp.tech@gmail.com</a> hoặc gửi qua <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc-_zKSZgkFfEkg3QahVkvmfhcicA6Zhog_knO8PghjgBHpZQ/viewform">form</a> này. </p>
-                        <p class="para-desc">Happy coding!</p>
+                        <p class="para-desc">Happy coding, <br><strong>Đặng Phương Phương</strong></p>
+                        <p class="para-desc"></p>
 <!--                        <div class="mt-4 pt-2">-->
 <!--                            <a href="#contact" class="btn btn-outline-primary mt-2 mouse-down"><i class="mdi mdi-cloud-download"></i> Liên hệ</a>-->
 <!--                        </div>-->
@@ -208,6 +209,14 @@
                 </a>
                 <a id="about_me_fa_mobile" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
                     <img class="border border-secondary rounded lazy-image" data-url="images/about-me/aboutme_fa_mobile.jpg" style="max-width: 100%" alt="FA about me">
+                </a>
+            </div>
+            <div class="col-12 mt-3">
+                <a id="happy-trainer" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/" target="_blank">
+                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/HappyTrainer.png" style="max-width: 100%" alt="FA about me">
+                </a>
+                <a id="happy-trainer-mobile" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/" target="_blank">
+                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/happy-trainer-mobile.jpg" style="max-width: 100%" alt="FA about me">
                 </a>
             </div>
         </div>
