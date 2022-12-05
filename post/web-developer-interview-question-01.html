@@ -78,7 +78,7 @@
 <!--                                <li><a href="#dependency-injection">Bạn hiểu gì về CORS (Cross-Origin Resource Sharing) ?</a></li>-->
                                 <li><a href="#which-main-component-http-request">Http Request bao gồm những thành phần cơ bản nào</a></li>
                                 <li><a href="#which-main-component-http-response">Http Response bao gồm những thành phần cơ bản nào</a></li>
-<!--                                <li><a href="#dependency-injection-type">So sánh Session, Cookie, Local Storage?</a></li>-->
+                                <li><a href="#compare-session-cookie">So sánh Session và Cookie</a></li>
                                 <li><a href="#some-tips-improvement-web-performance">Liệt kê một số tips bạn dùng để tăng thời gian load web application</a></li>
                             </ol>
                         </section>
@@ -285,8 +285,47 @@
                                 </div>
                             </div>
                             <div class="question-content">
+                                <h2 id="compare-session-cookie" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>9. So sánh Cookie và Session</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 50%">Cookie</th>
+                                            <th scope="col" style="width: 50%">Session</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Cookie value được lưu trong client browser</td>
+                                            <td>Session value được lưu trên server</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tối đa lưu trữ được 4096 bytes</td>
+                                            <td>Dung lượng tối đa có thể lưu trữ phụ thuộc vào server tuy nhiên lớn hơn cookie nhiều lần</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Chỉ store text data</td>
+                                            <td>Có thể store text và object data</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Truy cập cookie data không phụ thuộc vào session</td>
+                                            <td>Truy cập session data sẽ phụ thuộc vào cookie data của user gửi lên</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cookie sẽ mất khi user delete hoặc đến expired time</td>
+                                            <td>Session sẽ mất khi close browser <br>("Behind the scenes" là cookie type session được link với session đó sẽ mất ở client khi close browser, dẫn đến ko còn liên kết đến session đã lưu trên server)</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="question-content">
                                 <h2 id="some-tips-improvement-web-performance" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>9. Liệt kê một số tips bạn dùng để tăng thời gian load web application</span>
+                                    <span>10. Liệt kê một số tips bạn dùng để tăng thời gian load web application</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
