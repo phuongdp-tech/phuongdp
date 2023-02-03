@@ -70,8 +70,7 @@
                         <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=spring" class="text-primary">spring</a></h6>
                         <section class="table-content rounded">
                             <ol class="code-blue-text mb-0">
-                                <li><a href="#spring-ioc-container">Bạn hiểu như nào về Spring IoC container?</a></li> <!--Spring Core-->
-                                <li><a href="#dependency-injection">Bạn hiểu như nào về DI trong Spring?</a></li> <!--Spring Core-->
+                                <li><a href="#spring-ioc-and-di-in-spring">So sánh Spring IoC và DI trong Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#dependency-injection-type">Có mấy loại DI trong Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#what-is-the-spring-bean">Spring Bean là gì?</a></li> <!--Spring Core-->
                                 <li><a href="#scope-of-spring-bean">Spring Bean có những scope nào?</a></li> <!--Spring Core-->
@@ -91,25 +90,17 @@
                                 </ul>
                             </div>
                             <div class="question-content">
-                                <h2 id="spring-ioc-container" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>1. Bạn hiểu như nào về Spring IoC container?</span>
+                                <h2 id="spring-ioc-and-di-in-spring" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>1. So sánh Inversion of Control (IoC) và Dependency Injection (DI) trong Spring?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
                                 <div class="answer-content">
-                                    <p><strong>IoC - Inversion of Control</strong> là một nguyên lý thiết kế phần mềm (software design principle), với nguyên lý này chúng ta sẽ chuyển giao việc kiểm soát các objects cho framework xử lý.</p>
-                                    <p>Với cách lập trình truyền thống thì trong source code của chúng ta sẽ khởi tạo và gọi đến các library cần dùng, ngược lại thì IoC sẽ cho phép framework kiểm soát được flow của chương trình và sẽ gọi lại source code của chúng ta, như cái tên của nó "Đảo ngược điều khiển".
-                                        Để làm được điều này framework sẽ define sẵn các abstraction/interface ràng buộc yêu cầu source code của chúng ta cần implement theo.</p>
+                                    <p>Trong Spring, <strong>Inversion of Control (IoC)</strong> và <strong>Dependency Injection (DI)</strong> là 2 khái niệm có mối quan hệ chặt chẽ với nhau.</p>
+                                    <p><strong>IoC</strong> là một nguyên lý thiết kế phần mềm (design principle), với nguyên lý này chúng ta sẽ chuyển giao việc kiểm soát các objects cho một container xử lý.
+                                        Thông thường khi cần dùng một object nào đó ta sẽ trực tiếp tạo thì nay ta sẽ không làm thế nữa mà chỉ đưa ra yêu cầu và container sẽ cung cấp các object cần thiết. </p>
                                     <p>Spring IoC container chính là container sẽ implement IoC principle. Trong Spring thì interface <code>org.springframework.context.ApplicationContext</code> đại diện cho Spring IoC container, nó sẽ có trách nhiệm khởi tạo, cấu hình và lắp ráp các <strong>Spring Beans</strong></p>
-                                </div>
-                            </div>
-                            <div class="question-content">
-                                <h2 id="dependency-injection" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>2. Bạn hiểu như nào về DI trong Spring?</span>
-                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
-                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
-                                </h2>
-                                <div class="answer-content">
+                                    <hr>
                                     <p><strong>DI - Dependency Injection</strong> là một design pattern, một cách để implement IoC.
                                         DI là một process mà mỗi đối tượng sẽ định nghĩa những dependencies của chúng (những object mà chúng cần làm việc cùng), những dependencies đó sẽ được inject vào thông qua constructor, setter hoặc factory method.
                                     </p>
@@ -126,7 +117,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="dependency-injection-type" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>3. Có mấy loại DI trong Spring?</span>
+                                    <span>2. Có mấy loại DI trong Spring?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -142,17 +133,17 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="what-is-the-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>4. Spring bean là gì?</span>
+                                    <span>3. Spring bean là gì?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
                                 <div class="answer-content">
-                                    Những object được khởi tạo và quản lý bởi Spring IoC container được gọi là Spring Bean.
+                                    <p>Những object được khởi tạo và quản lý bởi Spring IoC container được gọi là Spring Bean.</p>
                                 </div>
                             </div>
                             <div class="question-content">
                                 <h2 id="scope-of-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>5. Spring Bean có những scope nào?</span>
+                                    <span>4. Spring Bean có những scope nào?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -209,7 +200,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="how-many-way-to-create-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>6. Có những cách nào để tạo Spring Bean?</span>
+                                    <span>5. Có những cách nào để tạo Spring Bean?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -231,7 +222,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="compare-spring-framework-springboot" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>7. So sánh Spring framework và Spring Boot?</span>
+                                    <span>6. So sánh Spring framework và Spring Boot?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -239,42 +230,41 @@
                                     <table class="table table-bordered align-middle">
                                         <thead>
                                             <tr>
-                                                <th scope="col" style="width: 30%">Spring Framework</th>
-                                                <th scope="col" style="width: 30%">Spring Boot</th>
+                                                <th scope="col" style="width: 20%">#</th>
+                                                <th scope="col" style="width: 40%">Spring Framework</th>
+                                                <th scope="col" style="width: 40%">Spring Boot</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Là một framework được build dựa trên nền <strong>Java</strong> cung cấp rất nhiều các module hỗ trợ việc xây dựng các ứng dụng Java Enterprise, giúp developer focus vào business logic thay vì phải làm những task cơ bản, lặp đi lặp lại.</td>
-                                                <td>Là một tool giúp đơn giản hóa việc tạo Spring-based applications bằng cách auto-configuration và không cần config xml </td>
+                                                <td>Khái niệm</td>
+                                                <td>Là một framework được build dựa trên nền <strong>Java</strong>, nó cung cấp rất nhiều các module hỗ trợ việc xây dựng Java applications.</td>
+                                                <td>Là một framework được build dựa trên nền <strong>Spring framework</strong>, nó giúp đơn giản hóa việc khởi tạo và phát triển Spring applications. </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <p>Một số features nổi bật: </p>
-                                                    <ul>
-                                                        <li><strong>Core technologies</strong>: dependency injection,  validation, data binding and AOP...</li>
-                                                        <li><strong>Testing</strong>: mock objects, Spring MVC Test</li>
-                                                        <li><strong>Data Access</strong>: transactions, DAO support, JDBC, ORM</li>
-                                                        <li><strong>Spring MVC</strong> and <strong>Spring WebFlux</strong> web frameworks.</li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <p>Một số features nổi bật: </p>
-                                                    <ul>
-                                                        <li>Tạo stand-alone Spring applications.</li>
-                                                        <li>Embed App server(Tomcat, Jetty), started bằng cách sử dụng <code>java -jar</code> một cách đơn giản không cần deploy WAR files như cách truyền thồng.</li>
-                                                        <li>Cung cấp các 'starter' dependencies giúp đơn giản hóa việc build configuration.</li>
-                                                        <li>Không cần cấu hình XML phức tạp.</li>
-                                                    </ul>
-                                                </td>
+                                                <td>Configuration</td>
+                                                <td>Spring framework yêu cầu tự cấu hình khá chi tiết và phức tạp</td>
+                                                <td>Spring boot cung cấp cơ chế auto-configuration giúp đơn giản hóa khởi tạo và developer có thể tập trung vào xử lý business. </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Standalone Applications</td>
+                                                <td>Spring framework chưa thể hỗ trợ tạo standalone applications</td>
+                                                <td>Spring boot hỗ trợ có thể tạo standalone applications, đóng gói thành <code>jar</code> và dễ dàng deploy, run</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Development time</td>
+                                                <td colspan="2">Với Spring Boot ta có thể develop và test application dễ dàng và nhanh hơn vì không cần phải care đến nhiều các task configuration và setup</td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <p class="caution rounded p-3">
+                                        <i class="fas fa-exclamation-circle"></i> Standalone Applications là các ứng dụng có thể độc lập thực thi mà không cần cài đặt thêm các dependencies hoặc config từ bên ngoài.
+                                    </p>
                                 </div>
                             </div>
                             <div class="question-content">
                                 <h2 id="compare-model-modelmap-modelandview-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>8. So sánh Model, ModelMap và ModelAndView</span>
+                                    <span>7. So sánh Model, ModelMap và ModelAndView</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -496,7 +486,7 @@
                             </div>
                             <div class="question-content">
                             <h2 id="compare-model-attribute-flash-attribute-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                <span>9. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
+                                <span>8. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
                                 <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                 <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                             </h2>
