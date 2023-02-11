@@ -71,10 +71,13 @@
                         <section class="table-content rounded">
                             <ol class="code-blue-text mb-0">
                                 <li><a href="#spring-ioc-and-di-in-spring">So sánh Spring IoC và DI trong Spring?</a></li> <!--Spring Core-->
+                                <li><a href="#compare-bean-factory-and-application-context">So sánh BeanFactory và ApplicationContext?</a></li> <!--Spring Core-->
                                 <li><a href="#dependency-injection-type">Có mấy loại DI trong Spring?</a></li> <!--Spring Core-->
                                 <li><a href="#what-is-the-spring-bean">Spring Bean là gì?</a></li> <!--Spring Core-->
                                 <li><a href="#scope-of-spring-bean">Spring Bean có những scope nào?</a></li> <!--Spring Core-->
                                 <li><a href="#how-many-way-to-create-spring-bean">Có những cách nào để tạo Spring Bean?</a></li> <!--Spring Core-->
+                                <li><a href="#compare-service-controller-repository-component-annotation">So sánh annotation: @Service, @Controller, @Repository, và @Component.</a></li> <!--Spring Core-->
+                                <li><a href="#the-order-determine-bean-inject-spring">Spring xác định bean để inject thông qua thứ tự nào?</a></li> <!--Spring Core-->
                                 <li><a href="#compare-spring-framework-springboot">So sánh Spring framework và Spring Boot?</a></li> <!--Spring Core-->
                                 <li><a href="#compare-model-modelmap-modelandview-springmvc">So sánh Model, ModelMap và ModelAndView</a></li> <!--Spring MVC-->
                                 <li><a href="#compare-model-attribute-flash-attribute-springmvc">So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</a></li><!--Spring MVC-->
@@ -116,8 +119,25 @@
                                 </div>
                             </div>
                             <div class="question-content">
+                                <h2 id="compare-bean-factory-and-application-context" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>2. So sánh BeanFactory và ApplicationContext?</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+                                    <p>Cả <code>BeanFactory</code> và <code>ApplicationContext</code> đều là Spring container giúp quản lý và truy xuất Spring beans.</p>
+                                    <ul>
+                                        <li><b>Features</b>: <code>ApplicationContext</code> kế thừa <code>BeanFactory</code> và cung cấp thêm những features khác. Ví dụ, <code>ApplicationContext</code> hỗ trợ thêm: internationalization (i18n), event-driven architecture, JSF và JPA.</li>
+                                        <li><b>Configuration</b>: <code>BeanFactory</code> chỉ hỗ trợ load bean thông qua xml trong khi <code>ApplicationContext</code> hỗ trợ cả xml và annotation.</li>
+                                        <li><b>Performance</b>: <code>BeanFactory</code> sử dụng memory ít hơn <code>ApplicationContext</code>, nên nó phù hợp với môi trường low-memory và có ít bean cần quản lý.</li>
+                                        <li><b>Lazy Initialization</b>: Mặc định, <code>BeanFactory</code> sử dụng cơ chế lazy initialization chỉ khởi tạo bean khi được request. Ngược lại, <code>ApplicationContext</code> lại khởi tạo toàn bộ bean đã được config trong quá trình context start-up.</li>
+                                    </ul>
+                                    <p>Kết luận: <code>BeanFactory</code> cung cấp các tính năng cơ bản của một contaiter trong khi <code>ApplicationContext</code> cung cấp phong phú hơn các tính năng và được recommended sử dụng trong hầu hết các trường hợp</p>
+                                </div>
+                            </div>
+                            <div class="question-content">
                                 <h2 id="dependency-injection-type" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>2. Có mấy loại DI trong Spring?</span>
+                                    <span>3. Có mấy loại DI trong Spring?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -133,7 +153,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="what-is-the-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>3. Spring bean là gì?</span>
+                                    <span>4. Spring bean là gì?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -143,7 +163,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="scope-of-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>4. Spring Bean có những scope nào?</span>
+                                    <span>5. Spring Bean có những scope nào?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -200,7 +220,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="how-many-way-to-create-spring-bean" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>5. Có những cách nào để tạo Spring Bean?</span>
+                                    <span>6. Có những cách nào để tạo Spring Bean?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -221,8 +241,28 @@
                                 </div>
                             </div>
                             <div class="question-content">
+                                <h2 id="compare-service-controller-repository-component-annotation" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>7. So sánh annotation: @Service, @Controller, @Repository, và @Component</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+
+                                </div>
+                            </div>
+                            <div class="question-content">
+                                <h2 id="the-order-determine-bean-inject-spring" class="mt-4 d-flex align-items-center justify-content-between">
+                                    <span>8. Spring xác định bean để inject thông qua thứ tự nào?</span>
+                                    <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                    <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                                </h2>
+                                <div class="answer-content">
+
+                                </div>
+                            </div>
+                            <div class="question-content">
                                 <h2 id="compare-spring-framework-springboot" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>6. So sánh Spring framework và Spring Boot?</span>
+                                    <span>9. So sánh Spring framework và Spring Boot?</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -264,7 +304,7 @@
                             </div>
                             <div class="question-content">
                                 <h2 id="compare-model-modelmap-modelandview-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                    <span>7. So sánh Model, ModelMap và ModelAndView</span>
+                                    <span>10. So sánh Model, ModelMap và ModelAndView</span>
                                     <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                     <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                                 </h2>
@@ -486,7 +526,7 @@
                             </div>
                             <div class="question-content">
                             <h2 id="compare-model-attribute-flash-attribute-springmvc" class="mt-4 d-flex align-items-center justify-content-between">
-                                <span>8. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
+                                <span>11. So sánh addAttribute() và addFlashAttribute() trong RedirectAttributes</span>
                                 <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
                                 <i class="fas fa-angle-left expand-icon" title="Expand"></i>
                             </h2>
