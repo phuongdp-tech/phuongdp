@@ -227,12 +227,12 @@
                                 <div class="answer-content">
                                     <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">CORS (Cross-Origin Resource Sharing)</a> là cơ chế cho phép một web page trên brower có thể request đến một server có nguồn gốc(origins) khác với web page đó. Origins ở đây bao gồm: domain, scheme, port.</p>
                                     <p>Mặc định, browser sẽ <b>hạn chế</b> cross-origin requests. Có nghĩa là web page có domain là <code>domain-a.com</code> không thế gọi đến <code>domain-b.com</code>, hoặc cùng domain và khác port cũng không thể được. Lý do cho sự hạn chế này là để ngăn chặn việc request lấy trộm thông tin từ web khác.</p>
-                                    <p>Nếu bạn muốn cho phép web khác có thể request đến web của mình thì có thể add thêm <code>Access-Control-Allow-Origin</code> vào response header, với giá trị <code>*</code> thì cho phép request đến từ bất kỳ đâu hoặc chỉ định cụ thể danh sách các giá trị origins(domain, port...) có thể request.</p>
+                                    <p>Nếu bạn muốn cho phép web khác có thể request đến web của mình thì có thể add thêm <code>Access-Control-Allow-Origin</code> vào response header, với giá trị <code>*</code> thì cho phép request đến từ bất kỳ đâu hoặc chỉ định cụ thể danh sách các giá trị origins có thể request.</p>
                                     <p>Với cơ chế CORS, khi một web page request đến một server có orgins khác thì browser sẽ gửi 1 HTTP Request đến server đó để check server đang allow hay disallow request từ web page này. Nó còn được gọi là <code>preflight request</code>. Nếu server response là allow với preflight request thì browser sẽ gửi actual request đến server.</p>
 
                                     <p class="caution rounded p-3 mt-3">
-                                        <i class="fas fa-exclamation-circle"></i>  Có nhiều bạn FE developer khi gọi API từ postman thì không bị lỗi CORS nhưng khi call API từ client side thì lại bị lỗi và không biết phải làm sao.
-                                        Điều này đã giải thích ở bên trên, vấn đề do khi run web page ở browser thì sẽ bị hạn chế khi phát sinh cross-origin requests. Khi gặp lỗi này thì hãy contact đến BE developer để các bạn đó config allow CORS vào response header.
+                                        <i class="fas fa-exclamation-circle"></i>  Có nhiều bạn FE developer khi call API sử dụng postman thì không bị lỗi CORS nhưng khi call API từ client side thì lại bị lỗi.
+                                        Điều này đã giải thích ở bên trên, nguyên nhân là khi web page được run trên browser thì mặc định sẽ bị hạn chế khi phát sinh cross-origin requests. Khi gặp lỗi này thì hãy contact đến BE developer để các bạn đó config allow CORS vào response header.
                                     </p>
                                     <figure style="text-align: center;">
                                         <img class="rounded p-2 lazy-image mt-3" src="../images/blog/18/cors.png" alt="Cross-Origin Resource Sharing">
