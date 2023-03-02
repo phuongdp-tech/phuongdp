@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Cơ bản về nguyên lý thiết kế SOLID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<div id="fb-root"></div>
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Cơ bản về nguyên lý thiết kế SOLID</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 02/Mar/2023</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+<!--                    <img src="../images/blog/groupbyinsql.png" class="img-fluid rounded-top" alt="">-->
+                    <div class="card-body content">
+<!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">SQL</a></h6>-->
+                        <section class="table-content rounded">
+                            <ol class="code-blue-text mb-0">
+                                <li><a href="#what-is-the-solid-principle">SOLID là gì?</a></li>
+                                <li><a href="#single-responsibility-principle">Single Responsibility Principle (SRP)</a></li>
+                                <li><a href="#open-closed-principle">Open Closed Principle (OCP)</a></li>
+                                <li><a href="#liskov-substitution-principle">Liskov Substitution Principle (LSP)</a></li>
+                                <li><a href="#interface-segregation-principle">Interface Segregation Principle (ISP)</a></li>
+                                <li><a href="#dependency-inversion-principle">Dependency Inversion Principle (DIP)</a></li>
+                                <li><a href="#summary">Kết luận.</a></li>
+                            </ol>
+                        </section>
+                        <div class="mt-3">
+                            <p><strong>Phát triển phần mềm là một môi trường sẽ liên tục thay đổi, để thích nghi được với điều này thì mỗi sản phẩm cần phải có một kiến trúc thiết kế thật tốt. Với nền móng là kiến trúc tốt thì sản phẩm đó sẽ maintain và extend dễ dàng hơn.</strong></p>
+                            <p class="caution rounded p-3">
+                                <i class="fas fa-exclamation-circle"></i> Trong bài viết này cần các bạn có kiến thức cơ bản về Object Oriented Programming (OOP)
+                            </p>
+                        </div>
+                        <h2 id="what-is-the-solid-principle" class="mt-4">1. SOLID là gì?</h2>
+                        <p class="mb-0">
+                            SOLID là từ viết tắt kết hợp từ 5 chữ cái đầu tiên của 5 nguyên tắc, được đưa ra bởi <b>Bob Martin</b> và <b>Michael Feathers</b>.</p>
+                        <ul>
+                            <li><b>S</b>ingle Responsibility Principle (SRP)</li>
+                            <li><b>O</b>pen Closed Principle (OCP)</li>
+                            <li><b>L</b>iskov Substitution Principle (LSP)</li>
+                            <li><b>I</b>nterface Segregation Principle (ISP)</li>
+                            <li><b>D</b>ependency inversion principle (DIP)</li>
+                        </ul>
+                        <p>SOLID được coi như là một "must have skill" mà bất cứ software developer nào cũng cần phải biết. Trong bài viết này mình sẽ giới thiệu đến các bạn từng nguyên tắc và sử dụng Java để demo.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/blg_inline_solid_principles.png" alt="SOLID principles">
+                            <figcaption><b>Figure 1: SOLID principles</b></figcaption>
+                        </figure>
+
+                        <h2 id="single-responsibility-principle" class="mt-4">2. Single Responsibility Principle (SRP)</h2>
+                        <p>Nguyên lý đầu tiên có nội dung như sau: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0">Every software component should have one and only one responsibility.</p>
+                        </blockquote>
+                        <p>Mỗi software component chỉ nên có 1 trách nhiệm duy nhất và "software component" trong bối cảnh OOP thì chúng ta có thể hiểu nó là: một class, một method hoặc một module. Để hình dung rõ hơn chúng ta cùng xem hình ảnh sau:</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/single-responsibility-principle.png" alt="Single Responsibility Principle (SRP)">
+                            <figcaption><b>Figure 2: Single Responsibility Principle (Refer from Accesto.com)</b></figcaption>
+                        </figure>
+                        <p>Bây giờ thì chắc bạn đã hình dung rõ hơn về khái niệm <code>SRP</code>, nhưng lại thấy khó hiểu rằng đáng ra một component mà làm được nhiều việc như kia thì càng tiết kiệm effort, càng đa năng và đáng ra phải tốt hơn chứ. Tuy nhiên một component mà thực hiện quá nhiều công việc thì dẫn component đó sẽ có <b>nhiều lý do để thay đổi</b>.</p>
+                        <p>Việc thay đổi source code trong software development sẽ dẫn đến gia tăng chi phí cũng như tiềm ẩn nhiều rủi ro hoặc bug. Nên khi thiết kế chúng ta luôn cần đảm bảo việc chỉnh sửa cần được thực hiện dễ dàng với phạm vi ảnh hưởng ít nhất có thể. Ví dụ với một class <code>User</code> được thiết kế không tuân thủ <code>SRP</code> như sau: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/tight_coupling_01.png" alt="tight coupling">
+                            <figcaption><b>Figure 3: Class User thiết kế không tuân thủ SRP khi thực hiện 2 nhiệm vụ.</b></figcaption>
+                        </figure>
+                        <p>Với thiết kế như trên thì class User sẽ có nhiều lý do dẫn đến cần phải thay đổi: </p>
+                        <ol>
+                            <li>Khi các attribute của user thay đổi, ví dụ: cần quản lý thêm age, hay tách fullName thành firstName và lastName.</li>
+                            <li>Khi service mail thay đổi.</li>
+                        </ol>
+
+                        <p>Trong trường hợp hệ thống muốn dùng HotMail thay vì Gmail. Điều này dẫn đến class <code>User</code> phải thay đổi để đáp ứng yêu cầu mới. Bây giờ đối chiếu theo nguyên lý <code>SRP</code> ta chỉnh sửa class User như sau: </p>
+                        <p></p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/tight_coupling_02.png" alt="loose coupling">
+                            <figcaption><b>Figure 4: Hai classes thiết kế tuân thủ SRP khi mỗi class thực hiện 1 nhiệm vụ.</b></figcaption>
+                        </figure>
+                        <p>Với thiết kế này thì class <code>User</code> không phải thay đối với lý do [2] bên trên nữa, thay vào đó class <code>EmailService</code> sẽ bị thay đổi. <b>Vậy nhiên vẫn phải thay đổi thì thay đổi ở class User hay class EmailService có gì khác nhau đâu.</b></p>
+                        <p>Câu trả lời là có khác nhau. Nếu chúng ta thiết kế theo cách được mô tả ở Figure 3, thì ngoài class <code>User</code> cần send mail thì có thể N những class khác như <code>Ticket</code>, <code>Voucher</code>, <code>Booking</code>... cũng cần send mail. Điều này dẫn đến cũng là thay đổi vì lý do [2], nhưng: </p>
+                        <ul>
+                            <li>Thiết kế không chuẩn SRP (Figure 3) thì N classes sẽ phải thay đổi</li>
+                            <li>Thiết kế chuẩn SRP (Figure 4) thì chỉ EmailService phải thay đổi</li>
+                        </ul>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i> Khi mỗi software component chỉ có 1 trách nhiệm thì cũng chỉ có 1 lý do cần thay đổi.
+                        </p>
+                        <h2 id="open-closed-principle" class="mt-4">3. Open Closed Principle (OCP)</h2>
+                        <p>Nguyên lý này có nội dung như sau: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0">Software components should be close for modification, but open for extension.</p>
+                        </blockquote>
+                        <h2 id="liskov-substitution-principle" class="mt-4">4. Liskov Substitution Principle (LSP)</h2>
+                        <p>Nguyên lý này có nội dung như sau: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0">Objects should be replaceable with their subtypes without affecting the correctness of the program.</p>
+                        </blockquote>
+                        <h2 id="interface-segregation-principle" class="mt-4">5. Interface Segregation Principle (ISP)</h2>
+                        <p>Nguyên lý này có nội dung như sau: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <p class="mb-0">No client should be forced to depend on methods it does not use.</p>
+                        </blockquote>
+                        <h2 id="dependency-inversion-principle" class="mt-4">6. Dependency Inversion Principle (DIP)</h2>
+                        <p>Nguyên lý này có nội dung như sau: </p>
+                        <blockquote class="quote rounded mt-3 p-3">
+                            <ul class="mb-0">
+                                <li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
+                                <li>Abstractions should not depend on details. Details should depend on abstractions.</li>
+                            </ul>
+                        </blockquote>
+<!--                        <p><a href="https://github.com/phuongdp-tech/demo-source-winzone-blog/blob/main/SQL/VIEW_IN_SQL.sql" target="_blank">Source code tham khảo</a></p>-->
+                    </div>
+                </div>
+
+<!--                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/database-view-basic.html" data-width="100%" data-numposts="5"></div>-->
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>

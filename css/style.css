@@ -4425,3 +4425,8 @@ p {
 .expand-icon {
   display: none;
 }
+.card-body-custom {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
