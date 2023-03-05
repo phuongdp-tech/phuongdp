@@ -79,7 +79,7 @@
 <!--                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/sql.html" class="text-primary">SQL</a></h6>-->
                         <section class="table-content rounded">
                             <ol class="code-blue-text mb-0">
-                                <li><a href="#what-is-the-solid-principle">SOLID là gì?</a></li>
+<!--                                <li><a href="#what-is-the-solid-principle">SOLID là gì?</a></li>-->
                                 <li><a href="#single-responsibility-principle">Single Responsibility Principle (SRP)</a></li>
                                 <li><a href="#open-closed-principle">Open Closed Principle (OCP)</a></li>
                                 <li><a href="#liskov-substitution-principle">Liskov Substitution Principle (LSP)</a></li>
@@ -89,14 +89,14 @@
                             </ol>
                         </section>
                         <div class="mt-3">
-                            <p><strong>Phát triển phần mềm là một môi trường sẽ liên tục thay đổi, để thích nghi được với điều này thì mỗi sản phẩm cần phải có một kiến trúc thiết kế thật tốt. Với nền móng là kiến trúc tốt thì sản phẩm đó sẽ maintain và extend dễ dàng hơn.</strong></p>
+                            <p><strong>Phát triển phần mềm là một môi trường sẽ liên tục thay đổi, để thích nghi được với điều này thì mỗi sản phẩm cần phải có một kiến trúc thiết kế thật tốt. Với nền móng là kiến trúc tốt thì sản phẩm đó sẽ dễ dàng thay đổi và nâng cấp hơn.</strong></p>
                             <p class="caution rounded p-3">
                                 <i class="fas fa-exclamation-circle"></i> Trong bài viết này cần các bạn có kiến thức cơ bản về Object Oriented Programming (OOP)
                             </p>
                         </div>
-                        <h2 id="what-is-the-solid-principle" class="mt-4">1. SOLID là gì?</h2>
+<!--                        <h2 id="what-is-the-solid-principle" class="mt-4">SOLID là gì?</h2>-->
                         <p class="mb-0">
-                            SOLID là từ viết tắt kết hợp từ 5 chữ cái đầu tiên của 5 nguyên tắc, được đưa ra bởi <b>Bob Martin</b> và <b>Michael Feathers</b>.</p>
+                            SOLID là từ viết tắt kết hợp từ 5 chữ cái đầu tiên của 5 nguyên lý, được đưa ra bởi <b>Bob Martin</b> và <b>Michael Feathers</b>.</p>
                         <ul>
                             <li><b>S</b>ingle Responsibility Principle (SRP)</li>
                             <li><b>O</b>pen Closed Principle (OCP)</li>
@@ -104,18 +104,18 @@
                             <li><b>I</b>nterface Segregation Principle (ISP)</li>
                             <li><b>D</b>ependency inversion principle (DIP)</li>
                         </ul>
-                        <p>SOLID được coi như là một "must have skill" mà bất cứ software developer nào cũng cần phải biết. Trong bài viết này mình sẽ giới thiệu đến các bạn từng nguyên tắc và sử dụng Java để demo.</p>
+                        <p>SOLID được coi như là một "must have skill" mà bất cứ software developer nào cũng cần phải biết. Trong bài viết này mình sẽ giới thiệu đến các bạn từng nguyên lý và sử dụng Java để demo.</p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/blg_inline_solid_principles.png" alt="SOLID principles">
                             <figcaption><b>Figure 1: SOLID principles</b></figcaption>
                         </figure>
 
-                        <h2 id="single-responsibility-principle" class="mt-4">2. Single Responsibility Principle (SRP)</h2>
+                        <h2 id="single-responsibility-principle" class="mt-4">1. Single Responsibility Principle (SRP)</h2>
                         <p>Nguyên lý đầu tiên có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">Every software component should have one and only one responsibility.</p>
                         </blockquote>
-                        <p>Mỗi software component chỉ nên có 1 trách nhiệm duy nhất và "software component" trong bối cảnh OOP thì chúng ta có thể hiểu nó là: một class, một method hoặc một module. Để hình dung rõ hơn chúng ta cùng xem hình ảnh sau:</p>
+                        <p>Mỗi software component chỉ nên có 1 trách nhiệm duy nhất và "software component". Trong phạm vi OOP thì chúng ta có thể hiểu software component là: một class, một method hoặc một module. Để hình dung rõ hơn chúng ta cùng xem hình ảnh sau:</p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/single-responsibility-principle.png" alt="Single Responsibility Principle (SRP)">
                             <figcaption><b>Figure 2: Single Responsibility Principle (Refer from Accesto.com)</b></figcaption>
@@ -138,31 +138,63 @@
                             <img class="rounded p-2" src="../images/blog/19/tight_coupling_02.png" alt="loose coupling">
                             <figcaption><b>Figure 4: Hai classes thiết kế tuân thủ SRP khi mỗi class thực hiện 1 nhiệm vụ.</b></figcaption>
                         </figure>
-                        <p>Với thiết kế này thì class <code>User</code> không phải thay đối với lý do [2] bên trên nữa, thay vào đó class <code>EmailService</code> sẽ bị thay đổi. <b>Vậy nhiên vẫn phải thay đổi thì thay đổi ở class User hay class EmailService có gì khác nhau đâu.</b></p>
+                        <p>Với thiết kế này thì class <code>User</code> không phải thay đối với lý do [2] bên trên nữa, thay vào đó class <code>EmailService</code> sẽ bị thay đổi. <b>Tuy nhiên, vẫn phải thay đổi thì thay đổi ở class User hay class EmailService có gì khác nhau đâu.</b></p>
                         <p>Câu trả lời là có khác nhau. Nếu chúng ta thiết kế theo cách được mô tả ở Figure 3, thì ngoài class <code>User</code> cần send mail thì có thể N những class khác như <code>Ticket</code>, <code>Voucher</code>, <code>Booking</code>... cũng cần send mail. Điều này dẫn đến cũng là thay đổi vì lý do [2], nhưng: </p>
                         <ul>
                             <li>Thiết kế không chuẩn SRP (Figure 3) thì N classes sẽ phải thay đổi</li>
                             <li>Thiết kế chuẩn SRP (Figure 4) thì chỉ EmailService phải thay đổi</li>
                         </ul>
                         <p class="caution rounded p-3">
-                            <i class="fas fa-exclamation-circle"></i> Khi mỗi software component chỉ có 1 trách nhiệm thì cũng chỉ có 1 lý do cần thay đổi.
+                            <i class="fas fa-exclamation-circle"></i> Khi mỗi software component chỉ có 1 trách nhiệm thì cũng chỉ có 1 lý do cần thay đổi. Tỉ lệ source phải thay đổi càng ít thì càng dễ thay đổi, tiết kiệm chi phí, giảm thiểu rủi ro.
                         </p>
-                        <h2 id="open-closed-principle" class="mt-4">3. Open Closed Principle (OCP)</h2>
+                        <h2 id="open-closed-principle" class="mt-4">2. Open Closed Principle (OCP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">Software components should be close for modification, but open for extension.</p>
                         </blockquote>
-                        <h2 id="liskov-substitution-principle" class="mt-4">4. Liskov Substitution Principle (LSP)</h2>
+                        <p>Có 2 ý chính trong nguyên lý này: </p>
+                        <ul>
+                            <li><b>Hạn chế sửa đổi (close for modification): </b>Khi thêm các tính năng mới thì hạn chế sửa source của những software component có sẵn</li>
+                            <li><b>Ưu tiên mở rộng (open for extension):</b> Khi thêm các tính năng mới thì ưu tiên mở rộng và kế thừa những component đã có sẵn</li>
+                        </ul>
+                        <p>Để dễ tưởng tượng thì ví dụ bạn có 1 chiếc laptop, tuy nhiên bạn lại không thích bàn phìm trên chiếc laptop đó. Chúng ta sẽ không thể đem chiếc laptop đó ra sửa và lắp loại bàn phím mới vào được, mà thay vào đó hãy setup một chiếc bàn phím ngoài đúng loại mình thích.
+                        Vừa lựa chọn được lại bàn phím ưa thích mà không phải sửa gì chiếc laptop. Cũng tương tự như việc: thay lens máy ảnh, dùng loa ngoài cho laptop...</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/ocp_01.jpg" alt="Open Closed Principle">
+                            <figcaption><b>Figure 5: External keyboard for laptop.</b></figcaption>
+                        </figure>
+                        <p>Giả sử chúng ta có một hệ thống bán hàng với chức năng tích điểm thường. Với mỗi đơn hàng, member sẽ được tích điểm thưởng tương đương 1% tổng giá trị đơn hàng. </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/ocp_02.png" alt="Award point">
+                            <figcaption><b>Figure 6: Class <code>Member</code>.</b></figcaption>
+                        </figure>
+                        <p>Nghiệp vụ có thay đổi khi member chia làm 2 loại: <code>normal</code> và <code>platinum</code>. Với normal member thì nghiệp vụ giữ nguyên, tuy nhiên với platinum member thì sẽ tích điểm thưởng tuơng đương 2% tổng giá trị đơn hàng.
+                        Để đạt yêu cầu của nghiệp vụ mới ta có thể sửa class <code>Member</code> bằng cách thêm 1 field <code>type</code> và update method <code>incrementAwardPoint()</code> như sau:</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/ocp_03.png" alt="OCP Solution 01">
+                            <figcaption><b>Figure 7: Sửa class <code>Member</code> để đạt được nghiệp vụ mới.</b></figcaption>
+                        </figure>
+                        <p>Tuy nhiên khi chúng ta sửa method <code>incrementAwardPoint()</code>, sẽ tiềm ẩn rủi ro phần tính toán cũ có thể bị sai. Cách sửa trên là chúng ta đang vi phạm vào ý <b>"close for modification"</b>. Ta có 1 phương án mới theo hướng <b>"open for extension"</b> bằng cách
+                        tạo ra 1 class mới <code>PlatinumMember</code> và override lại method <code>incrementAwardPoint()</code> để cung cấp 1 cách thức tính mới cho loại member đó. Điều này sẽ giúp chung ta không hề chỉnh sửa vào việc tính toán của xử lý cũ.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/ocp_04.png" alt="OCP Solution 02">
+                            <figcaption><b>Figure 8: Thêm class <code>PlatinumMember</code> để đạt được nghiệp vụ mới.</b></figcaption>
+                        </figure>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i> Có thể bạn sẽ thắc mắc là việc chỉnh sửa nhỏ như kia thì có gì rủi ro mà phải phát sinh thêm 1 class mới.
+                            Đây chỉ là 1 ví dụ nhỏ để các bạn dễ hình dung hơn về nguyên lý. Còn khi vận dụng thực tế thì chúng ta sẽ cân nhắc phạm vi ảnh hưởng, độ khó để quyết định làm theo solution nào cho hợp lý.
+                        </p>
+                        <h2 id="liskov-substitution-principle" class="mt-4">3. Liskov Substitution Principle (LSP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">Objects should be replaceable with their subtypes without affecting the correctness of the program.</p>
                         </blockquote>
-                        <h2 id="interface-segregation-principle" class="mt-4">5. Interface Segregation Principle (ISP)</h2>
+                        <h2 id="interface-segregation-principle" class="mt-4">4. Interface Segregation Principle (ISP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">No client should be forced to depend on methods it does not use.</p>
                         </blockquote>
-                        <h2 id="dependency-inversion-principle" class="mt-4">6. Dependency Inversion Principle (DIP)</h2>
+                        <h2 id="dependency-inversion-principle" class="mt-4">5. Dependency Inversion Principle (DIP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <ul class="mb-0">
