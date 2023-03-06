@@ -189,19 +189,67 @@
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">Objects should be replaceable with their subtypes without affecting the correctness of the program.</p>
                         </blockquote>
+                        <p>Các objects của class con có thể thay thế object của class cha mà vẫn đảm bảo tính đúng đắn của chương trình. Nói cách khác là object của class con có thể làm được tất cả những công việc mà object của class cha có thể làm.</p>
+                        <p>Để giải thích rõ hơn chúng ta nói về tính chất kế thừa trong OOP. Tính chất kế thừa thể hiện cho mối quan hệ "is-a", ví dụ:</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/lsp_01.png" alt="is-a">
+                            <figcaption><b>Figure 9: Chim cánh cụt và hải âu là 1 loài chim.</b></figcaption>
+                        </figure>
+                        <p>Với mối quan hệ như trên ta có thể triển khai source code có mối quan hệ kế thừa như sau: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/lsp_02.png" alt="is-a">
+                            <figcaption><b>Figure 10: Class <code>Seagull</code>, <code>Penguin</code> kế thừa <code>Bird</code></b></figcaption>
+                        </figure>
+                        <p>Bạn có thể thấy vấn đề ở đây là chim cánh cụt thì đúng là 1 loài chim - thỏa mãn "is-a". Nhưng chim cánh cụt có cánh mà lại không thể bay được, dẫn đến nó không thể implement method <code>fly</code> của class cha <code>Bird</code>.
+                            Tồn tại 1 unimplemented method thì không phải là cách thiết kế tốt.
+                        </p>
+                        <p>
+                            Nguyên nhân của việc này là do ban đầu người thiết kế cố gắng thực hiện tính kế thừa tuy nhiên lại định nghĩa sai hành vi tổng quát mà trong đó có những class con không thể thực hiện được => Vi phạm nguyên tắc vì "Các objects của class con <span class="text-danger">KHÔNG THỂ</span> thay thế object của class cha".
+                            Chúng ta có thể giải quyết vấn đề này như cách bên dưới. Tách hành động <code>fly</code> ra một interface riêng, và chỉ những loài chim nào có thể bay thì implementation
+                        </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/lsp_03.png" alt="is-a">
+                            <figcaption><b>Figure 11: Tách hành động <code>fly</code> ra một interface riêng, và chỉ những loài chim nào có thể bay thì implementation</b></figcaption>
+                        </figure>
                         <h2 id="interface-segregation-principle" class="mt-4">4. Interface Segregation Principle (ISP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">No client should be forced to depend on methods it does not use.</p>
                         </blockquote>
+                        <p>Nguyên lý này khá dễ hiểu, nó phát biểu rằng những implementation của interface không nên bị phụ thuộc vào những method mà nó không dùng đến. Điều này có nghĩa là chúng ta nên phân chia các method vào những interface hợp lý, không nên nhóm nhiều method vào một FAT interface.</p>
+                        <p>Ví dụ ta có 1 interface <code>IExportable</code> định nghĩa 2 method hỗ trợ export csv hoặc pdf.
+                            Tuy nhiên với thông tin sao kê tín dụng <code>CreditStatement</code> thì không hỗ trợ export csv, dẫn đến method <code>exportCsv()</code> sẽ throw exception. Cách thiết kế này đã vi phạm nguyên lý vì <code>CreditStatement</code> đang phải implement một method không liên quan.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/isp_01.png" alt="ISP">
+                            <figcaption><b>Figure 12: <code>CreditStatement</code> phải implement method không liên quan.</b></figcaption>
+                        </figure>
+                        <p>Chúng ta có thể sửa bằng cách tách 2 interface như sau. Các class sẽ chọn implement những interface chưa các method mà nó cần thiết. </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/isp_02.png" alt="ISP solution">
+                            <figcaption><b>Figure 13: Các class sẽ chọn implement những interface chưa các method mà nó cần thiết.</b></figcaption>
+                        </figure>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Mục tiêu của nguyên tắc này giúp tránh được những implement dư thừa. Tuy nhiên cần phải nhớ rằng chúng ta tách interface một cách hợp lý chứ không phải tách nhỏ. Vì nếu tách quá nhỏ thì số lượng interface gia tăng dẫn đến khó để kiểm soát ứng dụng.
+                        </p>
                         <h2 id="dependency-inversion-principle" class="mt-4">5. Dependency Inversion Principle (DIP)</h2>
                         <p>Nguyên lý này có nội dung như sau: </p>
                         <blockquote class="quote rounded mt-3 p-3">
-                            <ul class="mb-0">
+                            <ul>
                                 <li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
                                 <li>Abstractions should not depend on details. Details should depend on abstractions.</li>
                             </ul>
+                            <hr>
+                            <ul class="mb-0">
+                                <li>Các module cấp cao không nên phụ thuộc vào các modules cấp thấp. Cả 2 nên phụ thuộc vào abstraction.</li>
+                                <li>Abstractions không nên phụ thuộc vào chi tiết, mà ngược lại.</li>
+                            </ul>
                         </blockquote>
+                        <p>Với nguyên lý này chúng ta cần khái niệm như nào là <code>high-level module</code> và <code>low-level module</code>. Thông thường chức năng đăng ký tài khoản, thông thường chúng ta sẽ cần gửi email kick hoạt tài khoản.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/dip_01.png" alt="Dependency Inversion Principle (DIP)">
+                            <figcaption><b>Figure 14: Sau khi đăng ký tài khoản sẽ gửi email bằng Google mail service.</b></figcaption>
+                        </figure>
 <!--                        <p><a href="https://github.com/phuongdp-tech/demo-source-winzone-blog/blob/main/SQL/VIEW_IN_SQL.sql" target="_blank">Source code tham khảo</a></p>-->
                     </div>
                 </div>
