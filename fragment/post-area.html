@@ -41,10 +41,12 @@ $(document).ready(function () {
                         <img src="${HOST_URL}/${item.image}" class="card-img-top" alt="...">
                         <div class="overlay rounded-top bg-dark"></div>
                     </div>
-                    <div class="card-body content">
-                        <h5><a href="${HOST_URL}/${item.url}" class="card-title title text-dark">${item.title}</a></h5>
-                        <p>${item.brief}</p>
-                        <div class="post-meta d-flex justify-content-end mt-3">
+                    <div class="card-body content card-body-custom justify-content-between">
+                        <div>
+                            <h5><a href="${HOST_URL}/${item.url}" class="card-title title text-dark">${item.title}</a></h5>
+                            <p>${item.brief}</p>
+                        </div>
+                        <div class="post-meta d-flex justify-content-end">
                             <a href="${HOST_URL}/${item.url}" class="btn btn-outline-primary">Read more</a>
                         </div>
                     </div>
@@ -295,6 +297,18 @@ $(document).ready(function () {
             "author": "Phuong Dang",
             "createDate": "27/Nov/2022",
             "category": ['spring', 'web', 'spring-mvc', 'interview-question-bank'],
+            "order": 15
+        },
+        {
+            "id": 19,
+            "title": 'Cơ bản về nguyên lý thiết kế SOLID',
+            "image": "images/blog/19/blg_inline_solid_principles.png",
+            "brief": "Phát triển phần mềm là một môi trường sẽ liên tục thay đổi, để thích nghi được với điều này thì mỗi sản phẩm cần phải có một kiến trúc thiết kế thật tốt.",
+            "content": "",
+            "url": "post/what-is-the-solid-principle.html",
+            "author": "Phuong Dang",
+            "createDate": "02/Mar/2023",
+            "category": ['principle', 'oop', 'java'],
             "order": 15
         },
     ];

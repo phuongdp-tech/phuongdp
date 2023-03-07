@@ -41,8 +41,8 @@
     </div>
 </div>
 <!-- Loader -->
-
 <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>
 
 <!-- Navbar STart -->
 <header id="topnav" class="defaultscroll sticky">
@@ -115,7 +115,7 @@
                         <blockquote class="quote rounded mt-3 p-3">
                             <p class="mb-0">Every software component should have one and only one responsibility.</p>
                         </blockquote>
-                        <p>Mỗi software component chỉ nên có 1 trách nhiệm duy nhất và "software component". Trong phạm vi OOP thì chúng ta có thể hiểu software component là: một class, một method hoặc một module. Để hình dung rõ hơn chúng ta cùng xem hình ảnh sau:</p>
+                        <p>Mỗi software component chỉ nên có 1 và chỉ 1 trách nhiệm duy nhất. Trong phạm vi OOP thì chúng ta có thể hiểu software component là: một class, một method hoặc một module. Để hình dung rõ hơn chúng ta cùng xem hình ảnh sau:</p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/single-responsibility-principle.png" alt="Single Responsibility Principle (SRP)">
                             <figcaption><b>Figure 2: Single Responsibility Principle (Refer from Accesto.com)</b></figcaption>
@@ -217,16 +217,21 @@
                             <p class="mb-0">No client should be forced to depend on methods it does not use.</p>
                         </blockquote>
                         <p>Nguyên lý này khá dễ hiểu, nó phát biểu rằng những implementation của interface không nên bị phụ thuộc vào những method mà nó không dùng đến. Điều này có nghĩa là chúng ta nên phân chia các method vào những interface hợp lý, không nên nhóm nhiều method vào một FAT interface.</p>
+                        <p>Nếu bạn dùng iphone thì liệu Apple có nên tặng kèm 1 một loại dây sạc như này cho bạn không. Tất nhiên là không rồi vì nó dư thừa quá nhiều chức năng không cần thiết.</p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/isp_04.png" alt="ISP">
+                            <figcaption><b>Figure 12: Một dây sạc dư thừa quá nhiều chức năng cho 1 chiếc iphone.</b></figcaption>
+                        </figure>
                         <p>Ví dụ ta có 1 interface <code>IExportable</code> định nghĩa 2 method hỗ trợ export csv hoặc pdf.
                             Tuy nhiên với thông tin sao kê tín dụng <code>CreditStatement</code> thì không hỗ trợ export csv, dẫn đến method <code>exportCsv()</code> sẽ throw exception. Cách thiết kế này đã vi phạm nguyên lý vì <code>CreditStatement</code> đang phải implement một method không liên quan.</p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/isp_01.png" alt="ISP">
-                            <figcaption><b>Figure 12: <code>CreditStatement</code> phải implement method không liên quan.</b></figcaption>
+                            <figcaption><b>Figure 13: <code>CreditStatement</code> phải implement method không liên quan.</b></figcaption>
                         </figure>
                         <p>Chúng ta có thể sửa bằng cách tách 2 interface như sau. Các class sẽ chọn implement những interface chưa các method mà nó cần thiết. </p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/isp_02.png" alt="ISP solution">
-                            <figcaption><b>Figure 13: Các class sẽ chọn implement những interface chưa các method mà nó cần thiết.</b></figcaption>
+                            <figcaption><b>Figure 14: Các class sẽ chọn implement những interface chưa các method mà nó cần thiết.</b></figcaption>
                         </figure>
                         <p class="caution rounded p-3">
                             <i class="fas fa-exclamation-circle"></i>
@@ -245,16 +250,51 @@
                                 <li>Abstractions không nên phụ thuộc vào chi tiết, mà ngược lại.</li>
                             </ul>
                         </blockquote>
-                        <p>Với nguyên lý này chúng ta cần khái niệm như nào là <code>high-level module</code> và <code>low-level module</code>. Thông thường chức năng đăng ký tài khoản, thông thường chúng ta sẽ cần gửi email kick hoạt tài khoản.</p>
+                        <p>Với nguyên lý này chúng ta cần biết khái niệm như nào là <code>module cấp cao</code> và <code>module cấp thấp</code>.
+                            Khi module A gọi module B, lúc này module A phụ thuộc (depend) vào module B. Thì module A là <code>module cấp cao</code> và module B là <code>module cấp thấp</code>.
+                        </p>
+                        <p>
+                            Ví dụ với chức năng đăng ký tài khoản, sau khi đăng ký thành công chúng ta sẽ cần gửi email kick hoạt tài khoản. Trường hợp này thì <code>RegisterController</code> sẽ là module cấp cao và <code>GmailService</code> là module cấp thấp.
+                        </p>
                         <figure style="text-align: center;">
                             <img class="rounded p-2" src="../images/blog/19/dip_01.png" alt="Dependency Inversion Principle (DIP)">
-                            <figcaption><b>Figure 14: Sau khi đăng ký tài khoản sẽ gửi email bằng Google mail service.</b></figcaption>
+                            <figcaption><b>Figure 15: Sau khi đăng ký tài khoản sẽ gửi email bằng Google mail service.</b></figcaption>
+                        </figure>
+                        <p>Việc module cấp cao gọi trực tiếp module cấp thấp như Figure 15 sẽ dẫn đến <code>RegisterController</code> bị phụ thuộc vào <code>GmailService</code>. Trong trường hợp ứng dụng thay đổi sử dụng dịch vụ Hot mail thay vì dùng Gmail thì lúc này <code>RegisterController</code> cần thay đổi gọi sang <code>HotMailService</code>.
+                        Để giải quyết việc phụ thuộc này chúng ta sẽ thiết kế như sau:
+                        </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/dip_02.png" alt="Dependency Inversion Principle (DIP)">
+                            <figcaption><b>Figure 16: <code>RegisterController</code> sẽ liên kết trực tiếp đến interface <code>EmailService</code></b></figcaption>
+                        </figure>
+                        <p>Khi <code>RegisterController</code> sẽ liên kết trực tiếp đến interface <code>EmailService</code>, điều này sẽ giúp cho <code>RegisterController</code> sẽ có thể linh động sử dụng bất kì service email nào mà bản thân nó không phải thay đổi. </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/dip_03.png" alt="Dependency Inversion Principle (DIP)">
+                            <figcaption><b>Figure 17: <code>RegisterController</code> sẽ không bị phụ thuộc vào 1 service mail cụ thể mà có thể linh động sử dụng</b></figcaption>
                         </figure>
 <!--                        <p><a href="https://github.com/phuongdp-tech/demo-source-winzone-blog/blob/main/SQL/VIEW_IN_SQL.sql" target="_blank">Source code tham khảo</a></p>-->
+                        <p>Ta có thể triển khai source code bằng cách <code>RegisterController</code> sẽ được inject EmailService thay vì trực tiếp <code>GmailService</code>: </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/dip_04.png" alt="Dependency Inversion Principle (DIP)">
+                            <figcaption><b>Figure 18: <code>RegisterController</code> inject EmailService thay vì trực tiếp GmailService</b></figcaption>
+                        </figure>
+                        <p>Trong quá trình execute <code>RegisterController</code> có thể switch email service khác nhau mà bản thân nó không phải chỉnh sửa gì. </p>
+                        <figure style="text-align: center;">
+                            <img class="rounded p-2" src="../images/blog/19/dip_05.png" alt="Dependency Inversion Principle (DIP)">
+                            <figcaption><b>Figure 19: <code>RegisterController</code> không cần chỉnh sửa khi đổi từ <code>GmailService</code> sang dùng <code>HotMailService</code></b></figcaption>
+                        </figure>
+                        <p class="caution rounded p-3">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Cách triển khai code bên trên đang sử dụng Dependency Injection, một trong những cách implement Dependency Inversion Principle.
+                        </p>
+                        <h2 id="summary" class="mt-4">6. Kết luận</h2>
+                        <p>Gửi lời khen ngợi đến các bạn đã kiên trì cùng mình hoàn thành nội dung liên quan đến 5 nguyên lý trong SOLID. Hi vọng sau bài viết này các bạn sẽ hiểu cơ bản về SOLID và áp dụng vào cách thiết kế để giúp source code của mình dễ dàng mở rộng hơn.</p>
+                        <p>Tuy nhiên cũng cần phải lưu ý rằng, bất cứ nguyên lý nào cũng có 2 mặt lợi và hại. Nếu cứng nhắc áp dụng thì đôi khi source code sẽ bị dài dòng, phức tạp và khó quản lý hơn.
+                           Nên bạn cần hiểu và áp dụng SOLID một cách hợp lý chứ không phải cứng nhắc.</p>
                     </div>
                 </div>
 
-<!--                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/database-view-basic.html" data-width="100%" data-numposts="5"></div>-->
+                <div class="fb-comments mt-4" data-href="https://winzone.vn/post/what-is-the-solid-principle.html" data-width="100%" data-numposts="5"></div>
             </div>
         </div>
     </div><!--end container-->
