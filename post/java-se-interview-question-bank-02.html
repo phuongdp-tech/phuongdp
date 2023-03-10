@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PVHR7FRM2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9PVHR7FRM2');
+    </script>
+    <meta charset="utf-8" />
+    <title>Winzone blog - Java SE Interview Question Bank 02</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winzone blog - Sharing knowledge, together we win" />
+    <meta name="keywords" content="HTML, CSS, SQL, JAVA, SPRING, BLOCKCHAIN, SOLIDITY, RUST" />
+    <meta name="author" content="PhuongDP" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Main Css -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="../css/colors/green.css" rel="stylesheet" id="color-opt">
+</head>
+
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+
+<!--<div id="fb-root"></div>-->
+<!--<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=349033547077915&autoLogAppEvents=1" nonce="a4JaignQ"></script>-->
+
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+
+</header><!--end header-->
+<!-- Navbar End -->
+
+<!-- Hero Start -->
+<section class="bg-half bg-sologan d-table w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="page-next-level">
+                    <h1 class="title title-blog-detail">Top những câu hỏi phỏng vấn Java SE - 02</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Phuong Dang</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> 10/Nov/2022</li>
+                    </ul>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- Blog STart -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card blog blog-detail shadow rounded">
+                    <div class="card-body content">
+                        <h6><i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=java-basic" class="text-primary">Java Basics</a>
+                            <i class="mdi mdi-tag text-primary mr-1"></i><a href="/?q=java-oop" class="text-primary">Java OOP</a>
+                        </h6>
+                        <section class="table-content rounded">
+                            <ol class="code-blue-text mb-0">
+                                <li><a href="#classify-access-modifier">Access modifier là gì và phân loại.</a></li>
+                                <li><a href="#why-need-getter-setter">Tại sao phải dùng getter và setter/accessors?</a></li>
+                                <li><a href="#why-java-allow-overload-constructor">Tại sao Java lại cho phép overload constructor?</a></li>
+                                <li><a href="#what-is-the-static-method">Static method là gì?</a></li>
+                                <li><a href="#why-static-method-can-not-call-instance-method">Tại sao static method không gọi được instance method</a></li>
+                                <li><a href="#does-multiple-inheritance-in-java">Trong Java có đa kế thừa không</a></li>
+                                <li><a href="#compare-overload-override">So sánh overload và override</a></li>
+                                <li><a href="#compare-interface-abstract-class">So sánh interface và abstract class</a></li>
+                                <li><a href="#what-is-rule-of-override-method">Override method có những rule nào</a></li>
+                                <li><a href="#compare-hidding-method-hidding-variable">Hidding method và hidding variable là gì</a></li>
+                                <li><a href="#why-have-default-method-and-static-method-in-interface-from-java-8">Tại sao từ Java 8 lại có default và static method trong interface</a></li>
+                                <li><a href="#compre-this-and-super-keyword">So sánh từ khóa this và super</a></li>
+                                <li><a href="#compre-this-and-super">So sánh từ khóa this() và super()</a></li>
+                                <li><a href="#compare-final-and-finally-and-finalize">So sánh từ khóa final, finally và finalize</a></li>
+
+<!--                                <li><a href="#compare-object-reference">String Pool</a></li>-->
+<!--                                <li><a href="#compare-object-reference">String Immutable là gì và tại sao String lại immutable</a></li>-->
+<!--                                <li><a href="#compare-object-reference">So sánh String, StringBuilder, StringBuffer</a></li>-->
+<!--                                <li><a href="#compare-stack-heap-memory">So sánh List và Set</a></li>-->
+<!--                                <li><a href="#compare-stack-heap-memory">So sánh Array và ArrayList</a></li>-->
+<!--                                <li><a href="#compare-stack-heap-memory">So sánh ArrayList và LinkedList</a></li>-->
+<!--                                <li><a href="#compare-stack-heap-memory">So sánh HashSet, LinkedHashSet và TreeSet</a></li>-->
+<!--                                <li><a href="#compare-stack-heap-memory">So sánh HashMap, LinkedHashMap và TreeMap</a></li>-->
+<!--                                <li><a href="#object-target-of-gc">Cơ chế xác định trùng lặp object trong HashSet</a></li>-->
+<!--                                <li><a href="#object-target-of-gc">Phân loại checked và unchecked exceptions</a></li>-->
+<!--                                <li><a href="#object-target-of-gc">Phân biệt throw và throws</a></li>-->
+                            </ol>
+                        </section>
+                        <div class="mt-3">
+                            <p><strong>Trong bài viết này mình sẽ tổng hợp những câu hỏi phỏng vấn Java SE - Section Java OOP cho đối tượng Fresher</strong>.</p>
+
+                            <p class="caution rounded p-3 mt-3">
+                                <i class="fas fa-exclamation-circle"></i>  Java SE 8
+                            </p>
+                        </div>
+
+                        <div class="question-content">
+                            <h2 id="classify-access-modifier" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>1. Access modifier là gì và phân loại</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <p>Access modifier được dùng để chỉ định phạm vi truy cập class, constructor, method, variable trong Java. Có 4 loại access modifier: </p>
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Can access</th>
+                                            <th scope="col"><code>private</code></th>
+                                            <th scope="col"><code>default <br>(package private)</code></th>
+                                            <th scope="col"><code>protected</code></th>
+                                            <th scope="col"><code>public</code></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Member trong cùng 1 class</td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Member khác class nhưng cùng package</td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Member bên trong parent class và khác package</td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td>YES</td>
+                                            <td>YES</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Member bên trong non-parent class và khác package</td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td><span class="text-danger">NO</span></td>
+                                            <td>YES</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="caution rounded p-3 mt-3">
+                                    <i class="fas fa-exclamation-circle"></i>  Access modifier là <code>"default"</code> khi ta không chỉ định cụ thể là <code>public</code>, <code>protected</code>, <code>private</code> chứ không phải dùng từ khóa <code>default</code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="why-need-getter-setter" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>2. Tại sao phải dùng getter và setter/accessors?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <p>Có nhiều lý do chúng ta cần sử dụng getter và setter: </p>
+                                <ul>
+                                    <li>Tránh việc gán untrusted/invalid data trực tiếp vào variable, bằng cách đi qua setter để validate.</li>
+                                    <li>Format hoặc che giấu data trước khi return về nếu muốn, bằng cách truy cập data thông qua getter.</li>
+                                    <li>Trong trường hợp tại thời điểm tạo getter/setter nhưng cũng chưa cung cấp tính năng gì, thì đó là một cách thiết kế phòng ngừa cho tương lai.
+                                        Nếu sau này thay đổi thì chỉ sửa getter/setter mà không ảnh hưởng đến những chỗ đang sử dụng getter/setter đó. </li>
+                                    <li>Cho phép cung cấp level truy vấn khác nhau: ví dụ như read-only thì sẽ private variable và chỉ cung cấp getter.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="why-java-allow-overload-constructor" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>3. Tại sao Java lại cho phép overload constructor?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <p>Mỗi constructor là một cách thức khởi tạo object của một class. Việc overload constructor tức là chúng ta đang đa dạng hóa cách thức khởi tạo và cho phép tạo object thông qua nhiều cách phụ thuộc vào lượng data đang có ở thời điểm khởi tạo.</p>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="what-is-the-static-method" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>4. Static method là gì?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <p>Static method là method được khai báo cùng từ khóa <code>static</code>.
+                                    Static method được dùng với 2 mục đích chính như sau:
+                                </p>
+                                <ul>
+                                    <li>Các method dạng utility/helper mà không yêu cầu state của object, không cần access đến các instance member. Thì với static method ta có thể truy cập nhanh thông qua class name mà không cần khởi tạo instance chỉ để gọi đến method đó.</li>
+                                    <li>Với những state mà cần giống nhau giữa toàn bộ instance của class, thì nên sử dụng static method ví dụ như method đó return giá trị dạng counter.</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="object-target-of-gc" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>5. Một object trở thành mục tiêu dọn dẹp của Garbage Collector khi nào?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <p>Garbage collection là quá trình tự động dọn dẹp bộ nhớ Heap của Java,
+                                    nó sẽ tìm đến những object không còn được sử dụng để xóa khỏi bộ nhớ Heap. Một object sẽ trở thành mục tiêu dọn dẹp của GC khi 1 trong 2 điều sau xảy ra: </p>
+                                <ul>
+                                    <li>Object không có 1 reference nào trỏ đến</li>
+                                    <li>Tất cả reference trỏ đến object đã out of scope</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="compare-pass-by-value-pass-by-references" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>6. So sánh pass by value và pass by reference</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Pass by value</th>
+                                            <th scope="col">Pass by reference</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Tham số truyền vào method sẽ được copy ra một bản sao và tất cả các thao tác dữ liệu bên trong method sẽ cập nhật vào bản sao đó.
+                                                Vì thế mà mọi sự thay đổi bên trong method <strong>sẽ không ảnh hưởng</strong> đến giá trị của biến ban đầu bên ngoài method được gọi.
+                                            </td>
+                                            <td>
+                                                Tham số truyền vào method và giá trị biến bên ngoài method cùng là reference trỏ đến một object.
+                                                Do đó tất cả thao tác liên quan đến object được thực hiện bên trong method được gọi <strong>sẽ ảnh hưởng</strong> đến giá trị của biến bên ngoài method
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-center">
+                                                <strong>Trong java luôn luôn là pass by value dù tham số có data type là primitive hay reference</strong>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="accordion" id="accordionPassbyvalue">
+                                        <div class="card">
+                                            <div class="card-header" id="headingPassbyvalueprimitive">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePassbyvalueprimitive" aria-expanded="true" aria-controls="collapseOne">
+                                                        <i data-feather="code" class="fea icon-sm icons"></i> 1. Source code demo: Tham số kiểu dữ liệu primitive
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id="collapsePassbyvalueprimitive" class="collapse" aria-labelledby="headingPassbyvalueprimitive" data-parent="#accordionPassbyvalue">
+                                                <div class="card-body">
+                                                    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    <span style="color: #333399; font-weight: bold">int</span> number <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">;</span>
+    <span style="color: #888888">// changeNumber() được gọi bên dưới đã thay đổi giá bị biến number = 11 bên trong nó</span>
+    <span style="color: #888888">// Tuy nhiên sau khi print number vẫn ra giá trị là 10.</span>
+    <span style="color: #888888">// Do cơ chế pass by value không thay đối giá trị biến number đã được khởi tạo ở main()</span>
+    changeNumber<span style="color: #333333">(</span>number<span style="color: #333333">);</span>
+    System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>number<span style="color: #333333">);</span> <span style="color: #888888">// Method</span>
+<span style="color: #333333">}</span>
+
+<span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">changeNumber</span><span style="color: #333333">(</span><span style="color: #333399; font-weight: bold">int</span> number<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+    number <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">20</span><span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card-header" id="headingPassbyvaluereference">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePassbyvaluereference" aria-expanded="true" aria-controls="collapseOne">
+                                                        <i data-feather="code" class="fea icon-sm icons"></i> 2. Source code demo: Tham số kiểu dữ liệu reference
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id="collapsePassbyvaluereference" class="collapse" aria-labelledby="headingPassbyvaluereference" data-parent="#accordionPassbyvalue">
+                                                <div class="card-body">
+                                                    <p>
+                                                        Line số 4 khai báo <code>student.mark</code> = 9, sau đó thay đổi <code>student.mark</code> bên trong method <code>changeMark</code> tại line 10. Nếu khẳng định Java là pass by value thì print <code>student.mark</code> tại line 6 đáng ra giá trị vẫn là 9 vì không đổi, tuy nhiên lại là 8. Điều này gây confuse và cảm tưởng rằng không đúng với lý thuyết pass by value
+                                                    </p>
+                                                    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">PassByValueReferenceVariable</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        Student student <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Student<span style="color: #333333">();</span>
+        student<span style="color: #333333">.</span><span style="color: #0000CC">mark</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">;</span>
+        changeMark<span style="color: #333333">(</span>student<span style="color: #333333">);</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>student<span style="color: #333333">.</span><span style="color: #0000CC">mark</span><span style="color: #333333">);</span> <span style="color: #888888">// 8</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">changeMark</span><span style="color: #333333">(</span>Student student<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        student<span style="color: #333333">.</span><span style="color: #0000CC">mark</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Student</span> <span style="color: #333333">{</span>
+    <span style="color: #333399; font-weight: bold">int</span> mark<span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                                    <p class="mt-4">Tuy nhiên với ví dụ bên dưới trong method <code>changeMark()</code>, ta không thay đổi mark của đối tượng <code>student</code> thông qua reference, mà ta assigned reference đó đến một object mới.
+                                                        Thì chúng ta có thể thấy giá trị của <code>student</code> được khai báo ở line 3 không hề thay đổi, vẫn print 9 ở line 6.
+                                                    </p>
+                                                    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">PassByValueReferenceVariable</span> <span style="color: #333333">{</span>
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">main</span><span style="color: #333333">(</span>String<span style="color: #333333">[]</span> args<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        Student student <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Student<span style="color: #333333">();</span>
+        student<span style="color: #333333">.</span><span style="color: #0000CC">mark</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">;</span>
+        changeMark<span style="color: #333333">(</span>student<span style="color: #333333">);</span>
+        System<span style="color: #333333">.</span><span style="color: #0000CC">out</span><span style="color: #333333">.</span><span style="color: #0000CC">println</span><span style="color: #333333">(</span>student<span style="color: #333333">.</span><span style="color: #0000CC">mark</span><span style="color: #333333">);</span> <span style="color: #888888">// 9</span>
+    <span style="color: #333333">}</span>
+
+    <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">changeMark</span><span style="color: #333333">(</span>Student student<span style="color: #333333">)</span> <span style="color: #333333">{</span>
+        Student newStudent <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Student<span style="color: #333333">();</span>
+        newStudent<span style="color: #333333">.</span><span style="color: #0000CC">mark</span> <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">8</span><span style="color: #333333">;</span>
+        student <span style="color: #333333">=</span> newStudent<span style="color: #333333">;</span>
+    <span style="color: #333333">}</span>
+<span style="color: #333333">}</span>
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Student</span> <span style="color: #333333">{</span>
+    <span style="color: #333399; font-weight: bold">int</span> mark<span style="color: #333333">;</span>
+<span style="color: #333333">}</span>
+</pre></td></tr></table></div>
+                                                    <p class="mt-4">Chúng ta có thể lý giải như sau.
+                                                    <ul>
+                                                        <li>Ví dụ số 1 khi truyền biến student kiểu reference vào method. Theo cơ chế pass by value thì Java sẽ tạo ra 1 bản copy của biến reference đó, lúc này ta có 2 biến references cùng trỏ vào 1 object. Từ đó có hiện tượng chỉnh sửa object trong method dẫn đến vị trí bên ngoài gọi method đó cũng bị ảnh hường</li>
+                                                        <li>Ví dụ số 2 khi truyền biến student kiểu reference vào method. Theo cơ chế pass by value thì Java sẽ tạo ra 1 bản copy của biến reference đó, lúc này ta assigned "bản copy của biến referece" đó đến 1 object mới => object bên ngoài không bị ảnh hưởng. Lúc này ta có 2 biến references trỏ đến 2 objects riêng biệt.</li>
+                                                    </ul>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="compare-operator-equals-method" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>7. So sánh == operator và equals method?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 10%">#</th>
+                                            <th scope="col" style="width: 45%">== operator</th>
+                                            <th scope="col" style="width: 45%">equals method</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>So sánh biến primitive</td>
+                                            <td>Sẽ luôn return <code>true</code> nếu chúng có cùng value (ngoại trừ float/double ở 1 số trường hợp đặc biệt)</td>
+                                            <td>Không dùng để so sánh các biến primitive.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>So sánh biến reference</td>
+                                            <td>So sánh memmory address của object mà 2 biến đó trỏ tới.
+                                                Kết quả sẽ là <code>true</code> nếu cả 2 biến reference đều trỏ vào 1 object, ngược lại thì return <code>false</code>
+                                            </td>
+                                            <td>
+                                                <ol>
+                                                    <li>Nếu equals() method chưa được <strong>override</strong> thì sẽ gọi đến equals() của class Object <br>=> So sánh memory address tương tự == operator.</li>
+                                                    <li>Nếu equals() method được <strong>override</strong> thì sẽ thực hiện logic theo mục tiêu đã implementation, thông thường sẽ so sánh value của Object (Tương tự như String).</li>
+                                                </ol>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="compare-primitive-references" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>8. So sánh data type Primitive và References?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 50%">Primitive</th>
+                                            <th scope="col" style="width: 50%">References</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Java có 8 kiểu dữ liệu primitive: <code>boolean</code>, <code>byte</code>, <code>short</code>
+                                                <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>char</code></td>
+                                            <td>Biến có kiểu dữ liệu reference type sẽ refers đến một object</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lưu trữ giá trị của biến tùy thuộc vào kiểu dữ liệu</td>
+                                            <td>Lưu trữ memory address của object mà nó refer đến</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Không lưu trữ được giá trị <code>null</code></td>
+                                            <td>Lưu trữ được giá trị <code>null</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Không call được method</td>
+                                            <td>Có thể call được method
+                                                <br><br>
+                                                * Nếu reference đang bị null và thực hiện call method thì sẽ bị <code>NullPointerException</code>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tất cả data type primitive đều bắt đầu bằng chữ cái viết thường</td>
+                                            <td>Tất cả data type reference đều bắt đầu bằng chữ cái viết hoa (Nếu tuân thủ naming convention)</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="compare-autoboxing-unautoboxing" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>9. Autoboxing và Unboxing trong Java là gì?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+                            <div class="answer-content">
+                                Mỗi kiểu dữ liệu primitive đều được Java cung cấp cho Wrapper class tương ứng với nó.
+                                <div class="table-responsive mt-2">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 33%">Primitive type</th>
+                                            <th scope="col" style="width: 33%">Wrapper class</th>
+                                            <th scope="col" style="width: 33%">Example of constructing</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>boolean</td>
+                                            <td>Boolean</td>
+                                            <td>new Boolean(true)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>byte</td>
+                                            <td>Byte</td>
+                                            <td>new Byte((byte) 1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>short</td>
+                                            <td>Short</td>
+                                            <td>new Short((short) 1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>int</td>
+                                            <td>Integer</td>
+                                            <td>new Integer(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>long</td>
+                                            <td>Long</td>
+                                            <td>new Long(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>float</td>
+                                            <td>Float</td>
+                                            <td>new Float(1.0)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>double</td>
+                                            <td>Double</td>
+                                            <td>new Double(1)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>char</td>
+                                            <td>Character</td>
+                                            <td>new Character('c')</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p>Việc Java tự chuyển đổi kiểu dữ liệu primitive sang Wrapper class tương ứng với nó gọi là <code>Autoboxing</code> và ngược lại gọi là <code>Unboxing</code></p>
+
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    <i data-feather="code" class="fea icon-sm icons"></i> Source code demo
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">List<span style="color: #333333">&lt;</span>Integer<span style="color: #333333">&gt;</span> numberList <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ArrayList<span style="color: #333333">&lt;&gt;();</span>
+numberList<span style="color: #333333">.</span><span style="color: #0000CC">add</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">);</span> <span style="color: #888888">// Autoboxing</span>
+numberList<span style="color: #333333">.</span><span style="color: #0000CC">add</span><span style="color: #333333">(</span><span style="color: #008800; font-weight: bold">new</span> Integer<span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">));</span>
+
+<span style="color: #333399; font-weight: bold">int</span> firstValue <span style="color: #333333">=</span> numberList<span style="color: #333333">.</span><span style="color: #0000CC">get</span><span style="color: #333333">(</span><span style="color: #0000DD; font-weight: bold">0</span><span style="color: #333333">);</span> <span style="color: #888888">// Unboxing</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <h2 id="why-lost-default-constructor-when-define-a-constructor" class="mt-4 d-flex align-items-center justify-content-between">
+                                <span>10. Tại sao khi define constructor thì default constructor lại mất đi?</span>
+                                <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+                                <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+                            </h2>
+
+                            <div class="answer-content">
+                                <div class="table-responsive">
+                                    <p>Mặc định sử dụng <code>new</code> kết hợp constructor là cách khởi tạo object duy nhất của mỗi Class trong Java. Do đó Java luôn cung cấp cho chúng ta 1 default constructor không tham số.</p>
+                                    <p>Ngoài ra, Java cũng cho phép mỗi Class có nhiều constructor thông qua cơ chế overloading constructor với mục đích cung cấp linh hoạt cách thức khởi tạo object.</p>
+
+                                    <p>Mỗi constructor là một cách thức <strong>ta muốn</strong> khởi tạo object,
+                                        vì vậy khi ta đã cung cấp một constructor mới thì đó là cách mà developer muốn class được khởi tạo thông qua nó (Có 1 số design pattern còn muốn <code>private</code> lại constructor).
+                                        Lúc này Java không có lý do nào giữ lại default constructor, nếu muốn developer sẽ tự tạo một constructor không tham số.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                        <h2 id="summary" class="mt-4">6. Kết luận</h2>-->
+
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Blog End -->
+
+<footer id="footer-page"></footer>
+
+<!-- javascript -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="../js/feather.min.js"></script>
+<script src="../js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="../js/app.js"></script>
+</body>
+</html>
