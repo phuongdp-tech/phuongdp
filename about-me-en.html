@@ -27,6 +27,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
     <link href="css/colors/green.css" rel="stylesheet" id="color-opt">
     <style>
+        .card-img-top {
+            height: 450px;
+        }
         #about_me_fa_mobile, #happy-trainer-mobile {
             display: none;
         }
@@ -74,270 +77,311 @@
 </head>
 
 <body>
-    <!-- Navbar STart -->
-    <header id="topnav" class="defaultscroll sticky">
-    </header><!--end header-->
-    <!-- Navbar End -->
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky">
+</header><!--end header-->
+<!-- Navbar End -->
 
-    <!-- Hero Start -->
-    <section class="bg-home bg-sologan d-flex align-items-center" id="home">
-        <div class="container">
-            <div class="row align-items-center py-4">
-                <div class="col-lg-5 col-12 text-center">
-                    <img class="rounded" style="max-width: 100%" src="images/about-me/author.png" />
+<!-- Hero Start -->
+<section class="bg-home bg-sologan d-flex align-items-center" id="home">
+    <div class="container">
+        <div class="row align-items-center py-4">
+            <div class="col-lg-5 col-12 text-center">
+                <!--                    <h2 class="font-weight-bold mb-3" id="author-name">Đặng Phương Phương</h2>-->
+                <img class="rounded" style="max-width: 100%" src="images/about-me/author.png" />
+                <!--                    <p><a href="/about-me-en.html">English version</a></p>-->
+            </div>
+            <div class="col-lg-7 col-12 pt-sm-4 pt-lg-0">
+                <div class="title-heading">
+                    <p class="para-desc">
+                    <div><strong>Xin chào các bạn,</strong></div>
+                    Việc tạo blog này với mong muốn chia sẻ kiến thức, kinh nghiệm của bản thân đã tích luỹ sau một khoảng thời gian đi làm.
+                    Đặc biệt là dành cho các bạn sinh viên và học viên chuyển ngành vì hiện tại mình là Trainer tại <a href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">Fsoft Academy</a>.</p>
+                    <p class="para-desc">
+                        Bằng sự trải nghiệm đa dạng khi tham gia nhiều dự án với nhiều vị trí khác nhau.
+                        Hi vọng rằng mỗi bài viết tại blog này sẽ đem đến bạn đọc những kiến thức hữu ích, những góc nhìn đa chiều về một Developer.
+                    </p>
+                    <p class="para-desc">Happy coding, <br><strong>Đặng Phương Phương</strong></p>
+                    <ul class="list-unstyled social-icon social">
+                        <li class="list-inline-item"><a target="_blank" href="https://www.facebook.com/phuongdang.tech" class="rounded"><i style="line-height: 32px" class="fab fa-facebook-f"></i></a></li>
+                        <!--                    <li class="list-inline-item"><a target="_blank" href="https://www.youtube.com/channel/UCpLG85D5-2Xc3I-LiOM0iKQ" class="rounded"><i style="line-height: 32px" class="fab fa-youtube"></i></a></li>-->
+                        <li class="list-inline-item"><a target="_blank" href="https://www.linkedin.com/in/phuongdp-tech/" class="rounded"><i style="line-height: 32px" class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <!--                        <div class="mt-4 pt-2">-->
+                    <!--                            <a href="#contact" class="btn btn-outline-primary mt-2 mouse-down"><i class="mdi mdi-cloud-download"></i> Liên hệ</a>-->
+                    <!--                        </div>-->
                 </div>
-                <div class="col-lg-7 col-12 pt-sm-4 pt-lg-0">
-                    <div class="title-heading">
-                        <p class="para-desc"><b>Hello,</b></p>
-                        <p class="para-desc">
-                            I started this blog with the intention of sharing my knowledge and experiences, especially with students as I am a trainer at <a href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">Fsoft Academy</a>. 
-                            With extensive experience working on numerous projects, I aim to bring readers useful knowledge and multi-dimensional perspectives on developers through each article on this blog.
-                        </p>
-                        <p class="para-desc">
-                            If you have any comments related to the content of the articles, please feel free to reach out to me via email at <a href="mailto:phuongdp.tech@gmail.com">phuongdp.tech@gmail.com</a> or <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc-_zKSZgkFfEkg3QahVkvmfhcicA6Zhog_knO8PghjgBHpZQ/viewform">the contact form</a>.</p>
-                        <p class="para-desc">Happy coding, <br><strong>Đặng Phương Phương</strong></p>
-                        <p class="para-desc"></p>
-<!--                        <div class="mt-4 pt-2">-->
-<!--                            <a href="#contact" class="btn btn-outline-primary mt-2 mouse-down"><i class="mdi mdi-cloud-download"></i> Liên hệ</a>-->
-<!--                        </div>-->
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section><!--end section-->
-    <div class="container px-3" style="background: white">
-        <h3 class="py-3 d-flex align-items-center justify-content-between">
-            <span>Certificates</span>
-            <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
-            <i class="fas fa-angle-left expand-icon" title="Expand"></i>
-        </h3>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+<div class="container px-3" style="background: white">
+    <h3 class="py-3 d-flex align-items-center justify-content-between">
+        <span>Certificates</span>
+        <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+        <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+    </h3>
+    <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 mb-4">
-                <div class="badge-container">
-                    <img src="https://images.credly.com/size/220x220/images/a2790314-008a-4c3d-9553-f5e84eb359ba/image.png" width="110" alt="" height="110">
-                    <div class="badge-details">
-                        <div style="max-height: 104px; -webkit-line-clamp: 4;">
-                            <a target="_blank" href="https://www.credly.com/badges/0e3caad2-0fd8-4d61-975d-8f69875fb2a6">Professional Scrum Master™ I (PSM I)</a></div>
-                        <div style="max-height: 38px; -webkit-line-clamp: 2;">Scrum.org</div>
+                <a target="_blank" href="https://www.credly.com/badges/09b7f86e-c4d4-41d5-8525-e2f4847087f1">
+                    <div class="badge-container">
+                        <img src="https://images.credly.com/images/b66b4371-79e3-45ae-9db9-3af1b7d2bdec/image.png" width="110" alt="" height="110">
+                        <div class="badge-details">
+                            <div style="max-height: 104px; -webkit-line-clamp: 4;">
+                                <a target="_blank" href="https://www.credly.com/badges/09b7f86e-c4d4-41d5-8525-e2f4847087f1">Spring Certified Professional</a></div>
+                            <div style="max-height: 38px; -webkit-line-clamp: 2;">Broadcom</div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-12 col-lg-6 mb-4">
-                <div class="badge-container">
-                    <img class="cr-standard-grid-item-content__image" src="https://images.credly.com/size/220x220/images/3e1a7290-fade-4be4-9bcd-1a7743294a81/Oracle_Professional_Badge__1_.png" width="110" alt="" height="110">
-                    <div class="badge-details">
-                        <div style="max-height: 104px; -webkit-line-clamp: 4;">
-                            <a target="_blank" href="https://www.credly.com/badges/c146b98d-4da2-4aa7-854e-9e4108da43a6">Oracle Certified Professional, Java SE 8 Programmer</a></div>
-                        <div style="max-height: 38px; -webkit-line-clamp: 2;">Oracle</div>
+                <a target="_blank" href="https://www.credly.com/badges/0e3caad2-0fd8-4d61-975d-8f69875fb2a6">
+                    <div class="badge-container">
+                        <img src="https://images.credly.com/size/220x220/images/a2790314-008a-4c3d-9553-f5e84eb359ba/image.png" width="110" alt="" height="110">
+                        <div class="badge-details">
+                            <div style="max-height: 104px; -webkit-line-clamp: 4;">
+                                <a target="_blank" href="https://www.credly.com/badges/0e3caad2-0fd8-4d61-975d-8f69875fb2a6">Professional Scrum Master™ I (PSM I)</a></div>
+                            <div style="max-height: 38px; -webkit-line-clamp: 2;">Scrum.org</div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-12 col-lg-6 mb-4">
-                <div class="badge-container">
-                    <img class="cr-standard-grid-item-content__image" src="https://images.credly.com/size/220x220/images/a9848abf-f8bd-474d-a9b4-6086da11a916/Oracle_Associates_Badge__1_.png" width="110" alt="" height="110">
-                    <div class="badge-details">
-                        <div style="max-height: 104px; -webkit-line-clamp: 4;">
-                            <a target="_blank" href="https://www.credly.com/badges/9c899844-dc83-4eab-9610-82c13cf39966">Oracle Certified Associate, Java SE 8 Programmer</a></div>
-                        <div style="max-height: 38px; -webkit-line-clamp: 2;">Oracle</div>
+                <a target="_blank" href="https://www.credly.com/badges/c146b98d-4da2-4aa7-854e-9e4108da43a6">
+                    <div class="badge-container">
+                        <img class="cr-standard-grid-item-content__image" src="https://images.credly.com/size/220x220/images/3e1a7290-fade-4be4-9bcd-1a7743294a81/Oracle_Professional_Badge__1_.png" width="110" alt="" height="110">
+                        <div class="badge-details">
+                            <div style="max-height: 104px; -webkit-line-clamp: 4;">
+                                <a target="_blank" href="https://www.credly.com/badges/c146b98d-4da2-4aa7-854e-9e4108da43a6">Oracle Certified Professional, Java SE 8 Programmer</a></div>
+                            <div style="max-height: 38px; -webkit-line-clamp: 2;">Oracle</div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-12 col-lg-6 mb-4">
                 <div class="badge-container">
                     <a target="_blank" href="images/about-me/chungchinghiepvusupham.jpg">
-                    <img class="cr-standard-grid-item-content__image" src="images/about-me/daihocsuphamhue.png" width="110" alt="" height="110">
-                    <div class="badge-details">
-                        <div style="max-height: 104px; -webkit-line-clamp: 4;">
-                            <a target="_blank" href="images/about-me/chungchinghiepvusupham.jpg">Chứng Chỉ Nghiệp Vụ Sư Phạm</a></div>
-                        <div style="max-height: 38px; -webkit-line-clamp: 2;">Đại học Sư phạm, Đại học Huế</div>
-                    </div>
+                        <img class="cr-standard-grid-item-content__image" src="images/about-me/daihocsuphamhue.png" width="110" alt="" height="110">
+                        <div class="badge-details">
+                            <div style="max-height: 104px; -webkit-line-clamp: 4;">
+                                <a target="_blank" href="images/about-me/chungchinghiepvusupham.jpg">Chứng Chỉ Nghiệp Vụ Sư Phạm</a></div>
+                            <div style="max-height: 38px; -webkit-line-clamp: 2;">Đại học Sư phạm, Đại học Huế</div>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container px-3" style="background: white">
-        <hr>
-        <h3 class="py-3 d-flex align-items-center justify-content-between">
-            <span>Awards</span>
-            <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
-            <i class="fas fa-angle-left expand-icon" title="Expand"></i>
-        </h3>
-        <div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-baseline justify-content-between">
-                    <h4 class="award-title">
-                        <i style="color: #FFD74A" class="fas fa-award"></i>
-                        2022 - The Best Trainer of FPT Software Academy
-                    </h4>
-                    <h4><i class="fas fa-images award-gallery" data-award-id="1"></i></h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-baseline justify-content-between">
-                    <h4 class="award-title">
-                        <i style="color: #FFD74A" class="fas fa-award"></i>
-                        2022 - New Rising Star Award
-                    </h4>
-                    <h4><i class="fas fa-images award-gallery" data-award-id="2"></i></h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-baseline justify-content-between">
-                    <h4 class="award-title">
-                        <i style="color: #FFD74A" class="fas fa-award"></i>
-                        2017 – Leader Best Team Player Award
-                    </h4>
-                    <h4><i class="fas fa-images award-gallery" data-award-id="3"></i></h4>
-                </div>
-                <div class="col-12 d-flex align-items-baseline justify-content-between">
-                    <h4 class="award-title">
-                        <i style="color: #FFD74A" class="fas fa-award"></i>
-                        2016 - Valuable Player Award
-                    </h4>
-                    <h4><i class="fas fa-images award-gallery" data-award-id="3"></i></h4>
-                </div>
-                <h4 class="col-12 award-title"><i style="color: #FFD74A" class="fas fa-award"></i> 2015 - Good performance Award</h4>
-            </div>
-        </div>
-    </div>
-    <div class="container p-3" style="background: white">
-        <hr>
-        <h3 class="py-3 d-flex align-items-center justify-content-between">
-            <span>More About Me</span>
-            <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
-            <i class="fas fa-angle-left expand-icon" title="Expand"></i>
-        </h3>
+</div>
+<div class="container px-3" style="background: white">
+    <hr>
+    <h3 class="py-3 d-flex align-items-center justify-content-between">
+        <span>Awards</span>
+        <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+        <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+    </h3>
+    <div class="container">
         <div class="row">
-            <div class="col-12">
-                <a id="about_me_fa" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
-                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/aboutme_fa.png" style="max-width: 100%" alt="FA about me">
-                </a>
-                <a id="about_me_fa_mobile" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" target="_blank">
-                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/aboutme_fa_mobile.jpg" style="max-width: 100%" alt="FA about me">
-                </a>
+            <div class="col-12 d-flex align-items-baseline justify-content-between">
+                <h4 class="award-title">
+                    <i style="color: #FFD74A" class="fas fa-award"></i>
+                    2022 - The Best Trainer of FPT Software Academy
+                </h4>
+                <h4><i class="fas fa-images award-gallery" data-award-id="1"></i></h4>
             </div>
-            <div class="col-12 mt-3">
-                <a id="happy-trainer" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/" target="_blank">
-                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/HappyTrainer.png" style="max-width: 100%" alt="FA about me">
-                </a>
-                <a id="happy-trainer-mobile" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/" target="_blank">
-                    <img class="border border-secondary rounded lazy-image" data-url="images/about-me/happy-trainer-mobile.jpg" style="max-width: 100%" alt="FA about me">
-                </a>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex align-items-baseline justify-content-between">
+                <h4 class="award-title">
+                    <i style="color: #FFD74A" class="fas fa-award"></i>
+                    2022 - New Rising Star Award
+                </h4>
+                <h4><i class="fas fa-images award-gallery" data-award-id="2"></i></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex align-items-baseline justify-content-between">
+                <h4 class="award-title">
+                    <i style="color: #FFD74A" class="fas fa-award"></i>
+                    2017 – Leader Best Team Player Award
+                </h4>
+                <h4><i class="fas fa-images award-gallery" data-award-id="3"></i></h4>
+            </div>
+            <div class="col-12 d-flex align-items-baseline justify-content-between">
+                <h4 class="award-title">
+                    <i style="color: #FFD74A" class="fas fa-award"></i>
+                    2016 - Valuable Player Award
+                </h4>
+                <h4><i class="fas fa-images award-gallery" data-award-id="3"></i></h4>
+            </div>
+            <h4 class="col-12 award-title"><i style="color: #FFD74A" class="fas fa-award"></i> 2015 - Good performance Award</h4>
+        </div>
+    </div>
+</div>
+<div class="container p-3" style="background: white">
+    <hr>
+    <h3 class="py-3 d-flex align-items-center justify-content-between">
+        <span>More About Me</span>
+        <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+        <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+    </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xl-6">
+                <div class="card">
+                    <a target="_blank" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/">
+                        <img src="images/about-me/happy_trainner.png" class="card-img-top" alt="Những người thầy 'trong lòng' FPT">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Gặp gỡ “thầy giáo hạnh phúc” của FPT Software</h5>
+                        <p class="card-text">Anh Đặng Phương Phương hiện đang là Trainer bộ môn Java tại FPT Software Academy. Trước khi trở thành giảng viên, anh đã dành nhiều năm làm việc tại các dự án trong và ngoài FSOFT, kinh qua các vị trí từ Developer, Team Leader, PM… </p>
+                        <a target="_blank" href="https://cucumber.fsoft.com.vn/vi/gap-go-thay-giao-hanh-phuc-cua-fpt-software-academy/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6">
+                <div class="card">
+                    <a target="_blank" href="https://chungta.vn/longform/nhung-nguoi-thay-trong-long-fpt-1137909.html">
+                        <img src="images/about-me/about_me_top_fpt_trainer.jpg" class="card-img-top" alt="Những người thầy 'trong lòng' FPT">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Những người thầy 'trong lòng' FPT</h5>
+                        <p class="card-text">Làm sao để thu ngắn khoảng cách giữa lý thuyết và thực tế trở thành câu hỏi thường trực trong đầu tôi. Một chương trình đào tạo mất nhiều thời gian để chọn lọc nội dung nhưng ngành IT thay đổi liên tục khiến chương trình học cũng lỗi thời nhanh...</p>
+                        <a target="_blank" href="https://chungta.vn/longform/nhung-nguoi-thay-trong-long-fpt-1137909.html" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-xl-6">
+                <div class="card">
+                    <a target="_blank" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/">
+                        <img src="images/about-me/human_fa_trainer_java.jpg" class="card-img-top" alt="[HUMANS OF FA] - Trainer Java tại FA">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">[HUMANS OF FA] - Trainer Java tại FA</h5>
+                        <p class="card-text">Học viên của anh nay đều trở thành developer, tester…, thậm chí còn có người nối nghiệp anh trở thành mentor IT, tiếp tục công cuộc giảng dạy và truyền thụ kinh nghiệm đến các bạn trẻ... </p>
+                        <a target="_blank" href="https://www.facebook.com/FPTSoftware.tuyendung/photos/a.469266456536196/5053759364753526/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-<!--    <div class="container px-3" style="background: white">-->
-<!--        <hr>-->
-<!--        <h3 class="py-3 d-flex align-items-center justify-content-between">-->
-<!--            <span>My students say about me...</span>-->
-<!--            <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>-->
-<!--            <i class="fas fa-angle-left expand-icon" title="Expand"></i>-->
-<!--        </h3>-->
-<!--        <div class="row py-3">-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe01.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe02.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe03.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe04.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe05.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--            <div class="col-12 col-lg-4 mb-5">-->
-<!--                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe06.jpg" class="border border-secondary rounded lazy-image"-->
-<!--                     style="max-width: 100%">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <!-- Modal -->
-    <div class="modal fade" id="galleryAwardModal" tabindex="-1" role="dialog" aria-labelledby="galleryAwardModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="galleryAwardModalTitle">Award Gallery</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+</div>
+<div class="container px-3" style="background: white">
+    <hr>
+    <h3 class="py-3 d-flex align-items-center justify-content-between">
+        <span>My students say about me...</span>
+        <i class="fas fa-angle-down collapse-icon" title="Collapse"></i>
+        <i class="fas fa-angle-left expand-icon" title="Expand"></i>
+    </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe01.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe02.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe03.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe04.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe05.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img data-url="images/about-me/student-talk-about-me/studentTalkAboutMe06.jpg" class="border border-secondary rounded lazy-image"
+                     style="max-width: 100%">
             </div>
         </div>
     </div>
+</div>
 
-    <footer id="footer-page"></footer>
+<!-- Modal -->
+<div class="modal fade" id="galleryAwardModal" tabindex="-1" role="dialog" aria-labelledby="galleryAwardModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="galleryAwardModalTitle">Award Gallery</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- javascript -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrollspy.min.js"></script>
-    <!-- Icons -->
-    <script src="js/feather.min.js"></script>
-    <script src="js/unicons-monochrome.js"></script>
+<footer id="footer-page"></footer>
 
-    <!-- Main Js -->
-    <script src="js/app.js"></script>
-    <script>
-        const awardImage = [
-            {
-                awardId: 1,
-                images: [
-                    "images/about-me/awards/thebesttrainer2022_01.jpg",
-                    "images/about-me/awards/thebesttrainer2022_02.jpg",
-                    "images/about-me/awards/thebesttrainer2022_03.jpg",
-                ]
-            },
-            {
-                awardId: 2,
-                images: [
-                    "images/about-me/awards/risingstar2022.jpg"
-                ]
-            },
-            {
-                awardId: 3,
-                images: [
-                    "images/about-me/awards/bestperformance.jpg"
-                ]
-            }
-        ]
-        $(document).ready(function () {
-            const elements = document.getElementsByClassName('lazy-image');
-            for (const e of elements) {
-                e.setAttribute('src', e.getAttribute('data-url'));
-            }
-            $('.award-gallery').click(function () {
-               $('.modal-body').html('');
-               const awardId = $(this).attr('data-award-id');
-               const award = awardImage.find(a => a.awardId === Number(awardId));
-               if (award.images) {
-                   award.images.forEach(img => {
-                       $('.modal-body').append(`<div class="col-12 mb-1">
+<!-- javascript -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/scrollspy.min.js"></script>
+<!-- Icons -->
+<script src="js/feather.min.js"></script>
+<script src="js/unicons-monochrome.js"></script>
+
+<!-- Main Js -->
+<script src="js/app.js"></script>
+<script>
+    const awardImage = [
+        {
+            awardId: 1,
+            images: [
+                "images/about-me/awards/thebesttrainer2022_01.jpg",
+                "images/about-me/awards/thebesttrainer2022_02.jpg",
+                "images/about-me/awards/thebesttrainer2022_03.jpg",
+            ]
+        },
+        {
+            awardId: 2,
+            images: [
+                "images/about-me/awards/risingstar2022.jpg"
+            ]
+        },
+        {
+            awardId: 3,
+            images: [
+                "images/about-me/awards/bestperformance.jpg"
+            ]
+        }
+    ]
+    $(document).ready(function () {
+        const elements = document.getElementsByClassName('lazy-image');
+        for (const e of elements) {
+            e.setAttribute('src', e.getAttribute('data-url'));
+        }
+        $('.award-gallery').click(function () {
+            $('.modal-body').html('');
+            const awardId = $(this).attr('data-award-id');
+            const award = awardImage.find(a => a.awardId === Number(awardId));
+            if (award.images) {
+                award.images.forEach(img => {
+                    $('.modal-body').append(`<div class="col-12 mb-1">
                             <img src="${img}"
                             class="border border-secondary rounded"
                             style="max-width: 100%">
                         </div>`);
-                   });
-               }
-               $('#galleryAwardModal').modal('show');
-            });
+                });
+            }
+            $('#galleryAwardModal').modal('show');
         });
-    </script>
+    });
+</script>
 </body>
 </html>
